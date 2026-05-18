@@ -1,0 +1,1822 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SUNG-1975- — Into the Gulf</title>
+<meta name="description" content="A proposal to bring SUNG1975 into the UAE & GCC market." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --paper: #F0EBE2;
+    --paper-2: #E6DFD2;
+    --ink: #1A1815;
+    --ink-soft: #3A352E;
+    --line: #C9C2B5;
+    --olive: #5C6440;
+    --olive-deep: #3F4528;
+    --tan: #B89A7A;
+    --rust: #A85B3E;
+    --muted: #7A7468;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum' 1; letter-spacing: 0.02em; }
+  .serif { font-family: 'Fraunces', Georgia, serif; font-feature-settings: 'ss01' 1, 'ss02' 1; }
+  ::selection { background: var(--olive); color: var(--paper); }
+
+  /* Layout primitives */
+  section.deck {
+    min-height: 100vh;
+    padding: 9vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 1100px) { section.deck { padding: 10vh 12vw; } }
+
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--ink);
+  }
+
+  h1.display {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(56px, 9.5vw, 168px);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    font-variation-settings: 'opsz' 144;
+  }
+  h2.section-h {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5.6vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 144;
+    max-width: 22ch;
+  }
+  h2.section-h em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--olive-deep);
+  }
+  h3.sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: clamp(20px, 1.7vw, 28px);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    max-width: 30ch;
+  }
+  p.body {
+    font-size: clamp(16px, 1.15vw, 19px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+  p.body + p.body { margin-top: 1.1em; }
+  p.lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(22px, 2vw, 32px);
+    line-height: 1.35;
+    color: var(--ink);
+    max-width: 30ch;
+    letter-spacing: -0.01em;
+  }
+  .pull {
+    border-left: 1px solid var(--olive);
+    padding-left: 28px;
+    margin-top: 56px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 1.6vw, 28px);
+    line-height: 1.4;
+    max-width: 42ch;
+    color: var(--ink);
+  }
+  .small {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.1s cubic-bezier(.2,.7,.2,1);
+    transition-delay: var(--d, 0ms);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* Fixed nav corner indicator */
+  .corner {
+    position: fixed;
+    top: 28px;
+    right: 36px;
+    z-index: 50;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    mix-blend-mode: difference;
+    color: #C9C2B5;
+  }
+  .brand-mark {
+    position: fixed;
+    top: 28px;
+    left: 36px;
+    z-index: 50;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ink);
+  }
+  .brand-mark::after { content: '— UAE PROPOSAL'; margin-left: 10px; color: var(--muted); }
+
+  /* COVER */
+  .cover {
+    background: var(--ink);
+    color: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    border-bottom: none;
+  }
+  @media (max-width: 900px) { .cover { grid-template-columns: 1fr; } }
+  .cover .copy {
+    padding: 10vh 6vw;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .cover .img {
+    background-image: url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1400&q=80&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-color: #2a2722;
+    filter: grayscale(0.4) contrast(1.05);
+    min-height: 60vh;
+    position: relative;
+  }
+  .cover .img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(26,24,21,0.35), rgba(26,24,21,0) 40%);
+  }
+  .lockup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    color: var(--paper);
+  }
+  .lockup .dash { color: var(--tan); }
+  .cover h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(64px, 8vw, 144px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin-top: 6vh;
+    font-variation-settings: 'opsz' 144;
+  }
+  .cover h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--tan);
+  }
+  .cover .meta {
+    border-top: 1px solid rgba(240,235,226,0.18);
+    padding-top: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: rgba(240,235,226,0.7);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .cover .meta strong { color: var(--paper); font-weight: 500; display: block; margin-top: 4px; }
+
+  /* THESIS */
+  .thesis-grid {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: 90px;
+    align-items: start;
+    margin-top: 40px;
+  }
+  @media (max-width: 900px) { .thesis-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* BRAND RECAP STATS */
+  .stat-row {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    border-top: 1px solid var(--line);
+    padding-top: 36px;
+  }
+  @media (max-width: 800px) { .stat-row { grid-template-columns: repeat(2,1fr); } }
+  .stat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 4vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 144;
+  }
+  .stat .l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 14px;
+    line-height: 1.4;
+  }
+  .stat .src,
+  .src {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.4;
+    text-transform: none;
+    opacity: 0.85;
+  }
+  .src::before { content: '◦  '; opacity: 0.6; }
+
+  /* PRODUCT STRIP */
+  .product-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 56px;
+  }
+  @media (max-width: 800px) { .product-strip { grid-template-columns: repeat(2, 1fr); } }
+  .product-strip .card {
+    aspect-ratio: 4/5;
+    background-color: var(--paper-2);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .product-strip .card .tag {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    right: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--paper);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* AUDIENCE / CHART */
+  .chart-wrap {
+    margin-top: 56px;
+    padding: 28px 0 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .chart-card {
+    background: var(--paper-2);
+    padding: 36px;
+    border: 1px solid var(--line);
+  }
+  .chart-card .ttl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  /* DEAL TABLE */
+  .deal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 56px;
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 800px) { .deal { grid-template-columns: 1fr; } }
+  .deal .col {
+    padding: 36px;
+    border-right: 1px solid var(--line);
+  }
+  .deal .col:last-child { border-right: none; }
+  @media (max-width: 800px) { .deal .col { border-right: none; border-bottom: 1px solid var(--line); } }
+  .deal .col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .deal ul { list-style: none; }
+  .deal li {
+    padding: 14px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .deal li:first-child { border-top: none; }
+  .deal li::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--olive);
+    border-radius: 50%;
+    transform: translateY(-2px);
+    flex-shrink: 0;
+  }
+
+  /* PHASES */
+  .phases {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 900px) { .phases { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .phases { grid-template-columns: 1fr; } }
+  .phases .ph {
+    background: var(--paper);
+    padding: 32px 28px;
+    min-height: 280px;
+    display: flex; flex-direction: column;
+  }
+  .phases .ph .p-n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--olive);
+    margin-bottom: 10px;
+  }
+  .phases .ph .p-t {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    letter-spacing: -0.015em;
+  }
+  .phases .ph .p-w {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .phases .ph ul { list-style: none; }
+  .phases .ph li {
+    font-size: 14px;
+    line-height: 1.45;
+    padding: 8px 0;
+    color: var(--ink-soft);
+    border-top: 1px dashed var(--line);
+  }
+  .phases .ph li:first-child { border-top: none; }
+
+  /* PRICE TABLE */
+  .price-table {
+    margin-top: 48px;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+  }
+  .price-table th, .price-table td {
+    text-align: left;
+    padding: 18px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .price-table th {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--ink);
+  }
+  .price-table td.product { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 15px; color: var(--ink); }
+  .price-table td.aed { color: var(--olive-deep); font-weight: 600; }
+
+  /* SKINCARE / PARALLEL TRACK */
+  .skincare {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: 70px;
+    align-items: center;
+    margin-top: 40px;
+  }
+  @media (max-width: 900px) { .skincare { grid-template-columns: 1fr; gap: 32px; } }
+  .skincare .image-block {
+    background: linear-gradient(135deg, #5C6440 0%, #3F4528 100%);
+    aspect-ratio: 4/5;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 36px;
+    color: var(--paper);
+  }
+  .skincare .image-block .product-mock {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0) 60%);
+  }
+  .skincare .image-block .prod-tag {
+    position: relative;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    line-height: 1.5;
+  }
+  .skincare .image-block .prod-tag strong {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    display: block;
+    margin-top: 4px;
+    text-transform: none;
+  }
+
+  /* NEXT STEPS */
+  .timeline {
+    margin-top: 56px;
+    border-top: 1px solid var(--ink);
+    padding-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 800px) { .timeline { grid-template-columns: repeat(2, 1fr); } }
+  .timeline .w {
+    border-top: 2px solid var(--olive);
+    padding-top: 18px;
+  }
+  .timeline .w .wn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .timeline .w .wt {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .timeline .w .wb {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* CLOSING */
+  .closing {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .closing h2 { color: var(--paper); }
+  .closing p.body { color: rgba(240,235,226,0.75); }
+  .closing .label { color: rgba(240,235,226,0.55); }
+  .closing .label::before { background: var(--tan); }
+  .closing .contact {
+    margin-top: 56px;
+    border-top: 1px solid rgba(240,235,226,0.2);
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 800px) { .closing .contact { grid-template-columns: 1fr; } }
+  .closing .contact div .l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,235,226,0.55);
+    margin-bottom: 8px;
+  }
+  .closing .contact div .v {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--paper);
+    letter-spacing: -0.01em;
+  }
+
+  /* tags & small ui */
+  .chip {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+  .chip.olive { color: var(--olive-deep); border-color: var(--olive); }
+
+  /* horizontal logo strip placeholder for competitors */
+  .comp-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 800px) { .comp-row { grid-template-columns: repeat(3, 1fr); } }
+  .comp-row .c {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-align: center;
+    color: var(--ink-soft);
+    padding: 14px 4px;
+  }
+  .comp-row .c .price {
+    display: block;
+    margin-top: 6px;
+    font-size: 18px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .comp-row .c.us { background: var(--ink); color: var(--paper); }
+  .comp-row .c.us .price { color: var(--tan); }
+
+  /* STRUCTURE DIAGRAMS (§13) */
+  .structure-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    margin-top: 56px;
+  }
+  @media (max-width: 1100px) { .structure-grid { grid-template-columns: 1fr; gap: 56px; } }
+  .structure {
+    border-top: 1px solid var(--ink);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .s-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--olive-deep);
+    margin-bottom: 28px;
+    min-height: 32px;
+    line-height: 1.3;
+  }
+  .s-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .s-node {
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+    color: var(--ink);
+    position: relative;
+    z-index: 1;
+  }
+  .s-node .role {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+  .s-node.principal { background: var(--ink); color: var(--paper); }
+  .s-node.principal .role { color: rgba(240,235,226,0.55); }
+  .s-node.entity { background: var(--paper-2); border-width: 2px; }
+  .s-node.entity .role { color: var(--olive-deep); }
+  .s-node.vendor { border-style: dashed; }
+  .s-link {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 8px 0;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .s-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: var(--ink);
+    z-index: 0;
+  }
+  .s-link span {
+    background: var(--paper);
+    padding: 2px 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .s-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    position: relative;
+    padding-top: 18px;
+  }
+  .s-row.three { grid-template-columns: 1fr 1fr 1fr; }
+  .s-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    background: var(--ink);
+  }
+  .s-row.three::before { left: 16.66%; right: 16.66%; }
+  .s-row > .col { position: relative; }
+  .s-row > .col::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    width: 1px;
+    height: 18px;
+    background: var(--ink);
+  }
+  .s-row-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .s-row-top.two { grid-template-columns: 1fr 1fr; }
+  .s-merge-down {
+    position: relative;
+    height: 28px;
+  }
+  .s-merge-down::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 16.66%;
+    right: 16.66%;
+    height: 1px;
+    background: var(--ink);
+  }
+  .s-merge-down.two::before { left: 25%; right: 25%; }
+  .s-merge-down::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: var(--ink);
+  }
+  .s-row-top > .col { position: relative; }
+  .s-row-top > .col::after {
+    content: '';
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    width: 1px;
+    height: 28px;
+    background: var(--ink);
+  }
+  .s-summary {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .s-summary strong { color: var(--ink); font-weight: 600; }
+  .portgate-scope {
+    padding: 12px 14px;
+    background: rgba(184,154,122,0.10);
+    border-left: 2px solid var(--tan);
+    margin-top: 4px;
+  }
+  .portgate-scope .ps-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .portgate-scope .ps-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 6px;
+  }
+  .portgate-scope .ps-chips span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 4px 8px;
+    border: 1px solid rgba(184,154,122,0.4);
+  }
+  .common-deal {
+    margin-top: 64px;
+    padding: 28px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+  }
+  .deal-common-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 700px) { .deal-common-row { grid-template-columns: 1fr; } }
+  .family-note {
+    margin-top: 32px;
+    padding: 18px 22px;
+    border-left: 2px solid var(--olive);
+    background: rgba(92,100,64,0.05);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .family-note strong { color: var(--ink); font-weight: 600; }
+
+  /* INTERACTIVE WORKSPACE (Option 04) */
+  .structure-interactive {
+    margin-top: 56px;
+    border-top: 1px solid var(--ink);
+    padding-top: 28px;
+  }
+  .si-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .si-header .s-label { margin-bottom: 0; min-height: 0; }
+  .si-header p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    flex: 1;
+    min-width: 280px;
+  }
+  .workspace {
+    border: 1px solid var(--ink);
+    background: var(--paper-2);
+    overflow: hidden;
+  }
+  .ws-toolbar {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: var(--paper);
+  }
+  .ws-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+  .ws-btn:hover { background: var(--ink); color: var(--paper); }
+  .ws-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+  .ws-canvas {
+    position: relative;
+    height: 520px;
+    background-image:
+      linear-gradient(to right, rgba(26,24,21,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(26,24,21,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    overflow: hidden;
+  }
+  .ws-box {
+    position: absolute;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    padding: 11px 14px;
+    min-width: 170px;
+    cursor: grab;
+    user-select: none;
+    transition: box-shadow 0.15s;
+  }
+  .ws-box:active { cursor: grabbing; }
+  .ws-box:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); }
+  .ws-box.dragging { box-shadow: 0 10px 28px rgba(0,0,0,0.15); z-index: 10; }
+  .ws-box.role-principal { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .ws-box.role-entity { background: var(--paper-2); border-width: 2px; }
+  .ws-box.role-vendor { border-style: dashed; }
+  .ws-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    width: 100%;
+    outline: none;
+    text-align: center;
+    color: inherit;
+    padding: 0;
+  }
+  .ws-pct-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+    color: var(--muted);
+  }
+  .ws-box.role-principal .ws-pct-wrap { color: rgba(240,235,226,0.6); }
+  .ws-pct {
+    background: transparent;
+    border: none;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: inherit;
+    width: 38px;
+    outline: none;
+    padding: 0;
+  }
+  .ws-role {
+    display: block;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: transparent;
+    border: none;
+    color: var(--olive-deep);
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+  }
+  .ws-box.role-principal .ws-role { color: rgba(240,235,226,0.7); }
+  .ws-box.role-vendor .ws-role { color: var(--ink-soft); }
+  .ws-delete {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    background: var(--rust);
+    color: var(--paper);
+    border-radius: 50%;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    padding: 0;
+  }
+  .ws-box:hover .ws-delete { opacity: 1; }
+  @media (max-width: 800px) {
+    .ws-canvas { height: 600px; }
+    .ws-box { min-width: 130px; padding: 9px 12px; }
+  }
+
+  /* footer */
+  footer.foot {
+    background: var(--paper-2);
+    padding: 36px 8vw;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="brand-mark">SUNG &mdash;1975&mdash;</div>
+<div class="corner" id="cornerCount">01 / 15</div>
+
+<!-- 01 COVER -->
+<section class="cover" data-n="01">
+  <div class="copy">
+    <div class="lockup">SUNG <span class="dash">—</span> 1975 <span class="dash">—</span></div>
+    <div>
+      <h1 class="reveal">
+        Into the<br/><em>Gulf.</em>
+      </h1>
+      <div style="margin-top: 36px; max-width: 38ch; color: rgba(240,235,226,0.78); font-size: 17px; line-height: 1.55;" class="reveal" style="--d:200ms">
+        A proposal to bring the Korean athleisure brand of Choo Sung-hoon (Akiyama) into the United Arab Emirates and the wider GCC.
+      </div>
+    </div>
+    <div class="meta">
+      <div>Prepared for<strong>Choo Sung-hoon · 秋山成勲</strong></div>
+      <div>Prepared by<strong>[Your Name] + Akito</strong></div>
+      <div>Date<strong>May 2026</strong></div>
+      <div>Status<strong>Confidential · v1</strong></div>
+    </div>
+  </div>
+  <div class="img"></div>
+</section>
+
+<!-- 02 THESIS -->
+<section class="deck" data-n="02">
+  <div class="label reveal">02 — Thesis</div>
+  <div class="thesis-grid">
+    <div>
+      <h2 class="section-h reveal">The right brand. The right city. The <em>right window.</em></h2>
+    </div>
+    <div>
+      <p class="body reveal" style="--d:120ms">
+        Dubai is now the most important athleisure proving ground outside the United States. ALO, Lululemon, Vuori, Gymshark and Giving Movement are all expanding here aggressively — and the city is short on premium men's brands with real personality behind them.
+      </p>
+      <p class="body reveal" style="--d:240ms">
+        SUNG1975 has the design language, the price point, and the personality to fit the same shelf. What it does not yet have is meaningful penetration outside of Korea and Japan.
+      </p>
+      <p class="body reveal" style="--d:360ms">
+        We are proposing to fix that — by building the UAE & GCC arm of SUNG1975, under exclusive license, fully funded and operated by us.
+      </p>
+      <div class="pull reveal" style="--d:520ms">
+        "Use Dubai as the launchpad into the West — not the destination."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 THE BRAND WE'RE BRINGING -->
+<section class="deck" data-n="03">
+  <div class="label reveal">03 — The brand we're bringing</div>
+  <h2 class="section-h reveal">A Korean athleisure label built around one of Asia's most recognisable men.</h2>
+  <p class="body reveal" style="--d:160ms; margin-top: 28px;">
+    Launched May 2022. Founder, muse and lead designer: Choo Sung-hoon. Carried on Musinsa since January 2024. Current season runs across Japan and Korea with a live Tokyo popup as of May 2026.
+  </p>
+  <div class="product-strip">
+    <div class="card reveal" style="background-image:url('https://www.sung1975japanshop.com/cdn/shop/files/IMG_2696.jpg?v=1774353497&width=900');">
+      <div class="tag"><span>BONDED SIDE LINE HOODIE</span><span>$156</span></div>
+    </div>
+    <div class="card reveal" style="--d:120ms; background-image:url('https://www.sung1975japanshop.com/cdn/shop/files/IMG_8377.jpg?v=1775470998&width=900');">
+      <div class="tag"><span>RAW-PATCH LOGO TANK</span><span>$75</span></div>
+    </div>
+    <div class="card reveal" style="--d:240ms; background-image:url('https://www.sung1975japanshop.com/cdn/shop/files/IMG_8435.jpg?v=1772345408&width=900');">
+      <div class="tag"><span>TERRY TAPERED PANTS</span><span>$120</span></div>
+    </div>
+    <div class="card reveal" style="--d:360ms; background-image:url('https://www.sung1975japanshop.com/cdn/shop/files/R5_2055.jpg?v=1721899845&width=900');">
+      <div class="tag"><span>CENTER NOTCH PILE HOODIE</span><span>$131</span></div>
+    </div>
+  </div>
+  <div class="stat-row">
+    <div class="stat reveal"><div class="n">881,798</div><div class="l">Instagram · @akiyamachoo<span class="src">Social Blade · 2026-05-18</span></div></div>
+    <div class="stat reveal" style="--d:120ms"><div class="n">1.98M</div><div class="l">YouTube subs · added in 4 months<span class="src">Chosun Biz Dec 2025 · channel launch Nov 2024</span></div></div>
+    <div class="stat reveal" style="--d:240ms"><div class="n">10.99M</div><div class="l">Single video views · home life format<span class="src">Korea JoongAng Daily · 2025</span></div></div>
+    <div class="stat reveal" style="--d:360ms"><div class="n">21.19%</div><div class="l">Engagement rate · vs 1.5% median<span class="src">Social Blade · 2026-05-18</span></div></div>
+  </div>
+</section>
+
+<!-- 04 WHY DUBAI -->
+<section class="deck" data-n="04">
+  <div class="label reveal">04 — Why Dubai, why now</div>
+  <h2 class="section-h reveal">Dubai is quietly the world's<br/>second athleisure capital.</h2>
+  <div class="thesis-grid" style="margin-top: 56px;">
+    <div>
+      <p class="body reveal">
+        Within the last 36 months Dubai has gone from a satellite market to a primary one. ALO has opened four flagships in two years. Lululemon now operates six stores. Gymshark launched its first ME presence. Vuori is queued for 2026.
+      </p>
+      <p class="body reveal" style="--d:160ms">
+        And the home-grown player — Giving Movement — has gone from a single Dubai DTC site in 2020 to a 30-country premium label being discussed as an IPO candidate.
+      </p>
+      <p class="body reveal" style="--d:320ms">
+        This city rewards brands with strong personality and design. It punishes brands that try to compete on price alone. SUNG1975 is positioned for the first lane, not the second.
+      </p>
+    </div>
+    <div>
+      <div class="chart-card reveal" style="--d:240ms">
+        <div class="ttl">Dubai premium athleisure footprint — 2023 → 2026</div>
+        <canvas id="chartDubai" height="220"></canvas>
+        <div class="src" style="margin-top: 14px;">Approximate store counts · brand press + mall directories · to be locked from Perplexity / Claude research pass</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 THE AUDIENCE GAP -->
+<section class="deck" data-n="05">
+  <div class="label reveal">05 — The audience gap</div>
+  <h2 class="section-h reveal">880K Instagram.<br/>2M YouTube.<br/><em>And the brand has 23,000.</em></h2>
+  <div class="thesis-grid" style="margin-top: 56px;">
+    <div>
+      <p class="body reveal">
+        The personal channel reaches 881,798. The brand's own channels — @sung1975_kr and @sung1975_japan combined — reach 23,172. That is a <strong>38× gap</strong> between the founder's voice and the brand's voice. Closing that gap is the entire commercial opportunity of this venture.
+      </p>
+      <p class="body reveal" style="--d:160ms">
+        And the personal channel's engagement rate is <strong>21.19%</strong> — versus a mega-influencer median of roughly 1.5%. That is not a passive audience. It is one of the most active large personal audiences in the world, and it has barely been monetised through SUNG1975 yet.
+      </p>
+      <p class="body reveal" style="--d:320ms">
+        Dubai is the most efficient single city in the world to plug a Western and MENA exposure layer onto that audience: English-speaking, sizeable Japanese and Korean diaspora, year-round European tourism, GCC HNW concentration, and the most aggressive premium-fitness-lifestyle market outside the US.
+      </p>
+    </div>
+    <div>
+      <div class="chart-card reveal" style="--d:240ms">
+        <div class="ttl">Founder reach vs brand reach — 38× gap</div>
+        <canvas id="chartGeo" height="220"></canvas>
+        <div class="src" style="margin-top: 14px;">Social Blade · live pull 2026-05-18 · @akiyamachoo, @sung1975_kr, @sung1975_japan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 GIVING MOVEMENT REFERENCE -->
+<section class="deck" data-n="06">
+  <div class="label reveal">06 — The reference case</div>
+  <h2 class="section-h reveal">Giving Movement proved Dubai could be a <em>global launchpad.</em></h2>
+  <div class="thesis-grid" style="margin-top: 56px;">
+    <div>
+      <p class="body reveal">
+        Founded in Dubai in 2020. Built initially as a DTC site selling premium athleisure with a charitable angle. Within four years: distribution in 30+ markets, airport-retail dominance (the DXB store routinely sells out of Dubai-only capsules), and serious institutional interest.
+      </p>
+      <p class="body reveal" style="--d:160ms">
+        Price band: roughly $80–$160 USD. Design: clean, minimal, monochromatic — adjacent to SUNG1975's own aesthetic. Hero capsules: Arabic-calligraphy graphics that consistently outperform standard lines, particularly in tourist channels.
+      </p>
+      <p class="body reveal" style="--d:320ms">
+        Giving Movement proved that a Dubai-based label can scale outward. We propose to use the same playbook in reverse — a Tokyo/Seoul label scaling inward through Dubai.
+      </p>
+      <div class="pull reveal" style="--d:480ms">
+        "Same shelf. Same price band. Same minimalist aesthetic. <br/>One difference: a story that no Dubai-born brand can buy."
+      </div>
+    </div>
+    <div>
+      <div style="background: var(--paper-2); border: 1px solid var(--line); padding: 36px;">
+        <div class="ttl mono" style="font-size: 11px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; margin-bottom: 24px;">Giving Movement — at a glance</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+          <div><div class="mono" style="font-size: 11px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase;">Founded</div><div class="serif" style="font-size: 26px; margin-top: 4px;">2020 · Dubai</div></div>
+          <div><div class="mono" style="font-size: 11px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase;">Markets</div><div class="serif" style="font-size: 26px; margin-top: 4px;">30+</div></div>
+          <div><div class="mono" style="font-size: 11px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase;">Price band</div><div class="serif" style="font-size: 26px; margin-top: 4px;">$80–$160</div></div>
+          <div><div class="mono" style="font-size: 11px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase;">Hero capsule</div><div class="serif" style="font-size: 26px; margin-top: 4px;">Arabic graphics</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 COMPETITIVE MAP -->
+<section class="deck" data-n="07">
+  <div class="label reveal">07 — Competitive map</div>
+  <h2 class="section-h reveal">Same shelf. Different story.</h2>
+  <p class="body reveal" style="margin-top: 28px;">SUNG1975 already retails — in Japan — at a price point dead-centre with the Dubai athleisure premium tier. We are not asking customers to discover a new tier. We are asking them to discover a new name.</p>
+  <div class="comp-row reveal">
+    <div class="c">GYMSHARK<span class="price">~$40</span></div>
+    <div class="c">VUORI<span class="price">~$72</span></div>
+    <div class="c">ALO<span class="price">~$78</span></div>
+    <div class="c us">SUNG1975<span class="price">$75</span></div>
+    <div class="c">LULULEMON<span class="price">~$78</span></div>
+    <div class="c">GIVING MOVEMENT<span class="price">~$85</span></div>
+  </div>
+  <div class="small reveal" style="margin-top:14px;">Indicative t-shirt prices, Dubai retail. Final deck will use locked Perplexity figures.</div>
+  <div class="chart-wrap">
+    <div class="chart-card reveal" style="--d:160ms">
+      <div class="ttl">Hoodie retail comparison — Dubai shelf</div>
+      <canvas id="chartHoodie" height="180"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- 08 WHY US -->
+<section class="deck" data-n="08">
+  <div class="label reveal">08 — Why us</div>
+  <h2 class="section-h reveal">Two Dubai operators with the relationships <em>this would need.</em></h2>
+  <div class="thesis-grid" style="margin-top: 56px;">
+    <div>
+      <p class="body reveal">
+        We are not a distributor pitching from a deck-template. We are two operators based in Dubai with active businesses in real estate, hospitality and brand-building across the region — and existing relationships into the venues this brand needs to live in.
+      </p>
+      <p class="body reveal" style="--d:160ms">
+        Akito brings creative direction, brand strategy and Japan-market fluency. [Your Name] brings UAE operations, gym-chain and MMA-event access, fulfillment infrastructure, and the local team to staff a popup the day a container clears customs.
+      </p>
+      <p class="body reveal" style="--d:320ms">
+        We do not ask you to invest a dirham. We ask you to grant us permission, and to come visit us two to three times a year when activations call for you.
+      </p>
+    </div>
+    <div>
+      <h4 class="mono" style="font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-bottom: 18px;">Access we already hold</h4>
+      <div class="reveal">
+        <span class="chip">Warehouse Gym network</span>
+        <span class="chip">WellFit</span>
+        <span class="chip">UAEW event circuit</span>
+        <span class="chip">Brave CF activations</span>
+        <span class="chip">DXB / DWC airport retail brokers</span>
+        <span class="chip">Tier-1 mall leasing contacts</span>
+        <span class="chip">Local fulfillment & 3PL</span>
+        <span class="chip">JP & KR diaspora media</span>
+        <span class="chip">PR firms — premium lifestyle</span>
+        <span class="chip">Influencer roster (UAE fitness)</span>
+      </div>
+      <div class="pull reveal" style="--d:240ms; margin-top: 40px;">
+        "Asymmetric risk. <br/>You risk brand permission. We risk capital, time, and our own reputation in this market."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 MMA × DUBAI -->
+<section class="deck" data-n="09">
+  <div class="label reveal">09 — The MMA × Dubai overlap</div>
+  <h2 class="section-h reveal">Your face on every fight night<br/>in Dubai — <em>for twelve months.</em></h2>
+  <div class="thesis-grid" style="margin-top: 56px;">
+    <div>
+      <p class="body reveal">
+        Since UFC Fight Island, Dubai and Abu Dhabi have become a permanent stop on the global fight calendar. UAE Warriors, Brave CF, ADP, multiple amateur leagues — combined, the country hosts a dozen-plus professional cards a year, with a long tail of grappling, BJJ and combat-fitness events through Yas, Hub71, Etihad Arena and Coca-Cola Arena.
+      </p>
+      <p class="body reveal" style="--d:160ms">
+        You are not just an athlete to this audience. You are <em>the</em> silver-fox Asian fighter Netflix introduced to the West. That recognition, walking the floor of a UAE Warriors card in a SUNG1975 capsule, is the strongest single piece of brand activation available to us in this market.
+      </p>
+      <p class="body reveal" style="--d:320ms">
+        We will run booth presence at every signature card, capsule drops keyed to event nights, and a multi-event partnership across UAEW for an exclusive activation window.
+      </p>
+    </div>
+    <div>
+      <div style="background: var(--paper-2); border: 1px solid var(--line); padding: 36px;">
+        <h4 class="mono" style="font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-bottom: 24px;">UAE fight-calendar density</h4>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 18px;">
+          <div style="display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px dashed var(--line);"><span>UAE Warriors</span><span class="mono">~8 cards / yr</span></div>
+          <div style="display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px dashed var(--line);"><span>Brave Combat Federation</span><span class="mono">~4 cards / yr</span></div>
+          <div style="display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px dashed var(--line);"><span>ADP World Pro · BJJ</span><span class="mono">annual</span></div>
+          <div style="display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px dashed var(--line);"><span>UFC stop · Etihad Arena</span><span class="mono">1–2 / yr</span></div>
+          <div style="display: flex; justify-content: space-between;"><span>Independent / grappling</span><span class="mono">20+ / yr</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 PHASE PLAN -->
+<section class="deck" data-n="10">
+  <div class="label reveal">10 — Phase plan</div>
+  <h2 class="section-h reveal">Four phases. Two years. <em>One thesis.</em></h2>
+  <div class="phases">
+    <div class="ph reveal">
+      <div class="p-n">PHASE 01</div>
+      <div class="p-t">Launch the channel</div>
+      <div class="p-w">Months 0 — 6</div>
+      <ul>
+        <li>UAE-resident e-commerce site (.ae)</li>
+        <li>Bilingual IG + TikTok content engine</li>
+        <li>Booth presence at first three UAEW / Brave cards</li>
+        <li>Founding-customer drop, limited run</li>
+      </ul>
+    </div>
+    <div class="ph reveal" style="--d:120ms">
+      <div class="p-n">PHASE 02</div>
+      <div class="p-t">Get on the floor</div>
+      <div class="p-w">Months 6 — 12</div>
+      <ul>
+        <li>Pop-up corners inside Warehouse Gym + WellFit</li>
+        <li>First Sheikh Zayed Road billboard activation</li>
+        <li>Akiyama visit #1 — press tour, fight-night appearance</li>
+        <li>Second product drop, full-season</li>
+      </ul>
+    </div>
+    <div class="ph reveal" style="--d:240ms">
+      <div class="p-n">PHASE 03</div>
+      <div class="p-t">Own the city</div>
+      <div class="p-w">Months 12 — 18</div>
+      <ul>
+        <li>UAE-only Arabic-calligraphy capsule</li>
+        <li>DXB airport retail placement</li>
+        <li>Pop-up rotation through Mall of the Emirates / DIFC</li>
+        <li>Riyadh test reach</li>
+      </ul>
+    </div>
+    <div class="ph reveal" style="--d:360ms">
+      <div class="p-n">PHASE 04</div>
+      <div class="p-t">Stand alone</div>
+      <div class="p-w">Year 2+</div>
+      <ul>
+        <li>Standalone flagship — DIFC or Alserkal</li>
+        <li>Skincare collab launch (TWENTY FIFTY)</li>
+        <li>GCC rollout: Riyadh, Doha, Kuwait</li>
+        <li>Optional: license back to Akiyama-side for JP exclusives</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 11 ARABIC CAPSULE -->
+<section class="deck" data-n="11">
+  <div class="label reveal">11 — The UAE-only capsule</div>
+  <h2 class="section-h reveal">Arabic calligraphy. <em>SUNG1975 minimalism.</em></h2>
+  <div class="thesis-grid" style="margin-top: 56px;">
+    <div>
+      <p class="body reveal">
+        Every successful premium label in this market eventually drops a UAE-coded capsule. Nike does it. Adidas does it. Giving Movement does it — and the airport sells out routinely. The reason is simple: tourists want a souvenir that is not embarrassing to wear; residents want to celebrate where they live.
+      </p>
+      <p class="body reveal" style="--d:160ms">
+        We propose a SUNG1975 × UAE capsule each year. Two to four pieces. Single-colour Arabic typography. SUNG1975's existing silhouettes, untouched. Sold in airport, flagship, and online — never wholesale.
+      </p>
+      <p class="body reveal" style="--d:320ms">
+        Cultural respect is non-negotiable. Calligraphy will be commissioned from a UAE-based Arabic typographer with credits, with usage reviewed by both sides before production.
+      </p>
+    </div>
+    <div>
+      <div style="background: var(--paper-2); border: 1px solid var(--line); aspect-ratio: 4/5; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="mono" style="font-size: 11px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase;">Mockup · placeholder</div>
+        <div style="text-align: center;">
+          <div class="serif" style="font-size: 48px; letter-spacing: -0.02em; line-height: 0.95;">سونغ<br/><span style="font-size: 22px; letter-spacing: 0.2em; font-family: 'JetBrains Mono';">— ١٩٧٥ —</span></div>
+          <div class="mono" style="font-size: 11px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; margin-top: 32px;">UAE EDITION · 2026</div>
+        </div>
+        <div class="small">AI render to be generated and inserted before final.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 PRICING -->
+<section class="deck" data-n="12">
+  <div class="label reveal">12 — Pricing is already proven</div>
+  <h2 class="section-h reveal">You already ship to the UAE<br/>at these prices.</h2>
+  <p class="body reveal" style="margin-top: 28px;">No new tier needs to be invented. We propose to lift the Japan-store retail directly, with AED-pricing rounded to the standard premium-athleisure point.</p>
+  <table class="price-table reveal">
+    <thead>
+      <tr><th>Item</th><th>Korea (mass)</th><th>Japan (premium)</th><th>UAE (proposed)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="product">Logo T-shirt</td><td>₩39,000 · ~$28</td><td>$75</td><td class="aed">AED 275</td></tr>
+      <tr><td class="product">Tank top</td><td>₩39,000 · ~$28</td><td>$75</td><td class="aed">AED 275</td></tr>
+      <tr><td class="product">Tapered pants</td><td>—</td><td>$120–$131</td><td class="aed">AED 470</td></tr>
+      <tr><td class="product">Mesh long-sleeve</td><td>—</td><td>$128</td><td class="aed">AED 470</td></tr>
+      <tr><td class="product">Hoodie · bonded</td><td>—</td><td>$156</td><td class="aed">AED 575</td></tr>
+      <tr><td class="product">Pile hoodie · winter</td><td>—</td><td>$131</td><td class="aed">AED 485</td></tr>
+    </tbody>
+  </table>
+  <p class="small reveal" style="margin-top: 18px;">Source: live retail on sung1975w.com (KR) and sung1975japanshop.com (JP), May 2026. AED proposed = mid-band of ALO / Lulu / Vuori UAE retail.</p>
+</section>
+
+<!-- 13 STRUCTURE OPTIONS -->
+<section class="deck" data-n="13">
+  <div class="label reveal">13 — Structure options</div>
+  <h2 class="section-h reveal">Three ways to structure this.</h2>
+  <p class="body reveal" style="margin-top: 28px; max-width: 80ch;">
+    Three diagrams below — open to any of them. The right structure depends on your preference for ownership versus operator alignment, and how many hands you want in the brand. Common to all: SUNG1975 Japan remains the licensor; a single UAE entity is the sole regional licensee for the GCC.
+  </p>
+
+  <div class="structure-grid">
+
+    <!-- OPTION 01 -->
+    <div class="structure reveal">
+      <div class="s-label">Option 01 · Akiyama-owned · dual operator</div>
+      <div class="s-diagram">
+        <div class="s-node principal">Akiyama / SUNG1975<span class="role">Brand owner · 100%</span></div>
+        <div class="s-link"><span>OWNS</span></div>
+        <div class="s-node entity">SUNG1975 Arabia<span class="role">UAE newco · operating entity</span></div>
+        <div class="s-row" style="margin-top: 20px;">
+          <div class="col"><div class="s-node vendor">Soren<span class="role">Marketing + creative</span></div></div>
+          <div class="col"><div class="s-node vendor">Portgate<span class="role">Brand mgmt + fulfillment</span></div></div>
+        </div>
+      </div>
+      <div class="s-summary">
+        <strong>Akiyama owns 100%</strong> of the UAE entity. Two specialists execute: <strong>Soren</strong> leads marketing and creative direction; <strong>Portgate</strong> runs brand management, logistics, fulfillment, and all UAE company setup.
+      </div>
+      <div class="portgate-scope">
+        <div class="ps-label">Portgate scope</div>
+        <div class="ps-chips">
+          <span>UAE entity formation</span>
+          <span>Banking</span>
+          <span>Trade license</span>
+          <span>Visa</span>
+          <span>Brand registration</span>
+          <span>Brand management</span>
+          <span>Logistics</span>
+          <span>Fulfillment</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 02 -->
+    <div class="structure reveal" style="--d:160ms">
+      <div class="s-label">Option 02 · Akiyama-owned · single operator</div>
+      <div class="s-diagram">
+        <div class="s-node principal">Akiyama / SUNG1975<span class="role">Brand owner · 100%</span></div>
+        <div class="s-link"><span>OWNS</span></div>
+        <div class="s-node entity">SUNG1975 Arabia<span class="role">UAE newco · operating entity</span></div>
+        <div class="s-link"><span>CONTRACTS</span></div>
+        <div class="s-node vendor">Portgate<span class="role">Marketing · Logistics · Fulfillment</span></div>
+      </div>
+      <div class="s-summary">
+        <strong>Akiyama owns 100%</strong>. <strong>Portgate handles everything</strong> end-to-end — UAE company setup, marketing, logistics, fulfillment under one roof. Simplest possible structure. One operator. One point of accountability.
+      </div>
+      <div class="portgate-scope">
+        <div class="ps-label">Portgate scope</div>
+        <div class="ps-chips">
+          <span>UAE entity formation</span>
+          <span>Banking</span>
+          <span>Trade license</span>
+          <span>Visa</span>
+          <span>Brand registration</span>
+          <span>Marketing</span>
+          <span>Logistics</span>
+          <span>Fulfillment</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 03 -->
+    <div class="structure reveal" style="--d:320ms">
+      <div class="s-label">Option 03 · Joint venture · shared equity</div>
+      <div class="s-diagram">
+        <div class="s-row-top two">
+          <div class="col"><div class="s-node principal">Akiyama<span class="role">60%</span></div></div>
+          <div class="col"><div class="s-node">Portgate<span class="role">40% · operating partner</span></div></div>
+        </div>
+        <div class="s-merge-down two"></div>
+        <div class="s-node entity">SUNG1975 Arabia<span class="role">UAE newco · joint venture</span></div>
+        <div class="s-row" style="margin-top: 20px;">
+          <div class="col"><div class="s-node vendor">Soren<span class="role">Marketing</span></div></div>
+          <div class="col"><div class="s-node vendor">Portgate<span class="role">Fulfillment</span></div></div>
+        </div>
+      </div>
+      <div class="s-summary">
+        <strong>Shared equity</strong>: Akiyama majority, Portgate (Akito + Balraj's operating company) takes a minority equity stake as the operating partner. Strongest alignment — operators carry direct skin in the game. Splits indicative — open to your preferred terms.
+      </div>
+      <div class="portgate-scope">
+        <div class="ps-label">Portgate scope — as equity partner + operator</div>
+        <div class="ps-chips">
+          <span>UAE entity formation</span>
+          <span>Banking</span>
+          <span>Trade license</span>
+          <span>Visa</span>
+          <span>Brand registration</span>
+          <span>Operations</span>
+          <span>Fulfillment</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="family-note reveal" style="--d:480ms">
+    <strong>Note on Soren.</strong> Soren (soren.co.jp) is a Tokyo-based bilingual creative and marketing agency, founded by Akito's sister, Ayaka Yamada (Jaz). Past clients include the Ritz-Carlton Kyoto and Chef's Table by Katsuhito Inoue. Including Soren keeps the marketing arm of this venture inside a family network — same standard of care, same accountability.
+  </div>
+
+  <!-- OPTION 04 — INTERACTIVE -->
+  <div class="structure-interactive reveal" style="--d:560ms">
+    <div class="si-header">
+      <div class="s-label">Option 04 · Build your own</div>
+      <p>None of the above quite right? Drag boxes to rearrange. Click any value to edit name, equity, or role. Add or delete boxes. Use this as a sandbox in the call — design the structure that actually fits.</p>
+    </div>
+    <div class="workspace">
+      <div class="ws-toolbar">
+        <button class="ws-btn" id="wsAddBtn">+ Add box</button>
+        <button class="ws-btn" id="wsResetBtn">↺ Reset</button>
+        <span class="ws-hint">Drag to move · Click any value to edit · Hover box to delete</span>
+      </div>
+      <div class="ws-canvas" id="wsCanvas"></div>
+    </div>
+  </div>
+
+  <div class="common-deal reveal" style="--d:680ms">
+    <h4 class="mono" style="font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-bottom: 18px; font-weight: 500;">Common to any structure</h4>
+    <div class="deal-common-row">
+      <div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.16em; color: var(--muted); margin-bottom: 10px; text-transform: uppercase;">We commit</div>
+        <div style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">All working capital · UAE entity formation · E-commerce build · Marketing engine · Pop-ups + MMA event circuit · Annual minimum-order commitment · Quarterly reporting · UAE + GCC trademark protection.</div>
+      </div>
+      <div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.16em; color: var(--muted); margin-bottom: 10px; text-transform: uppercase;">You grant</div>
+        <div style="font-size: 14px; line-height: 1.6; color: var(--ink-soft);">5-year exclusive UAE + GCC distribution rights · Wholesale supply at agreed pricing · Design approval on UAE-only capsule · 2–3 visits per year for activation · Right of first refusal to extend.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="small reveal" style="--d:640ms; margin-top: 18px;">Minimum-order figures, royalty rate, and exclusivity term ranges to be locked after the joint market-validation call. Indicative comparables will be presented at that stage.</p>
+</section>
+
+<!-- 14 SKINCARE PARALLEL -->
+<section class="deck" data-n="14">
+  <div class="label reveal">14 — Parallel track · skincare</div>
+  <h2 class="section-h reveal">A second category. <em>Same playbook, different shelf.</em></h2>
+  <div class="skincare">
+    <div class="image-block reveal">
+      <div class="product-mock"></div>
+      <div class="prod-tag">
+        TWENTY FIFTY × SUNG 1975 EDITION
+        <strong>Premium Nano Collagen Sheet × Mist</strong>
+      </div>
+    </div>
+    <div>
+      <p class="body reveal">
+        Your existing collaboration with TWENTY FIFTY — the Korean nanofiber collagen brand — is one of the most pitch-perfect products for this market we have ever seen.
+      </p>
+      <p class="body reveal" style="--d:160ms">
+        Korean skincare carries enormous brand equity in the GCC. Men's grooming here is a serious, well-funded category — but it is dominated by feminine packaging and women-led marketing, which has kept male buyers shy.
+      </p>
+      <p class="body reveal" style="--d:320ms">
+        A men's K-beauty SKU fronted by an MMA legend with visible skin discipline collapses that barrier. We propose to layer the skincare track into Phase 3 — once apparel hits stride — under the same UAE entity, using the same channels.
+      </p>
+      <div class="pull reveal" style="--d:480ms">
+        "MMA legend · Korean skincare · Gulf men's grooming. <br/>No one else owns that intersection."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 NEXT STEPS -->
+<section class="deck closing" data-n="15">
+  <div class="label reveal">15 — Next steps</div>
+  <h2 class="section-h reveal">If green-lit, here is your <em>first thirty days.</em></h2>
+  <div class="timeline">
+    <div class="w reveal">
+      <div class="wn">Week 01</div>
+      <div class="wt">Term sheet</div>
+      <div class="wb">High-level term sheet drafted and signed. Exclusivity period locked.</div>
+    </div>
+    <div class="w reveal" style="--d:120ms">
+      <div class="wn">Week 02</div>
+      <div class="wt">Entity + brand registration</div>
+      <div class="wb">UAE entity formed (mainland or freezone — TBD with you). Trademark filed in UAE + GCC.</div>
+    </div>
+    <div class="w reveal" style="--d:240ms">
+      <div class="wn">Week 03</div>
+      <div class="wt">First container plan</div>
+      <div class="wb">Initial inventory mix sized against pre-launch demand. Production slot booked at your factory.</div>
+    </div>
+    <div class="w reveal" style="--d:360ms">
+      <div class="wn">Week 04</div>
+      <div class="wt">E-commerce + content kick-off</div>
+      <div class="wb">UAE .ae site built. Bilingual content engine running. Soft launch date set.</div>
+    </div>
+  </div>
+  <div class="contact">
+    <div>
+      <div class="l">[Your Name]</div>
+      <div class="v">balrajsinghkalra@gmail.com</div>
+    </div>
+    <div>
+      <div class="l">Akito</div>
+      <div class="v">[email · to add]</div>
+    </div>
+    <div>
+      <div class="l">Project</div>
+      <div class="v">SUNG1975 · UAE</div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <span>SUNG —1975— · INTO THE GULF</span>
+  <span>v1 · May 2026 · Confidential</span>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Section counter
+  const corner = document.getElementById('cornerCount');
+  const sections = document.querySelectorAll('[data-n]');
+  const total = sections.length;
+  const sio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const n = e.target.dataset.n;
+        corner.textContent = `${n} / ${String(total).padStart(2,'0')}`;
+      }
+    });
+  }, { threshold: 0.5 });
+  sections.forEach(s => sio.observe(s));
+
+  // Chart defaults
+  Chart.defaults.font.family = "'JetBrains Mono', monospace";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = '#3A352E';
+  Chart.defaults.borderColor = '#C9C2B5';
+
+  // Dubai store footprint chart
+  new Chart(document.getElementById('chartDubai'), {
+    type: 'bar',
+    data: {
+      labels: ['ALO', 'Lululemon', 'Vuori', 'Gymshark', 'Giving Movement'],
+      datasets: [
+        { label: '2023', data: [1, 3, 0, 0, 4], backgroundColor: '#C9C2B5' },
+        { label: '2026', data: [4, 6, 1, 1, 9], backgroundColor: '#5C6440' },
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+        y: { beginAtZero: true, ticks: { stepSize: 2 }, grid: { color: 'rgba(201,194,181,0.5)' } }
+      }
+    }
+  });
+
+  // Founder reach vs brand reach — the 38× gap
+  new Chart(document.getElementById('chartGeo'), {
+    type: 'bar',
+    data: {
+      labels: ['@akiyamachoo (founder)', '@sung1975_kr (brand)', '@sung1975_japan (brand)'],
+      datasets: [{
+        label: 'Followers',
+        data: [881798, 15626, 7546],
+        backgroundColor: ['#1A1815', '#C9C2B5', '#C9C2B5'],
+        borderColor: '#1A1815',
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => ctx.parsed.x.toLocaleString() + ' followers'
+          }
+        }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          grid: { color: 'rgba(201,194,181,0.4)' },
+          ticks: { callback: v => v >= 1000 ? (v/1000) + 'K' : v }
+        },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+
+  // Hoodie comparison chart
+  new Chart(document.getElementById('chartHoodie'), {
+    type: 'bar',
+    data: {
+      labels: ['Gymshark', 'Vuori', 'Lululemon', 'ALO', 'SUNG1975', 'Giving Movement'],
+      datasets: [{
+        label: 'Hoodie retail · USD',
+        data: [70, 98, 128, 138, 156, 145],
+        backgroundColor: ['#C9C2B5','#C9C2B5','#C9C2B5','#C9C2B5','#1A1815','#C9C2B5'],
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { beginAtZero: true, grid: { color: 'rgba(201,194,181,0.4)' }, ticks: { callback: v => '$' + v } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+
+  // ============================================================
+  // OPTION 04 — INTERACTIVE WORKSPACE
+  // ============================================================
+  (function() {
+    const canvas = document.getElementById('wsCanvas');
+    const addBtn = document.getElementById('wsAddBtn');
+    const resetBtn = document.getElementById('wsResetBtn');
+    if (!canvas) return;
+
+    const ROLES = [
+      { key: 'principal', label: 'Owner' },
+      { key: 'entity', label: 'Entity' },
+      { key: 'vendor', label: 'Vendor' },
+    ];
+
+    const DEFAULTS = [
+      { name: 'Akiyama', pct: 60, role: 'principal', x: 60, y: 30 },
+      { name: 'Portgate', pct: 40, role: 'principal', x: 360, y: 30 },
+      { name: 'SUNG1975 Arabia', pct: 100, role: 'entity', x: 210, y: 210 },
+      { name: 'Soren', pct: 0, role: 'vendor', x: 60, y: 380 },
+      { name: 'Portgate (Ops)', pct: 0, role: 'vendor', x: 360, y: 380 },
+    ];
+
+    let boxes = JSON.parse(JSON.stringify(DEFAULTS));
+
+    function clearCanvas() {
+      while (canvas.firstChild) canvas.removeChild(canvas.firstChild);
+    }
+
+    function render() {
+      clearCanvas();
+      boxes.forEach((b, idx) => makeBox(b, idx));
+    }
+
+    function makeBox(box, idx) {
+      const el = document.createElement('div');
+      el.className = 'ws-box role-' + box.role;
+      el.style.left = box.x + 'px';
+      el.style.top = box.y + 'px';
+
+      const nameInput = document.createElement('input');
+      nameInput.className = 'ws-name';
+      nameInput.value = box.name;
+      nameInput.addEventListener('input', (e) => { box.name = e.target.value; });
+      nameInput.addEventListener('mousedown', (e) => e.stopPropagation());
+      nameInput.addEventListener('touchstart', (e) => e.stopPropagation());
+
+      const pctWrap = document.createElement('div');
+      pctWrap.className = 'ws-pct-wrap';
+      const pctInput = document.createElement('input');
+      pctInput.type = 'number';
+      pctInput.min = '0'; pctInput.max = '100';
+      pctInput.className = 'ws-pct';
+      pctInput.value = box.pct;
+      pctInput.addEventListener('input', (e) => { box.pct = parseFloat(e.target.value) || 0; });
+      pctInput.addEventListener('mousedown', (e) => e.stopPropagation());
+      pctInput.addEventListener('touchstart', (e) => e.stopPropagation());
+      const pctLabel = document.createElement('span');
+      pctLabel.textContent = '%';
+      pctWrap.appendChild(pctInput);
+      pctWrap.appendChild(pctLabel);
+
+      const roleSelect = document.createElement('select');
+      roleSelect.className = 'ws-role';
+      ROLES.forEach(r => {
+        const opt = document.createElement('option');
+        opt.value = r.key;
+        opt.textContent = r.label;
+        if (r.key === box.role) opt.selected = true;
+        roleSelect.appendChild(opt);
+      });
+      roleSelect.addEventListener('change', (e) => {
+        box.role = e.target.value;
+        el.className = 'ws-box role-' + box.role;
+      });
+      roleSelect.addEventListener('mousedown', (e) => e.stopPropagation());
+      roleSelect.addEventListener('touchstart', (e) => e.stopPropagation());
+
+      const del = document.createElement('button');
+      del.className = 'ws-delete';
+      del.textContent = '×';
+      del.addEventListener('click', (e) => {
+        e.stopPropagation();
+        boxes.splice(idx, 1);
+        render();
+      });
+      del.addEventListener('mousedown', (e) => e.stopPropagation());
+
+      el.appendChild(nameInput);
+      el.appendChild(pctWrap);
+      el.appendChild(roleSelect);
+      el.appendChild(del);
+
+      let dragState = null;
+      const onDown = (e) => {
+        const point = e.touches ? e.touches[0] : e;
+        dragState = {
+          startX: point.clientX,
+          startY: point.clientY,
+          startLeft: box.x,
+          startTop: box.y,
+        };
+        el.classList.add('dragging');
+        if (e.preventDefault) e.preventDefault();
+      };
+      const onMove = (e) => {
+        if (!dragState) return;
+        const point = e.touches ? e.touches[0] : e;
+        const dx = point.clientX - dragState.startX;
+        const dy = point.clientY - dragState.startY;
+        const rect = canvas.getBoundingClientRect();
+        box.x = Math.max(0, Math.min(rect.width - el.offsetWidth, dragState.startLeft + dx));
+        box.y = Math.max(0, Math.min(rect.height - el.offsetHeight, dragState.startTop + dy));
+        el.style.left = box.x + 'px';
+        el.style.top = box.y + 'px';
+      };
+      const onUp = () => {
+        if (dragState) {
+          dragState = null;
+          el.classList.remove('dragging');
+        }
+      };
+      el.addEventListener('mousedown', onDown);
+      el.addEventListener('touchstart', onDown, { passive: false });
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('touchmove', onMove, { passive: false });
+      document.addEventListener('mouseup', onUp);
+      document.addEventListener('touchend', onUp);
+
+      canvas.appendChild(el);
+    }
+
+    addBtn.addEventListener('click', () => {
+      boxes.push({ name: 'New box', pct: 0, role: 'vendor', x: 100, y: 100 });
+      render();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      boxes = JSON.parse(JSON.stringify(DEFAULTS));
+      render();
+    });
+
+    render();
+  })();
+</script>
+</body>
+</html>

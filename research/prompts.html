@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Deep Research Prompts — SUNG1975 UAE Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F0EBE2;
+    --paper-2: #E6DFD2;
+    --ink: #1A1815;
+    --ink-soft: #3A352E;
+    --line: #C9C2B5;
+    --olive: #5C6440;
+    --olive-deep: #3F4528;
+    --tan: #B89A7A;
+    --muted: #7A7468;
+    --ok: #4A6B3A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    padding: 0;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 32px 80px;
+  }
+  header.page {
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+  .lockup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  h1 em { font-style: italic; color: var(--olive-deep); font-weight: 300; }
+  header.page p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 70ch;
+    margin-top: 8px;
+  }
+  .tools-bar {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .tool-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .tool-link:hover { background: var(--ink); color: var(--paper); }
+  .tab-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0;
+  }
+  .tab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 18px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    font-weight: 500;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .panel-head h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    flex: 1;
+    min-width: 240px;
+  }
+  .panel-head p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    flex: 2;
+    min-width: 280px;
+  }
+  .copy-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .copy-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+  .copy-btn:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
+  .copy-btn.copied { background: var(--ok); border-color: var(--ok); }
+  .copy-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .code {
+    background: #FAF6EE;
+    border: 1px solid var(--line);
+    padding: 24px 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 600px;
+    overflow-y: auto;
+    border-radius: 0;
+  }
+  .code::-webkit-scrollbar { width: 8px; }
+  .code::-webkit-scrollbar-track { background: var(--paper-2); }
+  .code::-webkit-scrollbar-thumb { background: var(--muted); }
+  .footnote {
+    margin-top: 24px;
+    padding: 16px 18px;
+    background: rgba(92,100,64,0.05);
+    border-left: 2px solid var(--olive);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .footnote strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page">
+    <div class="lockup">SUNG —1975— · UAE PITCH · RESEARCH</div>
+    <h1>Deep research <em>prompts.</em></h1>
+    <p>Four prompts ready to paste into Perplexity Pro, Google Deep Research, Claude (Research), or Gemini Deep Research. Run on all four where possible — triangulating across tools gives the strongest dataset. Use the <strong>Master</strong> prompt as the default; the three smaller prompts are for re-running specific topics if a tool falls short.</p>
+    <div class="tools-bar">
+      <span class="copy-hint">Open the tool you want →</span>
+      <a class="tool-link" href="https://www.perplexity.ai/" target="_blank" rel="noopener">Perplexity</a>
+      <a class="tool-link" href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini</a>
+      <a class="tool-link" href="https://claude.ai/" target="_blank" rel="noopener">Claude</a>
+      <a class="tool-link" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
+    </div>
+  </header>
+
+  <div class="tab-strip" role="tablist">
+    <button class="tab active" data-tab="master">Master · all topics</button>
+    <button class="tab" data-tab="a">A · Market</button>
+    <button class="tab" data-tab="b">B · Audience</button>
+    <button class="tab" data-tab="c">C · Deal comps</button>
+  </div>
+
+  <!-- MASTER -->
+  <section class="panel active" data-panel="master">
+    <div class="panel-head">
+      <h2>Master prompt</h2>
+      <p>The full ten-topic brief. Use this on every tool by default. Each tool will synthesise from a different source mix — triangulate the results.</p>
+    </div>
+    <div class="copy-row">
+      <button class="copy-btn" data-target="masterCode">Copy master prompt</button>
+      <span class="copy-hint">Paste into the tool's research/deep-research mode</span>
+    </div>
+    <pre class="code" id="masterCode"># Research brief — SUNG1975 UAE/GCC market entry
+
+I am preparing a pitch deck to bring the Korean-Japanese athleisure brand **SUNG1975** (founder: Choo Sung-hoon / Yoshihiro Akiyama / 秋山成勲 / "Sexyama" — MMA legend who became globally known through Netflix *Physical: 100*) into the United Arab Emirates and the wider Gulf Cooperation Council market.
+
+The deck will be presented to Akiyama and his team next week. I need verified, source-cited research across **ten topics**. For every claim, give me:
+- The fact / number
+- The primary source (URL or publication + date)
+- A confidence note: "strongly sourced", "estimate", or "unverified — do not use"
+
+Where a number cannot be reliably sourced, **say so explicitly** rather than fabricate. I would rather mark a slide "TBD" than print a wrong number to a pitch audience that will scrutinise it.
+
+---
+
+## TOPIC 1 — Premium athleisure footprint in the UAE
+
+For each of these brands, provide year of UAE entry, current UAE store count, mall locations, and most recent expansion news:
+- Alo Yoga
+- Lululemon (note: typically operated in GCC by Alshaya Group)
+- Vuori
+- Gymshark
+- Giving Movement
+- Sweaty Betty
+- On (running / lifestyle)
+- Bandier
+- Any Korean athleisure brand that has entered UAE
+
+## TOPIC 2 — Giving Movement deep dive
+
+This is my closest reference comparable. I need:
+- Founding year, founders, founding city
+- Current number of markets / countries
+- Most recent revenue or GMV publicly disclosed
+- Any IPO, funding round, strategic investment, or acquisition news in the last 18 months
+- DXB or DWC airport retail performance — any reporting on Dubai-only capsule sell-through
+- Current T-shirt and hoodie USD retail prices in their Dubai stores
+- What their Arabic-graphics capsule strategy has been and how it has performed
+
+## TOPIC 3 — UAE retail pricing comparables
+
+For a standard logo cotton T-shirt AND a standard mid-weight hoodie, list current Dubai retail prices in USD or AED for:
+- Alo Yoga
+- Lululemon
+- Vuori
+- Gymshark
+- Giving Movement
+- Nike (premium tier — Tech Fleece etc.)
+- On
+- Adidas (premium tier)
+
+## TOPIC 4 — UAE athleisure market sizing + tourism retail
+
+- Total UAE sportswear / athleisure market size in USD, most recent year
+- Year-over-year growth rate
+- Premium tier share (items above $50 USD) if separable
+- Tourism's share of fashion / apparel sales at DXB airport retail and Mall of the Emirates / Dubai Mall
+- Any reporting on UAE-resident vs tourist purchasing of premium athleisure
+- Pop-up retail inside Dubai gym chains (Warehouse Gym, WellFit, F45, Barry's, Crank, GymNation) — any history of branded pop-ups, success/failure cases
+
+## TOPIC 5 — Arabic-calligraphy capsule precedents
+
+- Which global brands have released Dubai-coded or Arabic-calligraphy capsules in the last 3 years?
+- Reported performance: sell-through, social engagement, press coverage
+- Specifically investigate: Nike Dubai, Adidas Dubai, Giving Movement Arabic line, Louis Vuitton Dubai, Coach Dubai, Aje, Off-White Dubai
+- Any quotes from designers or retailers on why these capsules work in this market
+
+## TOPIC 6 — Akiyama / Choo Sung-hoon audience analysis
+
+His primary Instagram handle is **@akiyamachoo** (~882K followers as of May 2026). He also runs **@choosunghoon1**. His clothing brand SUNG1975 runs **@sung1975_kr** (Korea) and **@sung1975_japan** (Japan).
+
+I need:
+- Best-effort estimate of his follower geographic distribution: Japan / Korea / SEA / China / MENA / Europe / Americas — pull from HypeAuditor, Modash, Social Blade, or any influencer-analytics platform
+- His engagement rate vs creator-average for his tier
+- Has his Western (US / EU) audience grown since Physical: 100 aired on Netflix in January 2023?
+- Brand deals or endorsements he has done in the last 3 years (Asian and Western)
+- His daughter **Choo Sarang** — audience size, demographic overlap with his own
+- His wife **Shiho Yano** — audience size, demographic overlap
+
+## TOPIC 7 — UAE / GCC MMA + combat sports event calendar 2025–2026
+
+For each promotion, list confirmed 2025 events held in UAE, confirmed or announced 2026 events, typical per-event attendance, broadcasting reach, and sponsorship slot availability:
+
+- UAE Warriors (UAEW)
+- Brave Combat Federation
+- Abu Dhabi Pro grappling / BJJ (ADP)
+- UFC (Fight Night and PPV stops at Etihad Arena / Yas Island)
+- ONE Championship
+- Karate Combat
+- PFL MENA
+- Regional grappling events at Etihad Arena, Coca-Cola Arena, Mubadala Arena
+
+## TOPIC 8 — Men's K-Beauty / skincare in the GCC
+
+This is for a parallel product line — the **TWENTY FIFTY × SUNG 1975 EDITION** collagen sheet collaboration (twenty-fifty.net), a Korean nanofiber skincare brand co-branded with Akiyama.
+
+I need:
+- GCC men's grooming + skincare market size in USD, most recent year
+- Year-over-year growth rate; share of premium tier
+- Korean skincare (K-beauty) market share in the GCC if measurable
+- Men's skincare growth rate vs women's growth rate in the region
+- Which K-beauty brands have entered UAE / Saudi / Kuwait retail in the last 3 years — Sulwhasoo, COSRX, Beauty of Joseon, Anua, Sephora ME's K-beauty section, others
+- Case studies of male-celebrity-fronted skincare brands that have converted reluctant male buyers globally (Brad Pitt × Le Domaine, Pharrell × Humanrace, Idris Elba × S'able, others)
+
+## TOPIC 9 — Licensing / master-franchisee deal structures
+
+I am structuring a master-franchisee or regional-licensee deal between Akiyama (Japan-side) and a Dubai-based operating partner for UAE + GCC exclusive distribution. I need real comparables to size **Year-1 minimum order commitment**, **royalty rate**, and **exclusivity term**.
+
+- Public reporting on how each of these brands entered the UAE / GCC: Alo Yoga, Lululemon (via Alshaya), Vuori, Gymshark, Fear of God / Essentials. Distinguish JV vs licensee vs distributor vs subsidiary.
+- For premium apparel master-franchisee deals, typical Year-1 minimum order commitment range (as USD figure or % of projected first-year revenue)
+- For founder-led / celebrity-fronted brands, typical royalty rate range — distinguish "lending a name" from "founder is the brand"
+- Typical exclusivity terms: 3 years, 5 years, longer? Common renewal-option structures
+- Standard protective clauses licensors demand (design approval, minimum marketing spend, etc.)
+- **Alshaya Group**: their typical deal structure when they enter a brand into GCC. What brands have publicly chosen NOT to go through Alshaya and why?
+- Korean fashion entering GCC: Musinsa Global expansion, any K-fashion brand UAE distribution deals, reported performance
+- Japanese fashion entering GCC: Uniqlo, GU, BEAMS, WEGO — entry structure and performance
+
+## TOPIC 10 — Athleisure unit economics in UAE
+
+Need this to size the deal:
+- Typical wholesale-to-retail margin in premium athleisure (so we can back into realistic Year-1 order size)
+- Average inventory turn for athleisure DTC in UAE
+- Cost range to open a pop-up corner inside a UAE gym
+- Cost range for a Sheikh Zayed Road billboard, 1 month
+- Cost range for a DXB Duty Free shop-in-shop placement (any data)
+- Cost range to form a Dubai LLC vs freezone entity (Meydan, DMCC, Dubai Internet City) for an e-commerce + retail business
+
+---
+
+## Output format
+
+Organise your response by the ten topics above. For each topic, give bulleted findings with the fact, source (with URL), and a confidence note. End each topic with a **"Confidence summary"** line stating how much of the topic is strongly sourced vs estimated vs unverified.
+
+At the very end, give me a **"Top 10 most-quotable stats"** section — the ten single most useful, defensible data points from all your findings that I should put on a pitch slide. These are what will move the needle in the meeting.
+
+If any topic is largely unsourceable, tell me directly — I will adjust the deck rather than fake numbers.
+
+---
+
+End of brief.</pre>
+    <div class="footnote"><strong>Run order suggestion:</strong> Perplexity first (best at fresh web), then Gemini (good at Google index + YouTube for retail/fight reporting), then Claude (longest synthesis), then ChatGPT if needed. Save each output to a separate file — we will merge findings before the meeting.</div>
+  </section>
+
+  <!-- PROMPT A -->
+  <section class="panel" data-panel="a">
+    <div class="panel-head">
+      <h2>Prompt A · Market</h2>
+      <p>UAE athleisure footprint, Giving Movement deep dive, retail pricing, market sizing, Arabic-capsule precedents. Use if a tool returned weak results on these topics from the master.</p>
+    </div>
+    <div class="copy-row">
+      <button class="copy-btn" data-target="aCode">Copy Prompt A</button>
+    </div>
+    <pre class="code" id="aCode">I am building a pitch deck to bring a Korean premium athleisure brand into the UAE & GCC market. I need verified, source-cited figures for the following. Where exact 2026 numbers are not available, give 2024–2025 with a note. Prefer original-source reporting (brand press releases, mall directories, financial filings, retail analyst reports) over secondary aggregators.
+
+## 1. Premium athleisure footprint in the UAE (Dubai + Abu Dhabi)
+
+For each of these brands, provide:
+- Year of first UAE store
+- Number of physical stores in the UAE today (2025 / 2026)
+- Mall locations
+- Most recent expansion news (last 12 months)
+
+Brands:
+- Alo Yoga
+- Lululemon
+- Vuori
+- Gymshark
+- Giving Movement
+- Sweaty Betty
+- On (running / lifestyle)
+- Bandier
+
+## 2. Giving Movement — deep dive
+
+- Founding year, founders, founding city
+- Current number of markets / countries served
+- Most recent revenue or GMV figure publicly disclosed
+- Any IPO, funding round, or strategic investment talk in last 18 months
+- DXB airport / DWC airport retail performance — any reporting on Dubai-only capsule sell-through
+- Their typical T-shirt and hoodie USD retail prices today
+
+## 3. Dubai retail pricing — verified
+
+For a standard logo cotton T-shirt and a standard mid-weight hoodie, list current Dubai retail prices in USD or AED for:
+- Alo Yoga
+- Lululemon
+- Vuori
+- Gymshark
+- Giving Movement
+- Nike (premium tier, e.g. Tech Fleece)
+- On
+
+## 4. UAE athleisure market sizing
+
+- Total UAE sportswear / athleisure market size in USD (most recent year available)
+- Year-over-year growth rate
+- Premium tier share (above $50 USD per item) if separable
+- Tourism's contribution to retail sales of fashion / apparel at DXB and Mall of the Emirates
+- Any reporting on the share of UAE-resident vs tourist purchasing of premium athleisure
+
+## 5. Pop-up retail inside Dubai gym chains
+
+Specifically:
+- Warehouse Gym — locations, member count if known, any history of in-gym brand pop-ups or retail corners
+- WellFit — same questions
+- F45 / Barry's / Crank — same
+- Any reporting on athleisure brand pop-ups inside Dubai gym chains, success/failure cases
+
+## 6. Arabic-calligraphy capsule precedents
+
+- Which global brands have released Dubai-coded or Arabic-calligraphy capsules in the last 3 years?
+- Reported performance of these capsules (sell-through, social engagement, press)
+- Specifically: Nike Dubai, Adidas Dubai, Giving Movement Arabic line, Aje, Coach Dubai, Louis Vuitton Dubai. Anything else notable.
+- Any quotes from designers or retailers about why these capsules work in this market
+
+## Output format
+
+For each section, give me:
+- The verified number / fact
+- The primary source (URL or publication name + date)
+- A confidence note ("strongly sourced", "estimate", "unverified") so I know what I can put in a deck
+
+If a number cannot be sourced reliably, say so explicitly — I would rather mark a slide "TBD" than print a fabricated stat.</pre>
+  </section>
+
+  <!-- PROMPT B -->
+  <section class="panel" data-panel="b">
+    <div class="panel-head">
+      <h2>Prompt B · Audience</h2>
+      <p>Akiyama Instagram audience analytics, UAE MMA event calendar, GCC men's skincare and K-beauty. Use to drill into §05 (audience gap), §09 (MMA × Dubai), §14 (skincare).</p>
+    </div>
+    <div class="copy-row">
+      <button class="copy-btn" data-target="bCode">Copy Prompt B</button>
+    </div>
+    <pre class="code" id="bCode">I am preparing a pitch deck to bring a Korean athleisure brand into the UAE. The brand is fronted by Choo Sung-hoon (Yoshihiro Akiyama / 秋山成勲 / "Sexyama"), a Korean-Japanese MMA legend who became globally known through Netflix's *Physical: 100*. I need verified, source-cited figures on three topics.
+
+## 1. Akiyama / Choo Sung-hoon — audience and reach
+
+His primary Instagram handle is **@akiyamachoo** (~882K followers as of May 2026). He also runs **@choosunghoon1**, and his clothing brand SUNG1975 has **@sung1975_kr** and **@sung1975_japan**.
+
+I need:
+- Best-effort estimate of his follower geographic distribution (Japan / Korea / SEA / China / MENA / Europe / Americas) — use any influencer-analytics platforms that publish data (HypeAuditor, Modash, Social Blade, etc.)
+- Engagement rate vs creator-average for his tier
+- Has his Western (US/EU) audience grown since Physical: 100 aired (Jan 2023)?
+- Any reporting on brand deals he has endorsed in the last 3 years
+- Estimated Choo Sarang (his daughter, also a celebrity from Return of Superman) audience and overlap
+
+## 2. UAE & GCC MMA / combat sports event calendar — 2025–2026
+
+For each of the following promotions, list:
+- Confirmed events held in UAE in 2025
+- Confirmed or announced events for 2026
+- Typical attendance per event
+- Broadcasting / streaming reach if publicly reported
+- Sponsorship slots typically available
+
+Promotions:
+- UAE Warriors (UAEW)
+- Brave Combat Federation
+- ADP — Abu Dhabi Pro grappling / BJJ
+- UFC (Fight Night and PPV stops)
+- ONE Championship (any UAE-hosted events)
+- Karate Combat
+- PFL MENA
+- Independent / regional grappling events at Mubadala Arena, Etihad Arena, Coca-Cola Arena
+
+## 3. Men's K-Beauty / skincare in the GCC
+
+This is for a parallel product line — the **TWENTY FIFTY × SUNG 1975 EDITION** collagen sheet collab (twenty-fifty.net).
+
+I need:
+- GCC men's grooming + skincare market size (USD), most recent year
+- Year-over-year growth, and the share of premium tier
+- Korean skincare (K-beauty) market share in the GCC if available
+- Specifically: men's skincare growth rate vs women's in this region
+- Which K-beauty brands have entered UAE/Saudi/Kuwait retail in the last 3 years (Sephora ME, Sulwhasoo, COSRX, Beauty of Joseon, etc.)
+- Any case studies of male-celebrity-fronted skincare brands in MENA or globally that converted shy male buyers (e.g. Brad Pitt × Le Domaine, Pharrell × Humanrace)
+
+## Output format
+
+For each section, give me:
+- The verified number / fact
+- The primary source (URL or publication name + date)
+- A confidence note ("strongly sourced", "estimate", "unverified")
+
+Where a number is unverifiable, explicitly say so. I would rather mark a slide "TBD" than print a fabricated stat.</pre>
+  </section>
+
+  <!-- PROMPT C -->
+  <section class="panel" data-panel="c">
+    <div class="panel-head">
+      <h2>Prompt C · Deal comps</h2>
+      <p>Licensing / master-franchisee deal structures, Alshaya comparables, Korean and Japanese fashion entries into GCC, athleisure unit economics. Use to size §13.</p>
+    </div>
+    <div class="copy-row">
+      <button class="copy-btn" data-target="cCode">Copy Prompt C</button>
+    </div>
+    <pre class="code" id="cCode">I am structuring a master-franchisee / regional-licensee deal between a Korean-Japanese athleisure brand and a Dubai-based operating partner for UAE + GCC exclusive distribution. I need real comparables to size three deal terms: **Year-1 minimum order commitment**, **royalty rate**, and **exclusivity term**.
+
+## 1. Comparable deals in apparel / athleisure entering UAE or GCC
+
+For each of the following brands, find the public reporting on how they entered the UAE/GCC market — was it a wholly-owned subsidiary, a JV, a licensee / master franchisee, a distributor agreement? What were the disclosed terms (minimum order, royalty, exclusivity period) if any:
+
+- Alo Yoga UAE entry
+- Lululemon UAE entry (typically operated by Alshaya — what is that deal structure?)
+- Vuori MENA entry
+- Gymshark UAE entry
+- Off-White / virgil brands MENA entry
+- Fear of God / Essentials MENA distribution
+- Any K-fashion brand entering UAE in the last 5 years
+- Any JP fashion brand entering UAE in the last 5 years (Uniqlo / GU / WEGO / BEAMS)
+
+## 2. Standard licensing structures in premium apparel
+
+I want to understand industry-standard ranges, not specific deals. Pull from licensing-industry reports, IP firm publications, or fashion-business publications:
+
+- For premium apparel master-franchisee deals, what is the typical Year-1 minimum order commitment as a percentage of projected first-year revenue?
+- For founder-led / celebrity-fronted brands, what royalty rates apply? (Distinguish "lending a name" deals from "the founder is the brand" deals.)
+- Typical exclusivity term: 3 years? 5 years? 10 years with renewals? What renewal-option structures are common?
+- What protective clauses do licensors typically demand? (Design approval, minimum marketing spend, etc.)
+
+## 3. Alshaya Group precedents
+
+Alshaya operates Lululemon, Starbucks, H&M, Victoria's Secret and many others in the GCC under franchise/distribution. Find any disclosed terms or public reporting on:
+
+- Alshaya's typical deal structure for entering brands
+- Year-1 minimum guarantees they have publicly committed to
+- Their typical store rollout pace
+- Why brands choose Alshaya — and what they lose
+
+## 4. Recent Korean fashion / lifestyle into GCC
+
+- Korean fashion brands that have entered UAE / Saudi / Kuwait
+- Their entry structure (licensee, JV, direct)
+- Reported performance / sell-through
+- Musinsa Global expansion into MENA — any reporting?
+
+## 5. Athleisure-specific data
+
+- Typical wholesale-to-retail margin in premium athleisure
+- Average inventory turn for athleisure DTC in the UAE
+- Cost of opening a single pop-up corner in a UAE gym
+- Cost of a Sheikh Zayed Road billboard for one month
+- Cost of a DXB Duty Free shop-in-shop placement (if any data exists)
+
+## Output format
+
+For each section, give me:
+- The verified number / fact
+- The primary source (URL or publication name + date)
+- A confidence note ("strongly sourced", "estimate", "unverified")
+
+Where a number cannot be verified, say so. This will feed a deal-structuring slide where I would rather mark "TBD — pending final negotiation" than print a fabricated number.</pre>
+  </section>
+
+</div>
+
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === target));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+    });
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (!target) return;
+      const text = target.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        const original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 1800);
+      } catch (err) {
+        const range = document.createRange();
+        range.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        btn.textContent = 'Copied (fallback)';
+        setTimeout(() => { btn.textContent = 'Copy master prompt'; }, 1800);
+      }
+    });
+  });
+</script>
+</body>
+</html>

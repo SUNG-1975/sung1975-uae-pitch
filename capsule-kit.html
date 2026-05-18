@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>UAE Capsule — Generation Kit · SUNG1975</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F0EBE2;
+    --paper-2: #E6DFD2;
+    --ink: #1A1815;
+    --ink-soft: #3A352E;
+    --line: #C9C2B5;
+    --olive: #5C6440;
+    --olive-deep: #3F4528;
+    --tan: #B89A7A;
+    --muted: #7A7468;
+    --ok: #4A6B3A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 56px 32px 80px; }
+  .lockup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  h1 em { font-style: italic; color: var(--olive-deep); font-weight: 300; }
+  header.page p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 76ch;
+    margin-top: 8px;
+  }
+  header.page { border-bottom: 1px solid var(--ink); padding-bottom: 32px; margin-bottom: 36px; }
+  .how {
+    margin-top: 28px;
+    padding: 20px 22px;
+    background: rgba(184,154,122,0.10);
+    border-left: 2px solid var(--tan);
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .how strong { color: var(--ink); }
+  .how ol { padding-left: 22px; margin-top: 6px; }
+  .how li { margin: 4px 0; }
+  .tools-bar {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .tool-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .tool-link:hover { background: var(--ink); color: var(--paper); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 1.4fr;
+    gap: 20px;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    overflow: hidden;
+  }
+  @media (max-width: 700px) { .card { grid-template-columns: 1fr; } }
+  .card .img-col {
+    position: relative;
+    background: var(--paper);
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+  .card .img-col img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card .meta {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--paper);
+  }
+  .card .meta h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .card .meta .price-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+  .card .meta .price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .card .meta .price.aed { color: var(--olive-deep); font-weight: 500; }
+  .card .meta .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 4px 8px;
+    border: 1px solid var(--line);
+    align-self: flex-start;
+  }
+  .card .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
+  .btn.copied { background: var(--ok); color: var(--paper); border-color: var(--ok); }
+
+  .prompt-wrap { margin-top: 6px; }
+  .prompt-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 4px 0;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 3px;
+  }
+  .prompt-toggle:hover { color: var(--ink); text-decoration-color: var(--ink); }
+  pre.prompt {
+    background: #FAF6EE;
+    border: 1px solid var(--line);
+    padding: 16px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 320px;
+    overflow-y: auto;
+    margin-top: 10px;
+    display: none;
+  }
+  pre.prompt.open { display: block; }
+
+  section.appendix {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink);
+  }
+  .appendix h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    margin-bottom: 8px;
+    letter-spacing: -0.015em;
+  }
+  .appendix p { font-size: 14px; color: var(--ink-soft); max-width: 70ch; line-height: 1.6; margin-bottom: 16px; }
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .word-card {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 16px 18px;
+  }
+  .word-card .ar {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    line-height: 1;
+    direction: rtl;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .word-card .lat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .word-card .en {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page">
+    <div class="lockup">SUNG —1975— · UAE-ONLY CAPSULE · GENERATION KIT</div>
+    <h1>Render the UAE <em>capsule.</em></h1>
+    <p>Six climate-appropriate pieces from SUNG1975's catalog — tees, tanks, shorts, light pants, mesh longsleeve. Each pairs with a paste-ready Gemini prompt that turns the source garment into a UAE-only mockup with modern Arabic calligraphy. Output goes into §11 of the deck.</p>
+
+    <div class="how">
+      <strong>How to use</strong>
+      <ol>
+        <li>Click <em>Download</em> on any product card — original image saves locally.</li>
+        <li>Open <a href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini</a> (or any image-gen model with image input — Sora, Midjourney V7, Nano Banana).</li>
+        <li>Attach the downloaded image.</li>
+        <li>Click <em>Copy prompt</em> and paste — adjust the Arabic word from the appendix if you want a variant.</li>
+        <li>Generate. Save the output to <code>/sung1975-uae-pitch/assets/uae-capsule/</code> for use in the deck.</li>
+      </ol>
+    </div>
+
+    <div class="tools-bar">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase;">Open a tool →</span>
+      <a class="tool-link" href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini</a>
+      <a class="tool-link" href="https://sora.chatgpt.com/" target="_blank" rel="noopener">Sora</a>
+      <a class="tool-link" href="https://www.midjourney.com/" target="_blank" rel="noopener">Midjourney</a>
+      <a class="tool-link" href="https://labs.google/fx/tools/image-fx" target="_blank" rel="noopener">ImageFX</a>
+    </div>
+  </header>
+
+  <div class="grid" id="grid"></div>
+
+  <section class="appendix">
+    <h2>Arabic word library</h2>
+    <p>Swap any of these into the Gemini prompts (in place of <code>سونغ ١٩٧٥</code>) to generate variants for the same garment. All are secular, brand-safe choices.</p>
+    <div class="word-grid" id="wordGrid"></div>
+  </section>
+
+  <section class="appendix">
+    <h2>Placement library</h2>
+    <p>Each product has a default placement. Edit the prompt to try alternatives.</p>
+    <div class="word-grid">
+      <div class="word-card"><div class="lat">Default</div><div class="en">Center chest, small (≈ 8 cm wide)</div></div>
+      <div class="word-card"><div class="lat">Big chest</div><div class="en">Center chest, large (≈ 25 cm wide)</div></div>
+      <div class="word-card"><div class="lat">Sleeve</div><div class="en">Left sleeve, vertical from shoulder</div></div>
+      <div class="word-card"><div class="lat">Back panel</div><div class="en">Full back, large horizontal</div></div>
+      <div class="word-card"><div class="lat">Side seam</div><div class="en">Lower right side seam, vertical tag</div></div>
+      <div class="word-card"><div class="lat">Hem</div><div class="en">Bottom hem, small repeating pattern</div></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+  const TOAST = document.getElementById('toast');
+  function toast(msg) {
+    TOAST.textContent = msg;
+    TOAST.classList.add('show');
+    setTimeout(() => TOAST.classList.remove('show'), 1600);
+  }
+
+  function basePrompt({ name, colorway, placement, ink, garmentDesc }) {
+    return `I am creating a "UAE-only" capsule for the Korean athleisure brand SUNG1975 (founded by MMA legend Choo Sung-hoon / Akiyama). The attached image is one of their existing products: a ${name}, ${colorway}. ${garmentDesc}
+
+Generate a photorealistic mockup of the SAME garment, in the same photography style, same colorway, with one addition: a single-color, modern Arabic calligraphy design printed on the ${placement}.
+
+The Arabic text reads: "سونغ ١٩٧٥" — SUNG 1975 transliterated into Arabic, with the year written in Arabic-Indic numerals.
+
+STYLE REQUIREMENTS for the Arabic calligraphy:
+- Contemporary minimalist Arabic typography — NOT decorative, NOT religious, NOT Thuluth, NOT Diwani, NOT Kufi-monumental
+- Closer to modern editorial Arabic sans-serif (think Khatt Foundry, 29LT Bukra, Rasheeq) — clean, geometric, brand-grade
+- Single colour: ${ink}
+- Approximately 30% of the visible front panel in width
+- Medium stroke weight, even line — feels like a wordmark, not a flourish
+- Aligned with SUNG1975's existing minimalist Latin wordmark — same restraint, same confidence
+
+PHOTOGRAPHY REQUIREMENTS:
+- Match the lighting, background, framing of the reference image exactly
+- Do NOT change the colour of the garment
+- Do NOT add models, props, accessories, or background elements that aren't in the source
+- Output: photorealistic, high resolution, ready as a product mockup for a pitch deck
+
+CULTURAL RESPECT:
+- This is for a UAE retail capsule. Treat with respect.
+- Do NOT use religious calligraphy styles or motifs
+- Do NOT combine with mosque imagery, crescents, or any religious symbology
+- The result should read as: secular, modern, design-forward, Tokyo-Dubai crossover
+
+VARIANTS TO TRY (re-run for each, one variant per generation):
+- Swap "سونغ ١٩٧٥" for "خليج" (Khalij — "Gulf")
+- Swap for "إصرار" (Israr — "Determination") — aligned with the brand's "ceaseless challenge" slogan
+- Swap for "صبر" (Sabr — "Patience / Endurance")
+- Swap for "دبي" (Dubai)
+- Swap for "١٩٧٥" alone — the year in Arabic numerals
+- Swap for "نَفَس" (Nafas — "Breath")`;
+  }
+
+  const PRODUCTS = [
+    {
+      id: 'p1',
+      name: 'Oversized SUNG1975 Logo T-Shirt',
+      jp: '오버핏 SUNG1975 로고 티셔츠',
+      priceUSD: 28,
+      priceAED: 105,
+      img: 'https://sung1975w.com/shopimages/sung1975w/0080000000492.jpg?1778731147',
+      filename: 'sung1975-tee-logo.jpg',
+      tag: 'T-shirt · primary',
+      garmentDesc: 'Oversized cotton T-shirt with the existing SUNG1975 Latin wordmark on the center chest.',
+      colorway: 'as shown in the attached image',
+      placement: 'center back panel — large horizontal Arabic wordmark (~ 25 cm wide)',
+      ink: 'black ink on light garments, white ink on dark/olive garments',
+    },
+    {
+      id: 'p2',
+      name: 'Oversized 1975 T-Shirt',
+      jp: '오버핏 1975 티셔츠',
+      priceUSD: 28,
+      priceAED: 105,
+      img: 'https://sung1975w.com/shopimages/sung1975w/0080000000382.jpg?1778235343',
+      filename: 'sung1975-tee-1975.jpg',
+      tag: 'T-shirt · alt',
+      garmentDesc: 'Oversized cotton T-shirt with the year "1975" mark on the chest.',
+      colorway: 'as shown in the attached image',
+      placement: 'center chest — small wordmark (~ 10 cm wide), sitting just above the existing 1975 element',
+      ink: 'tonal contrast to the garment colour',
+    },
+    {
+      id: 'p3',
+      name: 'Raw-Patch Logo Tank',
+      jp: 'RAW-PATCH LOGO TANK',
+      priceUSD: 75,
+      priceAED: 275,
+      img: 'https://www.sung1975japanshop.com/cdn/shop/files/IMG_8377.jpg?v=1775470998',
+      filename: 'sung1975-tank-raw-patch.jpg',
+      tag: 'Tank · summer hero',
+      garmentDesc: 'Cotton tank top with a raw-edge fabric patch carrying the SUNG1975 logo on the chest.',
+      colorway: 'sky blue (the attached image variant) — also exists in white, beige, and olive',
+      placement: 'left chest, small (~ 8 cm wide) — pair with the existing patch but offset right',
+      ink: 'matching the existing patch ink (dark)',
+    },
+    {
+      id: 'p4',
+      name: 'Signature Logo Shorts',
+      jp: '시그니처 로고 쇼츠',
+      priceUSD: 28,
+      priceAED: 105,
+      img: 'https://sung1975w.com/shopimages/sung1975w/0100000000142.jpg?1778732808',
+      filename: 'sung1975-shorts-signature.jpg',
+      tag: 'Shorts · summer',
+      garmentDesc: 'Mid-thigh French terry shorts with the SUNG1975 signature on the side.',
+      colorway: 'as shown in the attached image',
+      placement: 'left thigh side — small vertical wordmark running from hem upward (~ 12 cm tall)',
+      ink: 'tonal contrast to the garment colour',
+    },
+    {
+      id: 'p5',
+      name: 'Terry Tapered Pants',
+      jp: 'TERRY TAPERED PANTS',
+      priceUSD: 120,
+      priceAED: 440,
+      img: 'https://www.sung1975japanshop.com/cdn/shop/files/IMG_8435.jpg?v=1772345408',
+      filename: 'sung1975-pants-terry.jpg',
+      tag: 'Pants · lightweight evening',
+      garmentDesc: 'Tapered terry-fabric pants for evening / cooler-temperature wear.',
+      colorway: 'beige, brown, or dark navy (depending on variant)',
+      placement: 'lower right leg side seam — small vertical tag (~ 8 cm tall), positioned at calf level',
+      ink: 'tonal contrast to the garment colour',
+    },
+    {
+      id: 'p6',
+      name: 'Mesh Knit Longsleeve Top',
+      jp: 'MESH KNIT LONGSLEEVE TOP',
+      priceUSD: 128,
+      priceAED: 470,
+      img: 'https://www.sung1975japanshop.com/cdn/shop/files/IMG_1922.jpg?v=1761798307',
+      filename: 'sung1975-longsleeve-mesh.jpg',
+      tag: 'Long-sleeve · desert nights',
+      garmentDesc: 'Mesh-knit long-sleeve top for desert-evening and air-conditioned interiors.',
+      colorway: 'black or grey (depending on variant)',
+      placement: 'center chest — medium-sized horizontal wordmark (~ 18 cm wide)',
+      ink: 'white ink',
+    },
+  ];
+
+  const WORDS = [
+    { ar: 'سونغ ١٩٧٥', lat: 'Sung 1975', en: 'Brand transliteration · default' },
+    { ar: 'خليج', lat: 'Khalij', en: 'Gulf — geographic, neutral' },
+    { ar: 'إصرار', lat: 'Israr', en: 'Determination — fits brand slogan' },
+    { ar: 'صبر', lat: 'Sabr', en: 'Endurance, patience — virtue' },
+    { ar: 'دبي', lat: 'Dubai', en: 'City — strongest for airport retail' },
+    { ar: 'إمارات', lat: 'Imarat', en: 'Emirates — country wide' },
+    { ar: 'صحراء', lat: 'Sahra', en: 'Desert — landscape, poetic' },
+    { ar: '١٩٧٥', lat: '1975', en: 'Year in Arabic-Indic numerals' },
+    { ar: 'نَفَس', lat: 'Nafas', en: 'Breath — athletic, calm' },
+    { ar: 'قوة', lat: 'Quwwa', en: 'Strength — fits MMA energy' },
+  ];
+
+  // Render product cards
+  const gridEl = document.getElementById('grid');
+  PRODUCTS.forEach(p => {
+    const prompt = basePrompt(p);
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const imgCol = document.createElement('div');
+    imgCol.className = 'img-col';
+    const img = document.createElement('img');
+    img.src = p.img;
+    img.alt = p.name;
+    img.referrerPolicy = 'no-referrer';
+    imgCol.appendChild(img);
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = p.tag;
+    meta.appendChild(tag);
+
+    const h3 = document.createElement('h3');
+    h3.textContent = p.name;
+    meta.appendChild(h3);
+
+    const priceRow = document.createElement('div');
+    priceRow.className = 'price-row';
+    const usd = document.createElement('span');
+    usd.className = 'price';
+    usd.textContent = '$' + p.priceUSD + ' USD';
+    priceRow.appendChild(usd);
+    const aed = document.createElement('span');
+    aed.className = 'price aed';
+    aed.textContent = 'AED ' + p.priceAED;
+    priceRow.appendChild(aed);
+    meta.appendChild(priceRow);
+
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+
+    const dlBtn = document.createElement('button');
+    dlBtn.className = 'btn';
+    dlBtn.textContent = 'Download original';
+    dlBtn.addEventListener('click', async () => {
+      try {
+        const res = await fetch(p.img, { mode: 'cors' });
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = p.filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        toast('Downloaded · ' + p.filename);
+      } catch (e) {
+        window.open(p.img, '_blank');
+        toast('Opened in new tab · right-click to save');
+      }
+    });
+    actions.appendChild(dlBtn);
+
+    const openTab = document.createElement('a');
+    openTab.className = 'btn';
+    openTab.textContent = 'Open in new tab';
+    openTab.href = p.img;
+    openTab.target = '_blank';
+    openTab.rel = 'noopener';
+    actions.appendChild(openTab);
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'btn primary';
+    copyBtn.textContent = 'Copy Gemini prompt';
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(prompt);
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.textContent = orig;
+          copyBtn.classList.remove('copied');
+        }, 1800);
+      } catch (e) {
+        toast('Clipboard blocked · paste manually from below');
+      }
+    });
+    actions.appendChild(copyBtn);
+
+    meta.appendChild(actions);
+
+    const promptWrap = document.createElement('div');
+    promptWrap.className = 'prompt-wrap';
+    const toggle = document.createElement('button');
+    toggle.className = 'prompt-toggle';
+    toggle.textContent = 'Show prompt ▾';
+    const pre = document.createElement('pre');
+    pre.className = 'prompt';
+    pre.textContent = prompt;
+    toggle.addEventListener('click', () => {
+      pre.classList.toggle('open');
+      toggle.textContent = pre.classList.contains('open') ? 'Hide prompt ▴' : 'Show prompt ▾';
+    });
+    promptWrap.appendChild(toggle);
+    promptWrap.appendChild(pre);
+    meta.appendChild(promptWrap);
+
+    card.appendChild(imgCol);
+    card.appendChild(meta);
+    gridEl.appendChild(card);
+  });
+
+  // Render word library
+  const wordGridEl = document.getElementById('wordGrid');
+  WORDS.forEach(w => {
+    const c = document.createElement('div');
+    c.className = 'word-card';
+    const ar = document.createElement('div');
+    ar.className = 'ar';
+    ar.textContent = w.ar;
+    const lat = document.createElement('div');
+    lat.className = 'lat';
+    lat.textContent = w.lat;
+    const en = document.createElement('div');
+    en.className = 'en';
+    en.textContent = w.en;
+    c.appendChild(ar);
+    c.appendChild(lat);
+    c.appendChild(en);
+    c.style.cursor = 'copy';
+    c.title = 'Click to copy Arabic';
+    c.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(w.ar);
+        toast('Copied · ' + w.ar);
+      } catch (e) {
+        toast('Copy blocked');
+      }
+    });
+    wordGridEl.appendChild(c);
+  });
+</script>
+</body>
+</html>

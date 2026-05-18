@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>UAE MMA Events — Checklist for Akito · SUNG1975</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F0EBE2;
+    --paper-2: #E6DFD2;
+    --ink: #1A1815;
+    --ink-soft: #3A352E;
+    --line: #C9C2B5;
+    --olive: #5C6440;
+    --olive-deep: #3F4528;
+    --tan: #B89A7A;
+    --muted: #7A7468;
+    --ok: #4A6B3A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .container { max-width: 980px; margin: 0 auto; padding: 56px 32px 80px; }
+  .lockup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  h1 em { font-style: italic; color: var(--olive-deep); font-weight: 300; }
+  header.page { border-bottom: 1px solid var(--ink); padding-bottom: 28px; margin-bottom: 32px; }
+  header.page p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 70ch;
+    margin-top: 8px;
+  }
+
+  .tab-strip {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .tab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 18px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    font-weight: 500;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .copy-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .copy-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+  .copy-btn:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
+  .copy-btn.copied { background: var(--ok); border-color: var(--ok); }
+  .copy-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  pre.text {
+    background: #FAF6EE;
+    border: 1px solid var(--line);
+    padding: 28px 30px;
+    font-family: 'JetBrains Mono', 'Noto Sans JP', monospace;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--ink);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 720px;
+    overflow-y: auto;
+  }
+
+  .legend {
+    margin-top: 24px;
+    padding: 18px 22px;
+    background: rgba(184,154,122,0.10);
+    border-left: 2px solid var(--tan);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .legend strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page">
+    <div class="lockup">SUNG —1975— · UAE PITCH · INTERNAL</div>
+    <h1>MMA events — <em>checklist for Akito.</em></h1>
+    <p>Pre-populated draft. Send to Akito so he just adds, removes, or scores 1–3 — instead of brainstorming from a blank page. Once he returns it, I'll structure §09 of the deck around the events tagged "3" (those become the on-the-ground access proof).</p>
+  </header>
+
+  <div class="tab-strip">
+    <button class="tab active" data-tab="jp">日本語 · for Akito</button>
+    <button class="tab" data-tab="en">English · backup / for Mansoor</button>
+  </div>
+
+  <section class="panel active" data-panel="jp">
+    <div class="copy-row">
+      <button class="copy-btn" data-target="jpText">日本語をコピー</button>
+      <span class="copy-hint">Paste into LINE / WhatsApp / Slack</span>
+    </div>
+    <pre class="text" id="jpText">SUNGデック用 UAE MMAイベント候補リスト
+このまま使えそうだったら、各イベントに1〜3でスコアつけてほしい。
+抜けてるやつあったら追加、関係ないやつは消してOK！
+
+— スコアの基準 —
+1：イベント名だけ（接点なし）
+2：イベント名＋コラボの可能性あり
+3：そっちかマンスールが運営側に影響力／コラボ交渉できる／柔軟性ある
+
+================================
+【UFC（Etihad Arena, Yas Island）】
+================================
+[_] UFC Fight Night Abu Dhabi — Whittaker vs De Ridder（2025年7月26日 開催済み）
+[_] UFC 308 — Topuria vs Holloway（2024年10月 開催済み）
+[_] UFC Abu Dhabi 2026年7月（Etihad Arena 発表済み）
+[_] UFC アブダビ 12月カード（発表予定／例年あり）
+[_] UFC その他のショーケース／プレスイベント
+
+================================
+【UAE Warriors（UAEW · Palms Sports）】
+================================
+[_] UAEW 67（2026年1月31日）
+[_] UAEW 69（2026年3月28日）
+[_] UAEW 70（2026年5月8日）
+[_] UAEW 71（2026年5月9日）
+[_] UAEW Al Ain ラウンド（DCT Abu Dhabi 延長パートナーシップ 2026–2028、年2回追加）
+[_] UAEW その他 2026年下半期カード（順次発表）
+
+================================
+【Brave Combat Federation】
+================================
+[_] Brave CF UAEラウンド（KHK Sports）
+
+================================
+【ADP / Abu Dhabi Grappling】
+================================
+[_] ADCC World Championship
+[_] Abu Dhabi World Pro Jiu-Jitsu Championship（毎年）
+[_] Abu Dhabi Grand Slam（年複数開催）
+[_] AJP Tour（年シリーズ）
+
+================================
+【ONE Championship】
+================================
+[_] ONE UAE開催イベント（秋山さんも過去出場）
+
+================================
+【その他のプロモーション】
+================================
+[_] PFL MENA UAEラウンド（※基本サウジ中心）
+[_] Karate Combat UAE開催（Yas Island で過去開催あり）
+[_] Eagle FC（Khabibプロモーション）UAE開催
+[_] Cage Warriors UAE開催
+[_] Polaris Pro Grappling
+
+================================
+【会場別・ローカル】
+================================
+[_] Etihad Arena その他の格闘技ナイト
+[_] Coca-Cola Arena 格闘技イベント
+[_] Mubadala Arena
+[_] Yas Island その他屋外イベント
+[_] Space42 Arena（UAEW会場）
+
+================================
+【グラップリング／BJJローカル】
+================================
+[_] Forge × Roger Gracie 主催大会（マンスール主導）
+[_] その他ローカルBJJ大会（Sub Only、ノーギ系）
+
+================================
+【フィットネス／ジム系】
+================================
+[_] Warehouse Gym（Kris Gethin）大会・イベント
+[_] WellFit 大会・イベント
+[_] Crank / Barry's / GymNation 系イベント
+[_] Hyrox UAE
+[_] CrossFit UAE Open
+
+================================
+【追加候補（自由記入）】
+================================
+[_]
+[_]
+[_]
+
+時間ある時でいいから、戻してー！</pre>
+  </section>
+
+  <section class="panel" data-panel="en">
+    <div class="copy-row">
+      <button class="copy-btn" data-target="enText">Copy English version</button>
+      <span class="copy-hint">For forwarding to Mansoor or English-only contacts</span>
+    </div>
+    <pre class="text" id="enText">SUNG1975 deck — UAE MMA events checklist
+
+Please score each event 1–3, add anything missing, remove anything irrelevant.
+
+— Scoring —
+1: Name only (no connection)
+2: Name + potential collaboration possible
+3: You or Mansoor has control / can negotiate collab / real flexibility
+
+================================
+UFC (Etihad Arena, Yas Island)
+================================
+[_] UFC Fight Night Abu Dhabi — Whittaker vs De Ridder (Jul 26 2025, past)
+[_] UFC 308 — Topuria vs Holloway (Oct 2024, past)
+[_] UFC Abu Dhabi 2026 (July, Etihad Arena, announced)
+[_] UFC Abu Dhabi December card (annual / TBC)
+[_] Other UFC showcase / press events
+
+================================
+UAE Warriors (UAEW · Palms Sports)
+================================
+[_] UAEW 67 (Jan 31 2026)
+[_] UAEW 69 (Mar 28 2026)
+[_] UAEW 70 (May 8 2026)
+[_] UAEW 71 (May 9 2026)
+[_] UAEW Al Ain cards (DCT Abu Dhabi partnership extended 2026–2028, +2/year)
+[_] Other UAEW H2 2026 cards (rolling announcements)
+
+================================
+Brave Combat Federation
+================================
+[_] Brave CF UAE rounds (KHK Sports)
+
+================================
+ADP / Abu Dhabi Grappling
+================================
+[_] ADCC World Championship
+[_] Abu Dhabi World Pro Jiu-Jitsu Championship (annual)
+[_] Abu Dhabi Grand Slam (multiple stops/year)
+[_] AJP Tour
+
+================================
+ONE Championship
+================================
+[_] ONE UAE events (Akiyama himself has fought for ONE)
+
+================================
+Other promotions
+================================
+[_] PFL MENA UAE round (note: currently Saudi-anchored)
+[_] Karate Combat UAE (Yas Island past events)
+[_] Eagle FC (Khabib) UAE events
+[_] Cage Warriors UAE
+[_] Polaris Pro Grappling
+
+================================
+Venue-based / local
+================================
+[_] Etihad Arena other fight nights
+[_] Coca-Cola Arena combat events
+[_] Mubadala Arena
+[_] Yas Island outdoor events
+[_] Space42 Arena (UAEW)
+
+================================
+Local grappling / BJJ
+================================
+[_] Forge × Roger Gracie tournaments (Mansoor-led)
+[_] Local BJJ / sub-only / no-gi competitions
+
+================================
+Fitness / gym-led
+================================
+[_] Warehouse Gym (Kris Gethin) events
+[_] WellFit events
+[_] Crank / Barry's / GymNation
+[_] Hyrox UAE
+[_] CrossFit UAE Open
+
+================================
+Free additions
+================================
+[_]
+[_]
+[_]
+
+Send back whenever — appreciate it.</pre>
+  </section>
+
+  <div class="legend">
+    <strong>How the scores will land in the deck:</strong> Every event Akito scores <strong>3</strong> goes on §09 as a named partnership opportunity ("UAE Warriors × SUNG1975 booth Q1 2026"). Every <strong>2</strong> becomes a Phase 2/3 pipeline. Every <strong>1</strong> stays as background calendar density — we don't claim access we don't have.
+  </div>
+
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const t = tab.dataset.tab;
+      tabs.forEach(x => x.classList.toggle('active', x.dataset.tab === t));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === t));
+    });
+  });
+
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (!target) return;
+      const text = target.textContent;
+      const original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+      } catch (e) {
+        const r = document.createRange();
+        r.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(r);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        btn.textContent = 'Copied (fallback)';
+        setTimeout(() => { btn.textContent = original; }, 1800);
+      }
+    });
+  });
+</script>
+</body>
+</html>

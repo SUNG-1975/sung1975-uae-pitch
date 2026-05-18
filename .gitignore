@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+node_modules/
+*.swp
+*.swo
+*~
+.env
+.env.local
+*.log
+
+# Heavy intermediate render — keep only the cropped mockups
+assets/uae-capsule/full-page.png
