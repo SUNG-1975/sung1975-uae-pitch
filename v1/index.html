@@ -1256,20 +1256,6 @@
         Dubai is the launchpad — <em>not the destination.</em>
       </div>
 
-      <div class="growth-mini reveal" style="--d:580ms">
-        <div class="gm-head">
-          <span class="gm-label">UAE athleisure · USD billions</span>
-          <span class="gm-cagr">+9.71% CAGR</span>
-        </div>
-        <div class="gm-chart-wrap">
-          <canvas id="chartGrowth"></canvas>
-        </div>
-        <div class="gm-axis">
-          <span><b>2024</b> · $13.26B</span>
-          <span><b>2030</b> · $23.12B</span>
-          <span><b>2033</b> · ~$30.5B</span>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -1878,68 +1864,7 @@
   // Dubai store footprint chart
   // chartDubai removed — replaced with verified partner-pattern table
 
-  // §02 — UAE athleisure market growth, 2024 → 2033 at 9.71% CAGR
-  new Chart(document.getElementById('chartGrowth'), {
-    type: 'line',
-    data: {
-      labels: ['2024','2025','2026','2027','2028','2029','2030','2031','2032','2033'],
-      datasets: [{
-        data: [13.26, 14.55, 15.96, 17.51, 19.21, 21.07, 23.12, 25.36, 27.82, 30.52],
-        borderColor: '#5C6440',
-        backgroundColor: 'rgba(92,100,64,0.15)',
-        fill: true,
-        tension: 0.35,
-        pointRadius: 2.5,
-        pointHoverRadius: 6,
-        pointBackgroundColor: '#3F4528',
-        pointBorderColor: '#FAF6EE',
-        pointBorderWidth: 1,
-        borderWidth: 1.8,
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            title: ctx => ctx[0].label,
-            label: ctx => '$' + ctx.parsed.y.toFixed(2) + 'B'
-          },
-          backgroundColor: '#1A1815',
-          titleFont: { size: 10, family: 'JetBrains Mono', weight: '600' },
-          titleColor: '#B89A7A',
-          bodyFont: { size: 13, family: 'JetBrains Mono', weight: '600' },
-          bodyColor: '#F0EBE2',
-          padding: 10,
-          displayColors: false,
-        }
-      },
-      scales: {
-        x: {
-          display: true,
-          ticks: {
-            font: { size: 9, family: 'JetBrains Mono' },
-            color: '#7A7468',
-            maxTicksLimit: 10,
-            autoSkip: false,
-            callback: function(v, i) {
-              const label = this.getLabelForValue(v);
-              return (i === 0 || i === 4 || i === 9) ? label : '';
-            }
-          },
-          grid: { display: false },
-          border: { color: 'var(--line)' }
-        },
-        y: {
-          display: false,
-          beginAtZero: false,
-          suggestedMin: 10,
-        }
-      }
-    }
-  });
+  // §02 growth chart removed per user request
 
   // Founder reach vs brand reach — the 38× gap
   new Chart(document.getElementById('chartGeo'), {
