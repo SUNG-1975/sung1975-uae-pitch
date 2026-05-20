@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUNG meeting prep — clean session handoff</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1A1815;
+      --paper: #F5EFE0;
+      --paper-2: #EBE3CF;
+      --line: #C9C2B5;
+      --muted: #6B6359;
+      --accent: #8B7355;
+      --accent-deep: #5C6440;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 40px 20px;
+      background: var(--paper); color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    header { margin-bottom: 32px; }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 32px; line-height: 1.15; margin: 0 0 12px;
+      font-weight: 600; letter-spacing: -0.01em;
+    }
+    .sub { color: var(--muted); font-size: 15px; margin: 0 0 28px; }
+    .copy-bar {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 20px; background: var(--paper-2);
+      border: 1px solid var(--line); border-radius: 10px;
+      margin-bottom: 24px;
+    }
+    .copy-btn {
+      background: var(--ink); color: var(--paper);
+      border: none; padding: 12px 22px; border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 600; cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .copy-btn:hover { background: var(--accent-deep); }
+    .copy-btn:active { transform: translateY(1px); }
+    .copy-btn.copied { background: var(--accent-deep); }
+    .copy-hint { font-size: 13px; color: var(--muted); }
+    pre {
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 10px; padding: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; line-height: 1.65;
+      white-space: pre-wrap; word-wrap: break-word;
+      margin: 0; max-height: 70vh; overflow-y: auto;
+    }
+    .meta {
+      margin-top: 24px; font-size: 12.5px; color: var(--muted);
+      padding: 16px 20px; background: var(--paper-2);
+      border-radius: 8px; border-left: 3px solid var(--accent-deep);
+    }
+    .meta strong { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">SUNG meeting prep · handoff</div>
+      <h1>Paste this into a clean session to keep going.</h1>
+      <p class="sub">Self-contained brief covering everything decided in this conversation about the Akiyama pitch deck — what's shipped, what's pending, and the framings you locked in.</p>
+    </header>
+
+    <div class="copy-bar">
+      <button class="copy-btn" id="copyBtn">Copy prompt</button>
+      <span class="copy-hint">One-tap copy. Paste straight into your next Claude session.</span>
+    </div>
+
+    <pre id="promptText"># SUNG1975 UAE pitch deck — meeting prep handoff
+
+I am preparing for the upcoming pitch meeting with **Choo Sung-hoon (秋山成勲 / Yoshihiro Akiyama)** to propose exclusive UAE &amp; GCC distribution of the SUNG1975 athleisure brand. The repo is at `/Users/a44/sung1975-uae-pitch` (origin: github.com/SUNG-1975/sung1975-uae-pitch). The deck has two versions sharing one `/assets/` tree:
+
+- **V2 (default)** — root `index.html` — hybrid AYUVA-style business doc, the primary deck I walk Akiyama through.
+- **V1** — `v1/index.html` — pure cinematic editorial deck, 17 scroll sections, kept as a reference / alternative.
+
+## Already shipped to origin/main (commit 16fcbe6)
+
+1. **V2 §6.1** — Wired the actual TWENTY FIFTY × SUNG 1975 EDITION product photos (hero + detail) into the skincare section. V1 already had them; V2 was text-only and missing the image.
+2. **V2 §5.3** — New chapter "The launch moment — Akiyama × Kris Fade." Polished the original generic-Fade framing into the fitness-coded media bridge angle.
+3. **V2 §5.4** — New chapter "Warehouse Gym — the pop-up venue we can open." Three editorial venue shots (Springs branch from Dezeen, D3 from Wallpaper*) committed to `assets/warehouse-gym/`.
+4. **V1 §06** — Refreshed the existing Kris Fade card with the same fitness-coded framing.
+5. **CSS** — Added `section.chapter > h2 .num` to the existing `.num` rule so chapter heading numbers don't collide with their titles.
+
+## Key framings I locked in this session
+
+### Kris Fade angle
+- **Real warm connection confirmed.**
+- Frame as the *fitness-coded media bridge* — not just another media booking. Fade has openly run his own multi-year transformation arc on his channels (gym content, weight-loss journey, training routines). That fitness layer is the lock-in: every other Dubai media name puts Akiyama on a celebrity carpet; Fade puts him in the gym.
+- Audience overlap is the unique angle — Fade's listeners + Dubai Bling viewers + One-on-One podcast subs are the same expat/GCC English cohort that already recognised Akiyama from Physical: 100. Two Netflix-anchored personalities on the same shelf.
+- **Three-asset play:** (1) joint workout reel cross-posted to both handles; (2) full One on One podcast sit-down — evergreen, clip-cut into 30 IG/TikTok pieces over 90 days; (3) Fade hosts Akiyama through Dubai on stories, SUNG1975 on screen throughout.
+- **One trip. Three social-first earned-media moments. Zero paid spend.**
+
+### Warehouse Gym angle
+- **Real warm connection too — but the first meeting still needs to happen.** We are bringing the idea; they are open to listening. Frame in the deck as *"warm intro, meeting to schedule"* — not *"confirmed venue."* The deck commits to the conversation, not the contract.
+- **8 UAE locations:** Al Quoz · Al Quoz Ladies · DIFC · Jumeirah Park · Yas Bay · Yas Bay Ladies · Springs Souq · Al Khawaneej · Dubai Science Park.
+- **Design pedigree matters.** Springs branch was featured in Dezeen; D3 branch in Wallpaper*. Industrial-luxe concrete + terracotta + brass — adjacent aesthetic to SUNG1975's wabi-sabi tone.
+- **Three integrated formats:** (1) 4-week pop-up store at one flagship branch with member-only launch night; (2) the Akiyama×Fade joint workout filmed INSIDE Warehouse Gym (wires §5.3 directly into this venue); (3) 50-person members-only seminar with Akiyama teaching throwing technique.
+
+### Hoodies vs tees
+- **Dubai is a tee market year-round.** Hoodies sell Dec–Feb only. The everyday revenue line is tees.
+- V2 already leads with tee pricing in the brand strip (commit f8f3e79 from a prior session).
+- **V1 still has a "Hoodie retail comparison — Dubai shelf" chart in §07 that contradicts the tee-first framing.** That chart needs to swap to a tee comparison (chart id is `chartHoodie`, code around line 2349). Hoodies stay in the deck as a secondary winter SKU, not the headline.
+
+## Outstanding to-do for this session
+
+In priority order:
+
+1. **V1 — add Warehouse Gym section** parallel to V2 §5.4. Insert between current V1 §06 (Online presence as launchpad fuel — Habib/Fade/Muscle Show) and V1 §07 (Same shelf, different story). Use the same three images already in `assets/warehouse-gym/` (`wh-springs-hero.jpg`, `wh-springs-floor.jpg`, `wh-d3-wallpaper.jpg`). Match V1's cinematic editorial voice. Likely needs renumbering downstream sections (07→08, 08→09, …) OR using a sub-number like `06.5`.
+
+2. **V1 §07 — swap the Hoodie retail comparison chart for tees.** Update the chart id `chartHoodie` and the dataset (canvas at line ~1756, chart instantiation at line ~2349). Title should become "Tee retail comparison — Dubai shelf." Use the same competitor brands shown in the V2 price table (Vuori, Gymshark, ALO, Giving Movement, lululemon, etc.). Pricing: AED 250–300 band for the premium tee tier.
+
+3. **Save project-memory notes** so future sessions don't re-ask:
+   - Kris Fade real warm connection (confirmed by user, this session).
+   - Warehouse Gym real warm connection — but proposal still to be made (first meeting context).
+   - Dubai is tee climate year-round; hoodies are Dec–Feb seasonal. Lead with tees in any framing.
+
+4. **Optional polish:** add a tie-in line in §5.4 making clear the Akiyama×Fade joint workout (§5.3, asset 1) is filmed inside Warehouse Gym — currently both chapters imply this but neither states it explicitly.
+
+## Hard constraints from prior sessions (already in project memory)
+
+- **§08 honesty checkpoint is non-negotiable.** The deck currently has a clean 3-card structure: Balraj + Akito + Portgate. No AYUVA references, no fake claims. Don't reintroduce anything that requires a stretched relationship.
+- **Mansoor** is the named operational advisor in §09 (driver + connector across MMA + Dubai Muscle Show organiser + Roger Gracie Academy intro).
+- **Dubai Muscle Show** is the SUNG1975 UAE launch event per Akito's explicit recommendation.
+- **Forge Gym × Roger Gracie Dubai Academy** is the real anchor combat-sports relationship.
+- **Style:** wabi-sabi · charcoal/olive/cream palette · Fraunces (serif) + JetBrains Mono (monospaced labels) + Inter (body). The reveal-on-scroll IntersectionObserver pattern is V1's signature; V2 uses static reveal.
+
+## How I want you to work
+
+Please start by reading the four most relevant files to confirm the current state, then propose a plan for the outstanding to-dos above. After I confirm, ship the changes and push.
+
+Files to read first:
+- `/Users/a44/sung1975-uae-pitch/index.html` — V2 (look at §5.3, §5.4, §6.1 to confirm the recent additions render the way I described above)
+- `/Users/a44/sung1975-uae-pitch/v1/index.html` — V1 (look at §06 Kris Fade card, §07 Hoodie chart, and where you would insert Warehouse Gym)
+- `/Users/a44/.claude/projects/-Users-a44/memory/project_sung1975_dubai.md` — project memory
+- `/Users/a44/.claude/projects/-Users-a44/memory/feedback_high_end_means_maximalist.md` — relevant style preferences
+
+Then propose the plan. Don't ship until I confirm.</pre>
+
+    <div class="meta">
+      <strong>How to use this:</strong> click <em>Copy prompt</em>, open a new Claude Code session in this same repo (or any session with file access), and paste. The new session will have everything it needs to pick up where we left off. The file lives at <code>sung-meeting-handoff.html</code> in the repo root — it is intentionally not linked from the main deck.
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('copyBtn');
+    const text = document.getElementById('promptText');
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(text.textContent);
+        const original = btn.textContent;
+        btn.textContent = '✓ Copied';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 2000);
+      } catch (e) {
+        // Fallback for older browsers
+        const range = document.createRange();
+        range.selectNodeContents(text);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try {
+          document.execCommand('copy');
+          btn.textContent = '✓ Copied';
+          setTimeout(() => { btn.textContent = 'Copy prompt'; }, 2000);
+        } catch (err) {
+          alert('Copy failed — please select manually.');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
