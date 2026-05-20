@@ -660,6 +660,43 @@ footer{
   table.pricing th{font-size:11px !important; padding:8px 6px !important}
 }
 
+/* Language toggle — fixed top-right, persistent across scroll */
+.lang-toggle{
+  position:fixed; top:14px; right:14px; z-index:1000;
+  display:flex; gap:2px;
+  background:rgba(245,242,234,0.94); backdrop-filter:saturate(140%) blur(8px);
+  border:1px solid var(--line); border-radius:999px; padding:4px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  font-family:'JetBrains Mono', monospace;
+}
+.lang-toggle button{
+  background:none; border:none; padding:6px 12px;
+  font-size:11px; letter-spacing:0.05em; font-family:inherit;
+  color:var(--muted); cursor:pointer; border-radius:999px;
+  transition:all 0.18s ease; min-width:38px;
+}
+.lang-toggle button:hover{ color:var(--ink); }
+.lang-toggle button.active{
+  background:var(--ink); color:var(--paper);
+  box-shadow:0 2px 6px rgba(0,0,0,0.12);
+}
+/* JP/KR review badge — shown only when non-EN active */
+.lang-review-badge{
+  position:fixed; top:58px; right:14px; z-index:999;
+  background:#FFF3D6; color:#7A5A0B;
+  font-family:'JetBrains Mono', monospace; font-size:10px;
+  letter-spacing:0.06em; padding:6px 12px;
+  border:1px solid #E8C969; border-radius:6px;
+  max-width:280px; line-height:1.4;
+  display:none;
+}
+html[lang="jp"] .lang-review-badge, html[lang="kr"] .lang-review-badge{ display:block; }
+@media (max-width:760px){
+  .lang-toggle{ top:8px; right:8px; padding:3px; }
+  .lang-toggle button{ padding:5px 9px; font-size:10px; min-width:32px; }
+  .lang-review-badge{ top:48px; right:8px; font-size:9px; max-width:200px; }
+}
+
 @media (max-width:480px){
   /* Smallest phones */
   section.chapter{padding:5vh 5vw !important}
@@ -686,13 +723,21 @@ footer{
 </head>
 <body>
 
+<!-- Language toggle — EN / 日本語 / 한국어 -->
+<div class="lang-toggle" role="tablist" aria-label="Deck language">
+  <button data-lang="en" class="active" role="tab">EN</button>
+  <button data-lang="jp" role="tab">日本語</button>
+  <button data-lang="kr" role="tab">한국어</button>
+</div>
+<div class="lang-review-badge" data-i18n="lang.review">JP/KR translations are draft — native review pending before final use.</div>
+
 <!-- ============================================================
      CINEMATIC HERO BANNER — full-bleed photo
 ============================================================ -->
 <div class="hero-banner" style="background-image:url('assets/akiyama-heroes/260509_pc_main1.jpg');">
   <div class="banner-inner">
-    <div class="lockup-large">SUNG — 1975 — · UAE proposal</div>
-    <div class="banner-line">Enter Dubai.<br/><em>Use it to reach the West.</em></div>
+    <div class="lockup-large" data-i18n="banner.lockup">SUNG — 1975 — · UAE proposal</div>
+    <div class="banner-line" data-i18n="banner.line">Enter Dubai.<br/><em>Use it to reach the West.</em></div>
   </div>
 </div>
 
@@ -702,15 +747,15 @@ footer{
      HERO
 ============================================================ -->
 <header class="hero">
-  <div class="eyebrow">SUNG —1975— · UAE &amp; GCC market entry · confidential</div>
-  <h1>
+  <div class="eyebrow" data-i18n="hero.eyebrow">SUNG —1975— · UAE &amp; GCC market entry · confidential</div>
+  <h1 data-i18n="hero.h1">
     <span class="lockup">SUNG —1975—</span>
     A proposal to enter Dubai —<br/>and use it to reach the West.
   </h1>
-  <p class="lede">
+  <p class="lede" data-i18n="hero.lede">
     Prepared for <strong>Choo Sung-hoon · 秋山成勲</strong> · presented by Balraj Singh Kalra and Yamada Akito · with our thanks to <strong>Wakabayashi Ryo-san</strong> for the introduction.
   </p>
-  <div class="intro-note">
+  <div class="intro-note" data-i18n="hero.intro-note">
     <strong>Reading note —</strong> this document is structured as a working proposal, not a slideshow. Each chapter is independently navigable from the table of contents below. Numbers in this version are sourced from public market data verified on 2026-05-18 (Social Blade, Grand View Research, Deep Market Insights, brand press releases). Source lines appear under every quoted figure.
   </div>
 
@@ -798,12 +843,12 @@ footer{
 <!-- ============================================================
      PART 1 · PROJECT & TEAM
 ============================================================ -->
-<div class="part-divider"><span>Part 1 · Project &amp; team</span></div>
+<div class="part-divider"><span data-i18n="part.1">Part 1 · Project &amp; team</span></div>
 <div class="part-band p1">
 
 <section class="chapter" id="sec-1">
   <div class="part-label">Part 1 — Project &amp; team</div>
-  <h2>The proposal in one page.</h2>
+  <h2 data-i18n="sec.1-1.h2">The proposal in one page.</h2>
   <p class="sub">What we are asking, what we bring, what you grant.</p>
 
   <div class="card">
@@ -856,7 +901,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-1-2">
-  <h2><span class="num">1.2</span>The team behind this proposal.</h2>
+  <h2 data-i18n="sec.1-2.h2"><span class="num">1.2</span>The team behind this proposal.</h2>
   <p class="sub">Two operators in Dubai · one creative agency in Tokyo · one anchor relationship in combat sports.</p>
 
   <table class="stakeholder">
@@ -913,7 +958,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-1-3">
-  <h2><span class="num">1.3</span>The reach we work with.</h2>
+  <h2 data-i18n="sec.1-3.h2"><span class="num">1.3</span>The reach we work with.</h2>
   <p class="sub">Verified live counts — Social Blade pull, 18 May 2026 · YouTube growth per Korea JoongAng Daily / Chosun Biz.</p>
 
   <div class="targets">
@@ -970,7 +1015,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-1-4">
-  <h2><span class="num">1.4</span>The four-phase plan.</h2>
+  <h2 data-i18n="sec.1-4.h2"><span class="num">1.4</span>The four-phase plan.</h2>
   <p class="sub">From e-commerce launch to a Dubai flagship in 24 months. All capital and execution by our side.</p>
 
   <div class="phases">
@@ -1032,12 +1077,12 @@ footer{
 <!-- ============================================================
      PART 2 · WHY DUBAI · WHY NOW
 ============================================================ -->
-<div class="part-divider"><span>Part 2 · Why Dubai · why now</span></div>
+<div class="part-divider"><span data-i18n="part.2">Part 2 · Why Dubai · why now</span></div>
 <div class="part-band p2">
 
 <section class="chapter" id="sec-2-1">
   <div class="part-label">Part 2 — Why Dubai · why now</div>
-  <h2>The market is bigger and more concentrated than it looks.</h2>
+  <h2 data-i18n="sec.2-1.h2">The market is bigger and more concentrated than it looks.</h2>
   <p class="sub">UAE athleisure has quietly become the world's most aggressive premium-fitness market outside the United States.</p>
 
   <div class="targets">
@@ -1120,7 +1165,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-2-2">
-  <h2><span class="num">2.2</span>The Giving Movement playbook — the closest comparable.</h2>
+  <h2 data-i18n="sec.2-2.h2"><span class="num">2.2</span>The Giving Movement playbook — the closest comparable.</h2>
   <p class="sub">A Dubai-born premium athleisure brand that scaled from a single DTC site to a 13-store regional operator in five years. Studying its arc is the single most useful exercise for sizing SUNG1975's UAE opportunity.</p>
 
   <div class="targets" style="margin-bottom:18px">
@@ -1162,7 +1207,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-2-3">
-  <h2><span class="num">2.3</span>The audience gap — and why Dubai closes it.</h2>
+  <h2 data-i18n="sec.2-3.h2"><span class="num">2.3</span>The audience gap — and why Dubai closes it.</h2>
   <p class="sub">Akiyama's personal channels reach roughly 2.86M people across IG and YouTube. The brand reaches 23,000.</p>
 
   <p>Akiyama's audience skews overwhelmingly Korean and Japanese with a long tail through East and Southeast Asia. The Western market — Europe, North America, MENA — has not been served. <strong>And the brand has not yet inherited the founder's reach.</strong></p>
@@ -1178,7 +1223,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-2-4">
-  <h2><span class="num">2.4</span>Korean precedent in the GCC.</h2>
+  <h2 data-i18n="sec.2-4.h2"><span class="num">2.4</span>Korean precedent in the GCC.</h2>
   <p class="sub">No Korean athleisure brand has opened UAE retail. Korean beauty has — through proven local-operator partnerships.</p>
 
   <table class="stakeholder">
@@ -1231,12 +1276,12 @@ footer{
 <!-- ============================================================
      PART 3 · HOW WE ENTER
 ============================================================ -->
-<div class="part-divider"><span>Part 3 · How we enter</span></div>
+<div class="part-divider"><span data-i18n="part.3">Part 3 · How we enter</span></div>
 <div class="part-band p3">
 
 <section class="chapter" id="sec-3-1">
   <div class="part-label">Part 3 — How we enter</div>
-  <h2>Three structures to consider.</h2>
+  <h2 data-i18n="sec.3-1.h2">Three structures to consider.</h2>
   <p class="sub">Open to any of these. Common to all: SUNG1975 Japan remains the licensor; one UAE entity is the sole regional licensee for the GCC. Portgate handles all UAE company setup, banking, trade license, visa, brand registration end-to-end.</p>
 
   <div class="structure-grid">
@@ -1309,7 +1354,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-3-2">
-  <h2><span class="num">3.2</span>What each side commits.</h2>
+  <h2 data-i18n="sec.3-2.h2"><span class="num">3.2</span>What each side commits.</h2>
   <p class="sub">Common to all three structures above. Specific deal numbers — Y1 minimum order, royalty rate, exclusivity term — to be locked in a follow-up financial call against verified comparables.</p>
 
   <div class="split">
@@ -1347,7 +1392,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-3-3">
-  <h2><span class="num">3.3</span>UAE entity formation — what Portgate handles.</h2>
+  <h2 data-i18n="sec.3-3.h2"><span class="num">3.3</span>UAE entity formation — what Portgate handles.</h2>
   <p class="sub">Portgate's existing service line. Already done 40+ times for Japanese businesses entering the UAE.</p>
 
   <div class="fact-grid">
@@ -1381,12 +1426,12 @@ footer{
 <!-- ============================================================
      PART 4 · THE PRODUCT (HYBRID — table + cinematic)
 ============================================================ -->
-<div class="part-divider"><span>Part 4 · The product</span></div>
+<div class="part-divider"><span data-i18n="part.4">Part 4 · The product</span></div>
 <div class="part-band p4">
 
 <section class="chapter" id="sec-4-1">
   <div class="part-label">Part 4 — The product</div>
-  <h2>Pricing is already proven.</h2>
+  <h2 data-i18n="sec.4-1.h2">Pricing is already proven.</h2>
   <p class="sub">SUNG1975 already ships to the UAE at Japan retail. We're not inventing pricing — we're lifting the existing band into AED and putting it on the same shelf as Lululemon, ALO, Vuori and Giving Movement.</p>
 
   <table class="pricing">
@@ -1411,7 +1456,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-4-2">
-  <h2><span class="num">4.2</span>The UAE-only capsule.</h2>
+  <h2 data-i18n="sec.4-2.h2"><span class="num">4.2</span>The UAE-only capsule.</h2>
   <p class="sub">Arabic typography on SUNG1975's existing silhouettes. Designed for tourists, residents, and the airport retail channel that Giving Movement built. Renders below are generated mockups — final designs to be commissioned from a UAE-based Arabic typographer with credits.</p>
 
   <div class="capsule-gallery">
@@ -1441,7 +1486,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-4-3">
-  <h2><span class="num">4.3</span>Billboard concept.</h2>
+  <h2 data-i18n="sec.4-3.h2"><span class="num">4.3</span>Billboard concept.</h2>
   <p class="sub">Sheikh Zayed Road near the Dubai Frame. Akiyama's face. SUNG1975 bilingual mark, Latin + Arabic. The brand's own founding slogan as the tagline.</p>
 
   <div class="billboard-band">
@@ -1465,12 +1510,12 @@ footer{
 <!-- ============================================================
      PART 5 · MMA × DUBAI
 ============================================================ -->
-<div class="part-divider"><span>Part 5 · MMA × Dubai</span></div>
+<div class="part-divider"><span data-i18n="part.5">Part 5 · MMA × Dubai</span></div>
 <div class="part-band p5">
 
 <section class="chapter" id="sec-5-1">
   <div class="part-label">Part 5 — MMA × Dubai</div>
-  <h2>The fight calendar is relentless and growing.</h2>
+  <h2 data-i18n="sec.5-1.h2">The fight calendar is relentless and growing.</h2>
   <p class="sub">UAE is now the combat-sports capital of the Eastern Hemisphere. UFC, UAE Warriors, Brave CF — year-round professional events at Etihad Arena and ADNEC. For an MMA-heritage brand, this is the single most valuable marketing channel in the market.</p>
 
   <table class="stakeholder">
@@ -1531,7 +1576,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-5-2">
-  <h2><span class="num">5.2</span>Our event access — three relationships that matter.</h2>
+  <h2 data-i18n="sec.5-2.h2"><span class="num">5.2</span>Our event access — three relationships that matter.</h2>
   <p class="sub">The MMA-promotion route (UFC / UAEW / Brave) is open to anyone with a budget. The relationships below are what we actually own.</p>
 
   <div class="split">
@@ -1556,7 +1601,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-5-3">
-  <h2><span class="num">5.3</span>The launch moment — Akiyama × Kris Fade.</h2>
+  <h2 data-i18n="sec.5-3.h2"><span class="num">5.3</span>The launch moment — Akiyama × Kris Fade.</h2>
   <p class="sub">Once Akiyama lands in Dubai, the brand launch needs a single Dubai-native media voice that converts an arrival into a viral event. There is one obvious fit — and the lock-in isn't just the Netflix overlap. It's the fitness layer he's been quietly building for years.</p>
 
   <!-- Dual-context Fade strip — same person, two audiences -->
@@ -1595,7 +1640,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-5-4">
-  <h2><span class="num">5.4</span>Warehouse Gym — the pop-up venue we can open.</h2>
+  <h2 data-i18n="sec.5-4.h2"><span class="num">5.4</span>Warehouse Gym — the pop-up venue we can open.</h2>
   <p class="sub">Dubai's most design-led premium gym chain — featured in <em>Dezeen</em> and <em>Wallpaper*</em> for its architecture — with eight locations across the city. We have the warm intro. First meeting is ours to schedule.</p>
 
   <!-- 3-image strip — editorial proof of the venue quality -->
@@ -1640,12 +1685,12 @@ footer{
 <!-- ============================================================
      PART 6 · PARALLEL TRACK · SKINCARE
 ============================================================ -->
-<div class="part-divider"><span>Part 6 · Parallel track · skincare</span></div>
+<div class="part-divider"><span data-i18n="part.6">Part 6 · Parallel track · skincare</span></div>
 <div class="part-band p6">
 
 <section class="chapter" id="sec-6-1">
   <div class="part-label">Part 6 — Parallel track · skincare</div>
-  <h2>A second category. Same playbook, different shelf.</h2>
+  <h2 data-i18n="sec.6-1.h2">A second category. Same playbook, different shelf.</h2>
   <p class="sub">TWENTY FIFTY × SUNG 1975 EDITION is the most pitch-perfect product in this market we have ever seen. Plug it into Phase 3 once apparel hits stride, same UAE entity, same channels.</p>
 
   <div class="card">
@@ -1667,7 +1712,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-6-2">
-  <h2><span class="num">6.2</span>The GCC men's K-beauty market — verified.</h2>
+  <h2 data-i18n="sec.6-2.h2"><span class="num">6.2</span>The GCC men's K-beauty market — verified.</h2>
   <p class="sub">Korean skincare has already won the GCC. Men's grooming has exploded. The intersection — male K-beauty fronted by an MMA personality with visible skin discipline — is open white space.</p>
 
   <div class="targets">
@@ -1714,12 +1759,12 @@ footer{
 <!-- ============================================================
      PART 7 · NEXT 30 DAYS
 ============================================================ -->
-<div class="part-divider"><span>Part 7 · Next 30 days</span></div>
+<div class="part-divider"><span data-i18n="part.7">Part 7 · Next 30 days</span></div>
 <div class="part-band p1">
 
 <section class="chapter" id="sec-7-1">
   <div class="part-label">Part 7 — Next 30 days</div>
-  <h2>If green-lit, here is your first thirty days.</h2>
+  <h2 data-i18n="sec.7-1.h2">If green-lit, here is your first thirty days.</h2>
   <p class="sub">Portgate executes UAE entity formation in 1–4 weeks end-to-end. The rest of the sprint is e-commerce build, first product flow, and content engine warm-up.</p>
 
   <ol class="steps">
@@ -1736,7 +1781,7 @@ footer{
 </section>
 
 <section class="chapter" id="sec-7-2">
-  <h2><span class="num">7.2</span>Contact.</h2>
+  <h2 data-i18n="sec.7-2.h2"><span class="num">7.2</span>Contact.</h2>
   <table class="stakeholder">
     <thead>
       <tr><th>Role</th><th>Person</th><th>Reach</th></tr>
@@ -1774,10 +1819,170 @@ footer{
 </div><!-- end part-band p1 (loop) -->
 
 <footer>
-  <span>SUNG —1975— · UAE pitch · v2 · 2026-05-18 · confidential</span>
-  <span>Prepared by Balraj Singh Kalra + Yamada Akito · introduced by Wakabayashi Ryo-san</span>
+  <span data-i18n="footer.left">SUNG —1975— · UAE pitch · v2 · 2026-05-18 · confidential</span>
+  <span data-i18n="footer.right">Prepared by Balraj Singh Kalra + Yamada Akito · introduced by Wakabayashi Ryo-san</span>
 </footer>
 
 </div><!-- /.wrap -->
+
+<!-- ===========================================================
+     I18N — Trilingual toggle infrastructure
+     EN (default) / 日本語 / 한국어
+     All translation content is hardcoded in SUNG_I18N below (no user
+     input ever flows into the DOM), so the HTML insertion is safe.
+     Body paragraphs / long-form copy fall back to EN if a key is
+     missing from the JP/KR map.
+     =========================================================== -->
+<script>
+window.SUNG_I18N = {
+  jp: {
+    "lang.review": "JP/KR訳はドラフトです。秋山様への提示前にネイティブによる確認が必要です。",
+    "banner.lockup": "SUNG — 1975 — · UAE提案書",
+    "banner.line": "ドバイへ。<br/><em>そしてドバイを通じて、西側市場へ。</em>",
+    "hero.eyebrow": "SUNG —1975— · UAE & GCC市場進出 · 機密",
+    "hero.h1": "<span class=\"lockup\">SUNG —1975—</span>ドバイへ参入し、<br/>そこから西側市場に到達するための提案。",
+    "hero.lede": "提案先: <strong>秋山成勲 様 / Choo Sung-hoon</strong> · 提案者: Balraj Singh Kalra および 山田明仁 · ご紹介いただいた <strong>若林涼 様</strong>に感謝申し上げます。",
+    "hero.intro-note": "<strong>お読みいただくにあたり —</strong> 本書はスライドショーではなく、作業用の提案書として構成しております。各章は下記の目次から個別にご覧いただけます。本版の数値は2026年5月18日時点の公開市場データ(Social Blade, Grand View Research, Deep Market Insights, 各ブランドのプレスリリース)に基づきます。各数値の出典は本文中に明記しています。",
+    "cover.lockup": "SUNG —1975—",
+    "cover.headline": "湾岸へ。",
+    "cover.sub": "韓国系日本人アスレジャーブランド「SUNG1975」を、アラブ首長国連邦およびGCC市場へ展開するための提案。",
+    "cover.prepared-for": "提案先",
+    "cover.prepared-for-val": "秋山成勲 様 / Choo Sung-hoon",
+    "cover.prepared-by": "提案者",
+    "cover.prepared-by-val": "Balraj Singh Kalra<br/>山田明仁(Portgate代表)",
+    "cover.meeting": "ミーティング",
+    "cover.meeting-val": "60分ビデオ通話 · 2026年5月",
+    "cover.status": "ステータス",
+    "cover.status-val": "機密 · v2",
+    "part.1": "第1部 · プロジェクトとチーム",
+    "part.2": "第2部 · なぜドバイ、なぜ今",
+    "part.3": "第3部 · 参入の方法",
+    "part.4": "第4部 · 製品",
+    "part.5": "第5部 · MMA × ドバイ",
+    "part.6": "第6部 · 並行軸 · スキンケア",
+    "part.7": "第7部 · 最初の30日",
+    "sec.1-1.h2": "提案を1ページで。",
+    "sec.1-2.h2": "<span class=\"num\">1.2</span>このご提案を担うチーム。",
+    "sec.1-3.h2": "<span class=\"num\">1.3</span>我々が動かすリーチ。",
+    "sec.1-4.h2": "<span class=\"num\">1.4</span>4フェーズ計画。",
+    "sec.2-1.h2": "市場は見えているよりも大きく、より集中している。",
+    "sec.2-2.h2": "<span class=\"num\">2.2</span>Giving Movementプレイブック ― 最も近い比較事例。",
+    "sec.2-3.h2": "<span class=\"num\">2.3</span>オーディエンスのギャップ ― ドバイがそれを埋める理由。",
+    "sec.2-4.h2": "<span class=\"num\">2.4</span>GCCにおける韓国ブランドの先例。",
+    "sec.3-1.h2": "検討する3つの構造。",
+    "sec.3-2.h2": "<span class=\"num\">3.2</span>双方の役割分担。",
+    "sec.3-3.h2": "<span class=\"num\">3.3</span>UAE法人設立 ― Portgateが担う範囲。",
+    "sec.4-1.h2": "価格設定はすでに実証済み。",
+    "sec.4-2.h2": "<span class=\"num\">4.2</span>UAE限定カプセル。",
+    "sec.4-3.h2": "<span class=\"num\">4.3</span>ビルボードコンセプト。",
+    "sec.5-1.h2": "ファイトカレンダーは絶え間なく拡大している。",
+    "sec.5-2.h2": "<span class=\"num\">5.2</span>イベントアクセス ― 重要な3つのリレーションシップ。",
+    "sec.5-3.h2": "<span class=\"num\">5.3</span>ローンチの瞬間 ― 秋山 × Kris Fade。",
+    "sec.5-4.h2": "<span class=\"num\">5.4</span>Warehouse Gym ― 開設可能なポップアップ会場。",
+    "sec.6-1.h2": "第二のカテゴリ。同じプレイブック、別の棚。",
+    "sec.6-2.h2": "<span class=\"num\">6.2</span>GCC男性向けK-beauty市場 ― 検証済み。",
+    "sec.7-1.h2": "ご承認いただけた場合の最初の30日間。",
+    "sec.7-2.h2": "<span class=\"num\">7.2</span>連絡先。",
+    "footer.left": "SUNG —1975— · UAE提案書 · v2 · 2026-05-18 · 機密",
+    "footer.right": "作成者:Balraj Singh Kalra + 山田明仁 · 紹介者:若林涼様"
+  },
+  kr: {
+    "lang.review": "일본어/한국어 번역은 초안입니다. 추성훈 선생님께 보여드리기 전에 원어민 검수가 필요합니다.",
+    "banner.lockup": "SUNG — 1975 — · UAE 제안서",
+    "banner.line": "두바이로.<br/><em>그리고 두바이를 통해 서구 시장으로.</em>",
+    "hero.eyebrow": "SUNG —1975— · UAE & GCC 시장 진출 · 기밀",
+    "hero.h1": "<span class=\"lockup\">SUNG —1975—</span>두바이로 진출하고,<br/>그곳을 발판으로 서구 시장에 도달하기 위한 제안서.",
+    "hero.lede": "수신: <strong>추성훈 선생님 / 秋山成勲</strong> · 작성: Balraj Singh Kalra 및 야마다 아키토 · 소개해 주신 <strong>와카바야시 료 님</strong>께 감사드립니다.",
+    "hero.intro-note": "<strong>읽어주시는 분께 —</strong> 본 문서는 슬라이드쇼가 아닌 실무 제안서 형태로 구성되어 있습니다. 각 챕터는 아래 목차에서 개별적으로 탐색하실 수 있습니다. 본 버전의 수치는 2026년 5월 18일 기준 공개 시장 데이터(Social Blade, Grand View Research, Deep Market Insights, 각 브랜드 보도자료)에 기반합니다. 인용된 모든 수치 아래에 출처를 명기했습니다.",
+    "cover.lockup": "SUNG —1975—",
+    "cover.headline": "걸프로.",
+    "cover.sub": "추성훈 선생님의 한일 애슬레저 브랜드 SUNG1975를 아랍에미리트 및 GCC 시장으로 진출시키기 위한 제안서입니다.",
+    "cover.prepared-for": "수신",
+    "cover.prepared-for-val": "추성훈 선생님 / 秋山成勲",
+    "cover.prepared-by": "발신",
+    "cover.prepared-by-val": "Balraj Singh Kalra<br/>야마다 아키토 (Portgate 대표)",
+    "cover.meeting": "미팅",
+    "cover.meeting-val": "60분 화상 회의 · 2026년 5월",
+    "cover.status": "상태",
+    "cover.status-val": "기밀 · v2",
+    "part.1": "Part 1 · 프로젝트와 팀",
+    "part.2": "Part 2 · 왜 두바이, 왜 지금",
+    "part.3": "Part 3 · 진출 방식",
+    "part.4": "Part 4 · 제품",
+    "part.5": "Part 5 · MMA × 두바이",
+    "part.6": "Part 6 · 병행 라인 · 스킨케어",
+    "part.7": "Part 7 · 첫 30일",
+    "sec.1-1.h2": "한 페이지로 보는 제안.",
+    "sec.1-2.h2": "<span class=\"num\">1.2</span>이 제안을 책임지는 팀.",
+    "sec.1-3.h2": "<span class=\"num\">1.3</span>우리가 다루는 리치.",
+    "sec.1-4.h2": "<span class=\"num\">1.4</span>4단계 플랜.",
+    "sec.2-1.h2": "시장은 보이는 것보다 크고, 훨씬 더 집중되어 있습니다.",
+    "sec.2-2.h2": "<span class=\"num\">2.2</span>Giving Movement 플레이북 — 가장 가까운 비교 사례.",
+    "sec.2-3.h2": "<span class=\"num\">2.3</span>오디언스의 격차 — 그리고 두바이가 그것을 메우는 이유.",
+    "sec.2-4.h2": "<span class=\"num\">2.4</span>GCC 내 한국 브랜드의 선례.",
+    "sec.3-1.h2": "검토할 세 가지 구조.",
+    "sec.3-2.h2": "<span class=\"num\">3.2</span>양측이 부담하는 역할.",
+    "sec.3-3.h2": "<span class=\"num\">3.3</span>UAE 법인 설립 — Portgate가 처리하는 범위.",
+    "sec.4-1.h2": "가격 설정은 이미 검증되었습니다.",
+    "sec.4-2.h2": "<span class=\"num\">4.2</span>UAE 한정 캡슐.",
+    "sec.4-3.h2": "<span class=\"num\">4.3</span>빌보드 컨셉.",
+    "sec.5-1.h2": "파이트 캘린더는 멈추지 않고 확장되고 있습니다.",
+    "sec.5-2.h2": "<span class=\"num\">5.2</span>이벤트 접근 — 진짜로 중요한 세 가지 관계.",
+    "sec.5-3.h2": "<span class=\"num\">5.3</span>론칭의 순간 — 추성훈 × Kris Fade.",
+    "sec.5-4.h2": "<span class=\"num\">5.4</span>Warehouse Gym — 우리가 열 수 있는 팝업 공간.",
+    "sec.6-1.h2": "두 번째 카테고리. 같은 플레이북, 다른 진열대.",
+    "sec.6-2.h2": "<span class=\"num\">6.2</span>GCC 남성 K-뷰티 시장 — 검증 완료.",
+    "sec.7-1.h2": "승인되면, 첫 30일은 이렇게 진행됩니다.",
+    "sec.7-2.h2": "<span class=\"num\">7.2</span>연락처.",
+    "footer.left": "SUNG —1975— · UAE 제안서 · v2 · 2026-05-18 · 기밀",
+    "footer.right": "작성: Balraj Singh Kalra + 야마다 아키토 · 소개: 와카바야시 료 님"
+  }
+};
+
+(function(){
+  const buttons = document.querySelectorAll('.lang-toggle button');
+  const cache = new WeakMap();
+
+  // Replace an element's content with markup. All inputs here come from
+  // SUNG_I18N (hardcoded above) or from the page's own initial DOM —
+  // no user-supplied data ever reaches this function.
+  function setMarkup(el, html){
+    el.replaceChildren();
+    el.insertAdjacentHTML('afterbegin', html);
+  }
+
+  function snapshot(){
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      if (!cache.has(el)) cache.set(el, el.innerHTML);
+    });
+  }
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (lang === 'en') {
+        const en = cache.get(el);
+        if (en !== undefined) setMarkup(el, en);
+      } else if (window.SUNG_I18N[lang] && window.SUNG_I18N[lang][key]) {
+        setMarkup(el, window.SUNG_I18N[lang][key]);
+      } else {
+        const en = cache.get(el);
+        if (en !== undefined) setMarkup(el, en);
+      }
+    });
+    try { localStorage.setItem('sung-lang', lang); } catch(e) {}
+  }
+
+  snapshot();
+  buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  try {
+    const saved = localStorage.getItem('sung-lang');
+    if (saved && ['en','jp','kr'].includes(saved) && saved !== 'en') setLang(saved);
+  } catch(e) {}
+})();
+</script>
+
 </body>
 </html>
