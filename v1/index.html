@@ -1344,7 +1344,40 @@
     <div>
       <div class="chart-card reveal" style="--d:240ms">
         <div class="ttl">Founder reach vs brand reach — 38× gap</div>
-        <canvas id="chartGeo" height="220"></canvas>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:12px; line-height:1.9; color:var(--ink); margin-top:12px;">
+          <div style="display:grid; grid-template-columns:1fr auto auto; gap:10px; padding:10px 0; border-bottom:1px dashed var(--line); align-items:baseline;">
+            <span><strong>@akiyamachoo</strong><span style="color:var(--muted); margin-left:8px;">founder</span></span>
+            <span style="color:var(--muted)">Instagram</span>
+            <span style="color:var(--olive-deep); font-weight:600;">881,798</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr auto auto; gap:10px; padding:10px 0; border-bottom:1px dashed var(--line); align-items:baseline;">
+            <span><strong>@akiyamachoo</strong><span style="color:var(--muted); margin-left:8px;">founder</span></span>
+            <span style="color:var(--muted)">YouTube</span>
+            <span style="color:var(--olive-deep); font-weight:600;">1.98M</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr auto auto; gap:10px; padding:10px 0; border-bottom:1px dashed var(--line); align-items:baseline;">
+            <span><strong>@sung1975_kr</strong><span style="color:var(--muted); margin-left:8px;">brand</span></span>
+            <span style="color:var(--muted)">Instagram</span>
+            <span style="color:var(--muted)">15,626</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr auto auto; gap:10px; padding:10px 0; border-bottom:1px dashed var(--line); align-items:baseline;">
+            <span><strong>@sung1975_japan</strong><span style="color:var(--muted); margin-left:8px;">brand</span></span>
+            <span style="color:var(--muted)">Instagram</span>
+            <span style="color:var(--muted)">7,546</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr auto; gap:10px; padding:14px 0 6px; align-items:baseline;">
+            <span style="font-weight:700; color:var(--ink);">Founder ÷ brand</span>
+            <span style="color:var(--olive-deep); font-weight:700; font-size:14px;">38× gap</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr auto; gap:10px; padding:6px 0; align-items:baseline;">
+            <span style="color:var(--muted)">Engagement rate · founder</span>
+            <span style="color:var(--olive-deep); font-weight:600;">21.19%</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr auto; gap:10px; padding:6px 0; align-items:baseline;">
+            <span style="color:var(--muted)">Mega-influencer median</span>
+            <span style="color:var(--muted)">~1.5%</span>
+          </div>
+        </div>
         <div class="src" style="margin-top: 14px;">Social Blade · live pull 2026-05-18 · @akiyamachoo, @sung1975_kr, @sung1975_japan</div>
       </div>
     </div>
@@ -1840,40 +1873,7 @@
 
   // §02 growth chart removed per user request
 
-  // Founder reach vs brand reach — the 38× gap
-  new Chart(document.getElementById('chartGeo'), {
-    type: 'bar',
-    data: {
-      labels: ['@akiyamachoo (founder)', '@sung1975_kr (brand)', '@sung1975_japan (brand)'],
-      datasets: [{
-        label: 'Followers',
-        data: [881798, 15626, 7546],
-        backgroundColor: ['#1A1815', '#C9C2B5', '#C9C2B5'],
-        borderColor: '#1A1815',
-        borderWidth: 0,
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => ctx.parsed.x.toLocaleString() + ' followers'
-          }
-        }
-      },
-      scales: {
-        x: {
-          beginAtZero: true,
-          grid: { color: 'rgba(201,194,181,0.4)' },
-          ticks: { callback: v => v >= 1000 ? (v/1000) + 'K' : v }
-        },
-        y: { grid: { display: false } }
-      }
-    }
-  });
+  // chartGeo removed — replaced with numbers display in §04
 
   // Hoodie comparison chart
   new Chart(document.getElementById('chartHoodie'), {
