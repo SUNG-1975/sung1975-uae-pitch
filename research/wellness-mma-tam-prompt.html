@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SUNG1975 — UAE + GCC wellness & MMA TAM prompt</title>
+<style>
+  :root{
+    --bg:#F5F2EA; --paper:#FAF8F2; --ink:#1A1815; --ink-soft:#3D3833;
+    --muted:#7A6F62; --line:#D9D2C2; --accent:#5C6440; --accent-deep:#3F4528;
+    --pill-bg:#1A1815; --pill-fg:#FAF8F2;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:'Inter','Helvetica Neue',Arial,sans-serif; line-height:1.55;}
+  .wrap{max-width:920px; margin:0 auto; padding:48px 28px 80px;}
+  header{margin-bottom:34px;}
+  .eyebrow{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:0.22em; color:var(--muted); text-transform:uppercase; margin-bottom:14px;}
+  h1{font-family:Georgia,'Times New Roman',serif; font-size:34px; line-height:1.15; font-weight:400; margin:0 0 14px; letter-spacing:-0.01em;}
+  h1 em{font-style:italic; color:var(--accent-deep);}
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:64ch;}
+  .tools{display:flex; flex-wrap:wrap; gap:10px; margin:24px 0 14px;}
+  .tool-pill{background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:8px 16px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em; color:var(--ink-soft);}
+  .actions{display:flex; gap:12px; align-items:center; margin:22px 0 30px;}
+  button.copy{background:var(--pill-bg); color:var(--pill-fg); border:none; padding:12px 22px; border-radius:999px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,0.10); transition:transform 0.12s ease, box-shadow 0.12s ease;}
+  button.copy:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,0.14);}
+  button.copy.ok{background:var(--accent-deep);}
+  button.copy.ok::after{content:" ✓"; }
+  .hint{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em;}
+  pre.prompt{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:28px 30px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:13px; line-height:1.7; color:var(--ink); white-space:pre-wrap; word-wrap:break-word; overflow-x:auto; box-shadow:0 2px 0 rgba(0,0,0,0.02);}
+  pre.prompt strong{color:var(--accent-deep);}
+  .capsule-strip{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:14px; margin:24px 0 28px;}
+  .capsule-card{position:relative; aspect-ratio:3/4; border-radius:14px; overflow:hidden; background-size:cover; background-position:center; box-shadow:0 10px 30px rgba(26,24,21,0.14); background-color:#1A1815;}
+  .capsule-card .tag{position:absolute; left:14px; bottom:14px; right:14px; color:#FAF8F2; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; line-height:1.4; text-shadow:0 1px 4px rgba(0,0,0,0.4);}
+  .capsule-card .tag b{display:block; font-family:Georgia,serif; font-size:14px; letter-spacing:-0.01em; text-transform:none; font-weight:400; margin-top:3px;}
+  @media (max-width:680px){
+    .capsule-strip{grid-template-columns:1fr; gap:10px;}
+    .capsule-card{aspect-ratio:4/3;}
+  }
+  .meta-strip{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; padding:18px 22px; background:var(--paper); border:1px solid var(--line); border-radius:10px;}
+  .meta-strip .m{font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.55;}
+  .meta-strip .m .k{color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; font-size:10px; display:block; margin-bottom:4px;}
+  .meta-strip .m .v{color:var(--ink);}
+  @media (max-width:680px){
+    .wrap{padding:32px 18px 60px;}
+    h1{font-size:26px;}
+    .meta-strip{grid-template-columns:1fr;}
+    pre.prompt{padding:20px 18px; font-size:12.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">SUNG1975 · Research prompt · 2026-05-20</div>
+  <h1>UAE + GCC wellness & MMA market — <em>TAM, growth, and a 5% capture simulation.</em></h1>
+  <p class="lede">Paste this into Perplexity Deep Research, Google Gemini Deep Research, or ChatGPT Deep Research. It returns market sizing across wellness + MMA verticals, demographic and ARPU benchmarks, and a three-scenario revenue simulation at 5% of the addressable fitness population.</p>
+
+  <!-- UAE-capsule mockup strip — the products this research is sizing the market for -->
+  <div class="capsule-strip" aria-hidden="true">
+    <div class="capsule-card" style="background-image:url('../assets/uae-capsule/capsule-tee-back-street.png'); background-position:center 20%;">
+      <div class="tag">UAE edition · tee<b>سونغ ١٩٧٥ on a Dubai street</b></div>
+    </div>
+    <div class="capsule-card" style="background-image:url('../assets/uae-capsule/capsule-tank-colorways.png'); background-position:center 40%;">
+      <div class="tag">UAE edition · tanks<b>Four colourways</b></div>
+    </div>
+    <div class="capsule-card" style="background-image:url('../assets/uae-capsule/capsule-shorts-side.png'); background-position:center 50%;">
+      <div class="tag">UAE edition · shorts<b>Side-leg calligraphy</b></div>
+    </div>
+  </div>
+
+  <div class="tools">
+    <span class="tool-pill">Perplexity Deep Research</span>
+    <span class="tool-pill">Google Gemini Deep Research</span>
+    <span class="tool-pill">ChatGPT Deep Research</span>
+    <span class="tool-pill">Claude Research</span>
+  </div>
+
+  <div class="actions">
+    <button class="copy" id="copyBtn" type="button">Copy prompt</button>
+    <span class="hint" id="hint">Single click — copies full prompt to clipboard.</span>
+  </div>
+</header>
+
+<pre class="prompt" id="promptBody">You are a market-research analyst. Produce a single deep-research report sizing the UAE and GCC wellness + MMA / combat-sports market for the launch of a premium athleisure brand, and run a revenue-capture simulation at the bottom.
+
+# BRAND CONTEXT (so the simulation has a realistic anchor)
+
+- Brand: SUNG1975 — Korean-Japanese premium athleisure, founded by MMA legend Choo Sung-hoon (秋山成勲, "Akiyama"). Existing Japan retail $75–$156 USD per piece.
+- Proposed UAE pricing: tee AED 275 (~$75), hoodie AED 500–600, pants AED 470, premium hoodie AED 575.
+- Adjacent product: TWENTY FIFTY × SUNG 1975 skincare collab (Premium Nano Collagen Sheet × Mist), $80–$120 retail.
+- Target customer: 25–45-year-old residents and tourists in the UAE who engage in fitness (gym, MMA, BJJ, CrossFit, running), buy premium athleisure ($60+ per piece), and have visible disposable income.
+- Channels: own .ae e-commerce + gym pop-ups (Warehouse Gym chain) + DXB Duty Free airport retail + MMA event booth presence (Dubai Muscle Show, AJP, UFC Abu Dhabi, UAE Warriors).
+
+# DELIVERABLE STRUCTURE
+
+Produce the report in this exact order, with tables wherever practical and a source URL + publication date next to every figure. Prefer Tier-1 sources (government statistics, Big-4 consulting, Statista, Euromonitor, IMARC, Grand View Research, Research and Markets, central banks, official tourism boards, and the brands' own press releases).
+
+## Part 1 — UAE wellness market (broad)
+
+1. Total UAE wellness economy size, latest verified year, with CAGR through 2030.
+2. Breakdown by sub-segment: fitness (gyms, classes, equipment), athleisure / activewear, sports nutrition + supplements, wellness services (spa, recovery, mental wellness), wearables.
+3. Premium-tier penetration: what share of each sub-segment is "premium" (AED 250+ tee tier, AED 600+/month gym, etc.).
+4. Number of active gym memberships in the UAE; chain market share between Fitness First, GymNation, Warehouse Gym, F45, Barry's, BodyTree, Crank, Symmetry, Plus Fitness, UFC Gym, etc.
+5. Demographic split of fitness-engaged residents: expat vs Emirati, male vs female, age bands, household-income bands.
+
+## Part 2 — GCC wellness market (UAE + KSA + Kuwait + Qatar + Bahrain + Oman)
+
+1. Total GCC wellness economy size with country-by-country split.
+2. Where GCC vs UAE diverges — what's bigger / faster / more underserved in KSA, Kuwait, etc.
+3. KSA-specific data on Vision 2030 wellness pillars, women's-fitness deregulation effects 2017→2025, sports privatisation.
+4. Cross-border movement: GCC residents who travel to Dubai for fitness/wellness reasons.
+
+## Part 3 — UAE + GCC MMA / combat-sports market
+
+1. UAE / GCC MMA event market size (sponsorships, ticketing, broadcasting rights).
+2. Per-event attendance benchmarks: UFC Abu Dhabi, UAE Warriors, Brave CF, PFL MENA, AJP World Pro, Dubai Muscle Show, Fitness Expo Dubai. Include 2024 and 2025 attendance where available.
+3. BJJ / grappling participation in the UAE — how many registered practitioners, how many UAE schools teach BJJ post-2015 federal decree, AJP / UAEJJF event counts per year.
+4. UAE / GCC sponsorship deals in combat sports — disclosed figures only, with year + parties.
+5. Combat-sports media reach in MENA: viewership for UFC events, Netflix's *Physical: 100* viewership in MENA, the Akiyama YouTube / Instagram footprint inside the GCC if separately verifiable.
+
+## Part 4 — Athleisure competitive shelf in UAE
+
+1. Brand-level UAE revenue / store-count / footprint for: ALO Yoga (Alshaya), Lululemon (Majid Al Futtaim), Vuori (Al Tayer), Gymshark (Al Tayer Insignia, Dubai Mall Jan 2025), On Running (Al-Futtaim), Giving Movement (owned, 8 UAE locations), Sweaty Betty, Beyond Yoga, Adidas premium tier, Nike premium tier.
+2. Disclosed revenue / sales-per-square-foot / annual unit volume where any of these are public.
+3. Where Giving Movement specifically discloses: revenue, units, store sales, charity raised (used as a proxy for units sold), Series A use of funds.
+4. UAE department-store penetration: Bloomingdale's Dubai, Harvey Nichols Dubai, Galeries Lafayette, THAT Concept Store, Level Shoes, Ounass, Net-a-Porter AE — which carry premium athleisure and at what category share.
+
+## Part 5 — Tourist / airport / cross-border channel
+
+1. DXB passenger numbers 2024 + projection.
+2. DXB Duty Free sales — total, and the cosmetics + fashion + accessories sub-categories.
+3. Average tourist spend in Dubai retail per trip (last 24 months).
+4. Where Korean / Japanese tourist traffic to UAE specifically lands — volume, growth rate, average spend.
+5. The "Born in Dubai" tourist-souvenir phenomenon — Giving Movement-style local-coded capsules, sales contribution if disclosed.
+
+## Part 6 — Cultural trends to validate
+
+1. "Ajeossi Chic" cultural trend in Korea and its export to other Asian markets — quantified audience size + Western spillover.
+2. Men's K-beauty in the GCC — market size, fastest-growing sub-categories.
+3. The Netflix *Physical: 100* halo effect in the GCC — any audience-data signals.
+4. Women's-fitness market growth specifically in KSA post-2017 reforms.
+5. UAE government wellness initiatives (Dubai Fitness Challenge etc.) — participation numbers and growth.
+
+## Part 7 — The 5%-capture revenue simulation
+
+After Parts 1–6, build a defensible Total Addressable Market (TAM) using the following structure. Show every assumption explicitly.
+
+- **TAM definition:** UAE residents and resident-equivalent tourist-buyer population aged 20–50 who (a) buy premium athleisure at $60+ per piece at least twice a year, AND (b) engage in fitness / combat sports / wellness routines regularly. Use the data you assembled to estimate this number directly. Show the math.
+- **Premium-athleisure annual spend per active customer (ARPU):** estimate from Tier-1 data — typical premium-athleisure customer purchases per year, average ticket size in AED. Justify with sources.
+- **Skincare adjacent ARPU:** estimate annual spend per active premium-skincare buyer.
+
+Then run the simulation with three scenarios. Express every output in AED and USD.
+
+| Scenario      | Penetration | Customers | Apparel ARPU/yr | Skincare ARPU/yr | Total annual revenue |
+| ------------- | ----------- | --------- | --------------- | ---------------- | -------------------- |
+| Pessimistic   | 1%          |  …        |  …              |  …               |  …                   |
+| Base          | 3%          |  …        |  …              |  …               |  …                   |
+| **Target**    | **5%**      |  …        |  …              |  …               |  …                   |
+| Optimistic    | 8%          |  …        |  …              |  …               |  …                   |
+
+After the table, add:
+
+- A sensitivity analysis: how does revenue shift if the average ticket moves ±20% or if the customer penetration moves ±2 percentage points.
+- A breakdown of revenue by channel (own e-commerce, gym pop-ups, airport retail, MMA event booths) — what share of the total each channel likely contributes, with justification from the data you found.
+- A "first-12-months" subset of the Target scenario — assume only Phase 1 channels active (e-commerce + Muscle Show booth) — what fraction of the steady-state revenue can be expected.
+- A list of the three biggest data gaps you encountered, naming what additional research would close each gap (e.g., paid Statista report, HypeAuditor follower-geo, Euromonitor athleisure database).
+
+# OUTPUT CONSTRAINTS
+
+- Lead with a one-paragraph executive summary at the top of the report (max 6 sentences) — TAM, target-scenario revenue, headline confidence level.
+- Use full URLs for every source citation (no bare titles).
+- Tag every figure with its publication year — never use a number without a year.
+- If a figure is interpolated or modelled (not directly sourced), say so explicitly.
+- Where two sources conflict, surface both and explain which one you weighted higher and why.
+- No marketing language. No filler. No restating of the brief.
+- Length target: 3,500 – 6,000 words.
+</pre>
+
+<div class="meta-strip">
+  <div class="m"><span class="k">For</span><span class="v">Perplexity / Gemini / ChatGPT / Claude — deep-research mode</span></div>
+  <div class="m"><span class="k">Returns</span><span class="v">Market sizing · ARPU benchmarks · 5%-capture simulation · channel split</span></div>
+  <div class="m"><span class="k">Re-runnable</span><span class="v">Swap the brand block (top of prompt) if pitching a different brand</span></div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  const btn = document.getElementById('copyBtn');
+  const hint = document.getElementById('hint');
+  const body = document.getElementById('promptBody');
+  btn.addEventListener('click', async () => {
+    const text = body.innerText || body.textContent || '';
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.classList.add('ok');
+      btn.textContent = 'Copied';
+      hint.textContent = 'Paste into the deep-research tool of your choice.';
+      setTimeout(() => {
+        btn.classList.remove('ok');
+        btn.textContent = 'Copy prompt';
+        hint.textContent = 'Single click — copies full prompt to clipboard.';
+      }, 2400);
+    } catch (e) {
+      hint.textContent = 'Copy blocked by browser — select the prompt manually and Cmd/Ctrl+C.';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
