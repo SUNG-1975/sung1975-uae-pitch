@@ -974,66 +974,149 @@
   /* Brand strip band */
   .brand-strip-band {
     grid-area: strip;
-    padding: 26px 6vw 30px;
+    padding: 38px 6vw 44px;
     background: var(--paper);
     border-top: 1px solid var(--line);
+  }
+  .bsb-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .bsb-eyebrow .bsb-rule {
+    flex: 0 1 80px;
+    height: 1px;
+    background: var(--line);
   }
   .bsb-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10.5px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted);
     text-align: center;
-    margin-bottom: 18px;
+    white-space: nowrap;
   }
-  .bsb-grid {
+  .bsb-shelf {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 0;
-    align-items: stretch;
-    border: 1px solid var(--line);
-    background: var(--bg);
+    align-items: end;
+    border: none;
+    position: relative;
+  }
+  .bsb-shelf::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 32px;
+    height: 1px;
+    background: var(--line);
+    z-index: 0;
   }
   .logo-slot {
-    height: 64px;
+    height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 14px 0;
+    color: var(--muted);
+    position: relative;
+    z-index: 1;
+  }
+  .logo-slot .logo-mark {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 14px;
-    border-right: 1px solid var(--line);
-    color: var(--muted);
-    position: relative;
-    transition: background 0.2s, color 0.2s;
+    width: 100%;
+    padding-bottom: 14px;
   }
-  .logo-slot:last-child { border-right: none; }
   .logo-slot img {
-    max-height: 28px;
+    max-height: 30px;
     max-width: 100%;
     object-fit: contain;
-    opacity: 0.78;
+    opacity: 0.85;
     filter: grayscale(100%);
+    transition: opacity 0.2s, filter 0.2s;
   }
+  .logo-slot:hover img { opacity: 1; filter: none; }
   .logo-slot .logo-text {
+    display: none;
     text-align: center;
     line-height: 1.15;
+    color: var(--ink);
+  }
+  .logo-slot .logo-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    padding-top: 12px;
+    border-top: 1px solid transparent;
+    margin-top: 0;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
   .logo-slot.sung {
+    height: 116px;
+  }
+  .logo-slot.sung .logo-mark {
     background: var(--ink);
     color: var(--paper);
+    padding: 14px 12px;
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
   }
-  .logo-slot.sung .logo-text { color: var(--paper); }
+  .logo-slot.sung .logo-mark::after {
+    content: '';
+    position: absolute;
+    left: 12px; right: 12px; bottom: 6px;
+    height: 2px;
+    background: var(--olive);
+  }
+  .logo-slot.sung .logo-text {
+    display: block;
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    font-size: 13px;
+  }
+  .logo-slot.sung .logo-price {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .bsb-footnote {
+    text-align: center;
+    margin-top: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
   @media (max-width: 980px) {
-    .bsb-grid { grid-template-columns: repeat(3, 1fr); }
-    .logo-slot { height: 56px; }
-    .logo-slot:nth-child(3n) { border-right: none; }
-    .logo-slot { border-bottom: 1px solid var(--line); }
+    .bsb-shelf { grid-template-columns: repeat(3, 1fr); row-gap: 28px; }
+    .bsb-shelf::after { display: none; }
+    .logo-slot { height: 88px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+    .logo-slot.sung { height: 104px; }
     .logo-slot:nth-last-child(-n+3) { border-bottom: none; }
+    .bsb-eyebrow .bsb-rule { flex: 0 1 30px; }
+    .bsb-label { white-space: normal; }
   }
   @media (max-width: 560px) {
-    .bsb-grid { grid-template-columns: repeat(2, 1fr); }
-    .logo-slot:nth-child(2n) { border-right: none; }
-    .logo-slot:not(:nth-last-child(-n+2)) { border-bottom: 1px solid var(--line); }
+    .bsb-shelf { grid-template-columns: repeat(2, 1fr); }
+    .logo-slot:nth-last-child(-n+2) { border-bottom: none; }
   }
 
   /* footer */
@@ -1118,32 +1201,55 @@
   </div>
 
   <div class="brand-strip-band reveal" style="--d:680ms">
-    <div class="bsb-label">Brands SUNG1975 sits next to in Dubai · same shelf, premium tier</div>
-    <div class="bsb-grid">
+    <div class="bsb-eyebrow">
+      <span class="bsb-rule"></span>
+      <span class="bsb-label">Same shelf · Dubai premium hoodie band</span>
+      <span class="bsb-rule"></span>
+    </div>
+    <div class="bsb-shelf">
       <div class="logo-slot" data-brand="alo">
-        <img src="../assets/logos/alo.svg" alt="ALO" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="logo-text" style="font-family:'Inter'; font-weight:800; letter-spacing:-0.02em; font-size:22px;">alo</span>
+        <div class="logo-mark">
+          <img src="../assets/logos/alo.svg" alt="ALO" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+          <span class="logo-text" style="font-family:'Inter'; font-weight:800; letter-spacing:-0.02em; font-size:22px;">alo</span>
+        </div>
+        <span class="logo-price">AED 586</span>
       </div>
       <div class="logo-slot" data-brand="lululemon">
-        <img src="../assets/logos/lululemon.svg" alt="lululemon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="logo-text" style="font-family:'Inter'; font-weight:400; letter-spacing:0.01em; font-size:18px;">lululemon</span>
+        <div class="logo-mark">
+          <img src="../assets/logos/lululemon.svg" alt="lululemon" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+          <span class="logo-text" style="font-family:'Inter'; font-weight:400; letter-spacing:0.01em; font-size:18px;">lululemon</span>
+        </div>
+        <span class="logo-price">AED 235–300<small style="display:block; opacity:0.6; font-size:9px; letter-spacing:0.04em">tee tier</small></span>
       </div>
       <div class="logo-slot" data-brand="vuori">
-        <img src="../assets/logos/vuori.svg" alt="VUORI" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="logo-text" style="font-family:'Inter'; font-weight:500; letter-spacing:0.32em; font-size:16px;">VUORI</span>
+        <div class="logo-mark">
+          <img src="../assets/logos/vuori.svg" alt="VUORI" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+          <span class="logo-text" style="font-family:'Inter'; font-weight:500; letter-spacing:0.32em; font-size:16px;">VUORI</span>
+        </div>
+        <span class="logo-price">AED 575–725</span>
       </div>
       <div class="logo-slot sung">
-        <span class="logo-text" style="font-family:'JetBrains Mono'; font-weight:500; letter-spacing:0.22em; font-size:14px; color:var(--paper);">SUNG &mdash;1975&mdash;</span>
+        <div class="logo-mark">
+          <span class="logo-text">SUNG &mdash;1975&mdash;</span>
+        </div>
+        <span class="logo-price">AED 575 · dead-centre</span>
       </div>
       <div class="logo-slot" data-brand="gymshark">
-        <img src="../assets/logos/gymshark.png" alt="GYMSHARK" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="logo-text" style="font-family:'Inter'; font-weight:800; letter-spacing:0.04em; font-size:17px;">GYMSHARK</span>
+        <div class="logo-mark">
+          <img src="../assets/logos/gymshark.png" alt="GYMSHARK" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+          <span class="logo-text" style="font-family:'Inter'; font-weight:800; letter-spacing:0.04em; font-size:17px;">GYMSHARK</span>
+        </div>
+        <span class="logo-price">tier below<small style="display:block; opacity:0.6; font-size:9px; letter-spacing:0.04em">mass DTC</small></span>
       </div>
       <div class="logo-slot" data-brand="giving-movement">
-        <img src="../assets/logos/giving-movement.svg" alt="giving movement" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="logo-text" style="font-family:'Inter'; font-weight:300; letter-spacing:0.04em; font-size:13px; line-height:1.15;">giving<br/>movement</span>
+        <div class="logo-mark">
+          <img src="../assets/logos/giving-movement.svg" alt="The Giving Movement" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+          <span class="logo-text" style="font-family:'Inter'; font-weight:300; letter-spacing:0.04em; font-size:13px; line-height:1.15;">giving<br/>movement</span>
+        </div>
+        <span class="logo-price">AED 249–599</span>
       </div>
     </div>
+    <div class="bsb-footnote">Hoodie / bonded-mid-layer pricing pulled live from each brand's UAE storefront, 18 May 2026. SUNG1975's existing Japan retail ($156) lands dead-centre in the AED 500–600 band the city already pays.</div>
   </div>
 </section>
 
