@@ -1689,22 +1689,27 @@
     Warehouse Gym is the gym that Dubai's fitness press writes about. Two of its branches have been featured in <em>Dezeen</em> and <em>Wallpaper*</em> for their architecture. Members pay AED 600–1,200/month — the exact household band that buys AED 250–600 athleisure. We have the warm intro. The first meeting is ours to schedule.
   </p>
 
-  <!-- Editorial 3-image strip — asymmetric crops, collage feel -->
-  <div class="reveal" style="--d:240ms; margin-top:56px; display:grid; grid-template-columns:1.4fr 1fr 1.4fr; gap:22px; align-items:end;">
-    <div style="position:relative; aspect-ratio:3/2; border-radius:140px 14px 140px 14px; overflow:hidden; background-image:url('../assets/warehouse-gym/wh-springs-hero.jpg'); background-size:cover; background-position:center; box-shadow:0 14px 36px rgba(26,24,21,0.16);">
-      <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 28px 18px; background:linear-gradient(transparent, rgba(26,24,21,0.85)); color:var(--paper);">
-        <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; opacity:0.75; text-transform:uppercase;">Springs · VSHD Design</div>
-        <div style="font-family:'Fraunces', serif; font-size:20px; line-height:1.15; margin-top:4px;"><em>Dezeen</em> feature</div>
+  <!-- Editorial hero layout — Springs as the lead, floor + D3 stacked right -->
+  <div class="reveal" style="--d:240ms; margin-top:56px; display:grid; grid-template-columns:1.55fr 1fr; grid-template-rows:1fr 1fr; gap:18px; height:520px;">
+    <!-- Hero — Springs, full height left -->
+    <div style="grid-row:span 2; position:relative; border-radius:16px; overflow:hidden; background-image:url('../assets/warehouse-gym/wh-springs-hero.jpg'); background-size:cover; background-position:center; box-shadow:0 18px 44px rgba(26,24,21,0.18);">
+      <div style="position:absolute; top:18px; left:20px; background:rgba(26,24,21,0.78); backdrop-filter:blur(8px); color:var(--paper); font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.20em; padding:6px 12px; border-radius:2px; text-transform:uppercase;">Hero · architecture</div>
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:32px 32px 26px; background:linear-gradient(transparent, rgba(26,24,21,0.92)); color:var(--paper);">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.18em; opacity:0.75; text-transform:uppercase; margin-bottom:8px;">Springs · VSHD Design</div>
+        <div style="font-family:'Fraunces', serif; font-size:28px; line-height:1.1; font-weight:300; letter-spacing:-0.01em;"><em>Dezeen</em> feature</div>
+        <div style="font-size:13px; line-height:1.5; opacity:0.82; margin-top:8px; max-width:42ch;">Industrial-luxe concrete · terracotta · brass — the design language the architecture press writes about.</div>
       </div>
     </div>
-    <div style="position:relative; aspect-ratio:3/4; border-radius:18px; overflow:hidden; background-image:url('../assets/warehouse-gym/wh-springs-floor.jpg'); background-size:cover; background-position:center; box-shadow:0 14px 36px rgba(26,24,21,0.18); margin-bottom:24px;">
-      <div style="position:absolute; bottom:0; left:0; right:0; padding:22px 24px 18px; background:linear-gradient(transparent, rgba(26,24,21,0.82)); color:var(--paper);">
-        <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; opacity:0.75; text-transform:uppercase;">Floor</div>
-        <div style="font-family:'Fraunces', serif; font-size:18px; line-height:1.15; margin-top:4px;">CrossFit · Hyrox rig</div>
+    <!-- Top right — CrossFit floor -->
+    <div style="position:relative; border-radius:16px; overflow:hidden; background-image:url('../assets/warehouse-gym/wh-springs-floor.jpg'); background-size:cover; background-position:center; box-shadow:0 14px 36px rgba(26,24,21,0.18);">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:22px 24px 18px; background:linear-gradient(transparent, rgba(26,24,21,0.85)); color:var(--paper);">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; opacity:0.75; text-transform:uppercase;">The floor</div>
+        <div style="font-family:'Fraunces', serif; font-size:20px; line-height:1.15; margin-top:4px;">CrossFit · Hyrox rig</div>
       </div>
     </div>
-    <div style="position:relative; aspect-ratio:3/2; border-radius:14px 140px 14px 140px; overflow:hidden; background-image:url('../assets/warehouse-gym/wh-d3-wallpaper.jpg'); background-size:cover; background-position:center; box-shadow:0 14px 36px rgba(26,24,21,0.16);">
-      <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 28px 18px; background:linear-gradient(transparent, rgba(26,24,21,0.85)); color:var(--paper);">
+    <!-- Bottom right — D3 -->
+    <div style="position:relative; border-radius:16px; overflow:hidden; background-image:url('../assets/warehouse-gym/wh-d3-wallpaper.jpg'); background-size:cover; background-position:center; box-shadow:0 14px 36px rgba(26,24,21,0.18);">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:22px 24px 18px; background:linear-gradient(transparent, rgba(26,24,21,0.85)); color:var(--paper);">
         <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; opacity:0.75; text-transform:uppercase;">Dubai Design District</div>
         <div style="font-family:'Fraunces', serif; font-size:20px; line-height:1.15; margin-top:4px;"><em>Wallpaper*</em> feature</div>
       </div>
@@ -1806,6 +1811,85 @@
     <p style="font-size:13.5px; line-height:1.6; color:var(--ink); margin:0;">
       What's real today: a warm working connection with Warehouse Gym leadership. <strong>What's to be agreed in the first meeting:</strong> flagship branch selection · activation calendar · capsule-drop revenue split · exclusivity period. We are bringing the idea — they are open to listening. <strong>The deck commitment is that this conversation happens in the first 30 days — not that the contract is signed.</strong>
     </p>
+  </div>
+</section>
+
+<!-- 06.6 THE LAUNCH MOMENT — AKIYAMA × KRIS FADE -->
+<section class="deck" data-n="06.6">
+  <div class="label reveal">06.6 — The launch moment</div>
+  <h2 class="section-h reveal">Akiyama × Kris Fade.<br/><em>The Dubai-native voice that turns arrival into a viral event.</em></h2>
+  <p class="body reveal" style="margin-top:28px; max-width:80ch;">
+    Once Akiyama lands in Dubai, the brand needs a single Dubai-native media voice that converts an arrival into a viral event. There is one obvious fit — and the lock-in isn't just the Netflix overlap. It's the fitness layer Fade has been quietly building for years.
+  </p>
+
+  <!-- Two-image hero — Netflix side + Fitness side -->
+  <div class="reveal" style="--d:240ms; margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:22px;">
+    <div style="position:relative; aspect-ratio:3/2; border-radius:16px; overflow:hidden; background-image:url('../assets/kris-fade/fade-netflix-bling.jpg'); background-size:cover; background-position:center; box-shadow:0 14px 36px rgba(26,24,21,0.18);">
+      <div style="position:absolute; top:18px; left:20px; background:#E50914; color:#fff; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.20em; padding:6px 12px; border-radius:2px; text-transform:uppercase; font-weight:700;">Kris Fade · Netflix</div>
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 26px 20px; background:linear-gradient(transparent, rgba(26,24,21,0.92)); color:var(--paper);">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.18em; opacity:0.75; text-transform:uppercase; margin-bottom:6px;">Dubai Bling · main cast</div>
+        <div style="font-family:'Fraunces', serif; font-size:22px; line-height:1.15; font-weight:300;">The Netflix audience already knows his face.</div>
+      </div>
+    </div>
+    <div style="position:relative; aspect-ratio:3/2; border-radius:16px; overflow:hidden; background-image:url('../assets/kris-fade/fade-fitness-transformation.jpg'); background-size:cover; background-position:center; box-shadow:0 14px 36px rgba(26,24,21,0.18);">
+      <div style="position:absolute; top:18px; left:20px; background:var(--olive-deep); color:var(--paper); font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.20em; padding:6px 12px; border-radius:2px; text-transform:uppercase;">Kris Fade · Fitness</div>
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 26px 20px; background:linear-gradient(transparent, rgba(26,24,21,0.92)); color:var(--paper);">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.18em; opacity:0.75; text-transform:uppercase; margin-bottom:6px;">Fade Fit run club · Kite Beach</div>
+        <div style="font-family:'Fraunces', serif; font-size:22px; line-height:1.15; font-weight:300;">Same Kris Fade — his fitness brand is what locks Akiyama in.</div>
+      </div>
+    </div>
+  </div>
+  <div class="src" style="margin-top:14px; text-align:right;">Both images: Kris Fade · Arabian Business (Dubai Bling Netflix announcement, 2022) · YouTube fitness feature ("Celebrity Fit: Dubai RJ Kris Fade shares his transformation story")</div>
+
+  <!-- Why Fade · two-column lockup -->
+  <div class="thesis-grid" style="margin-top:64px;">
+    <div>
+      <p class="body reveal" style="--d:120ms">
+        <strong>Kris Fade</strong> is Virgin Radio Dubai's breakfast host (UAE's biggest English morning show), creator and host of <em>One on One with Kris Fade</em> (sit-down podcast), and a main cast member on <strong>Netflix's <em>Dubai Bling</em></strong>. <strong>We have a warm connection.</strong>
+      </p>
+      <p class="body reveal" style="--d:240ms">
+        The lock-in is the <strong>fitness layer</strong>: Fade runs his own brand <strong>Fade Fit</strong> (@fadefit · weekly Run Club at Kite Beach · multi-year public transformation arc · gym content / training routines on every channel). His audience knows him as a <em>real fitness-engaged personality</em>, not just an entertainer.
+      </p>
+      <p class="body reveal" style="--d:360ms">
+        Every other Dubai media name puts Akiyama on a celebrity carpet. <strong>Fade puts him in the gym.</strong> And the audience overlap is unusually clean: Fade's listeners + <em>Dubai Bling</em> viewers + podcast subs are the same expat-and-GCC English-speaking cohort that already recognised Akiyama from <em>Physical: 100</em>. Two Netflix-anchored personalities on the same shelf of real-people-doing-impressive-physical-things entertainment.
+      </p>
+    </div>
+    <div>
+      <div class="chart-card reveal" style="--d:280ms">
+        <div class="ttl">The play · one trip, three assets</div>
+        <div style="margin-top:18px;">
+          <div style="display:grid; grid-template-columns:24px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed var(--line);">
+            <span style="font-family:'Fraunces', serif; font-size:22px; color:var(--olive-deep); font-weight:300; line-height:1;">01</span>
+            <div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--olive-deep); text-transform:uppercase; margin-bottom:4px;">Joint workout reel</div>
+              <div style="font-size:13px; line-height:1.5; color:var(--ink);">Filmed <strong>inside Warehouse Gym (see §06.5)</strong>. IG + TikTok cut, cross-posted to both handles. Akiyama's 2.86M + Fade's audience = one asset doing 8-figure organic reach.</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:24px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed var(--line);">
+            <span style="font-family:'Fraunces', serif; font-size:22px; color:var(--olive-deep); font-weight:300; line-height:1;">02</span>
+            <div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--olive-deep); text-transform:uppercase; margin-bottom:4px;"><em>One on One with Kris Fade</em></div>
+              <div style="font-size:13px; line-height:1.5; color:var(--ink);">Full sit-down — judo origins, <em>Physical: 100</em>, the SUNG1975 story, the UAE expansion. Evergreen episode the brand re-cuts into 30 sub-clips over the first 90 days.</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:24px 1fr; gap:14px; padding:14px 0;">
+            <span style="font-family:'Fraunces', serif; font-size:22px; color:var(--olive-deep); font-weight:300; line-height:1;">03</span>
+            <div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--olive-deep); text-transform:uppercase; margin-bottom:4px;">Fade's IG + stories layer</div>
+              <div style="font-size:13px; line-height:1.5; color:var(--ink);">Fade hosts Akiyama through Dubai — gym, dinner, fight night. SUNG1975 on screen throughout. Stories live 24 hours; the algorithmic boost runs for weeks.</div>
+            </div>
+          </div>
+        </div>
+        <div class="src" style="margin-top:14px;">Warm connection confirmed · activation calendar to be set in joint Dubai trip planning</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Closer -->
+  <div class="reveal" style="--d:560ms; margin-top:48px; padding:32px 36px; background:var(--ink); border:1px solid var(--accent); border-radius:10px; color:var(--paper); text-align:center;">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">The launch mechanic</div>
+    <div style="font-family:'Fraunces', serif; font-size:30px; line-height:1.15; font-weight:300; color:var(--paper);">One trip. Three social-first earned-media moments. <em style="color:var(--accent);">Zero paid spend.</em></div>
+    <p style="font-size:14px; line-height:1.6; color:#E8E0D2; max-width:72ch; margin:14px auto 0;">No competitor on Dubai's athleisure shelf can replicate this. Giving Movement, lululemon, Gymshark — none has a founder whose face triggers recognition from a Dubai radio host AND a Netflix audience AND a 2.86M-strong personal channel.</p>
   </div>
 </section>
 
