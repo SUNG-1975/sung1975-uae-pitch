@@ -603,6 +603,85 @@ footer{
 .fact-card .fc-note{font-size:12.5px; color:var(--ink-soft); line-height:1.55}
 @media (max-width:760px){.fact-grid{grid-template-columns:1fr}}
 
+/* ==================================================================
+   MOBILE RESPONSIVE OVERRIDES — 2026-05-26
+   V2 is mostly class-based (cleaner than V1) but the recent §5.3,
+   §5.4, §6.1 sections + a few headline tables still need tightening.
+   ================================================================== */
+@media (max-width:760px){
+  /* Section padding */
+  section.chapter{padding:6vh 5vw !important}
+  .part-band{margin:0 -16px !important; padding:8px 16px 1px !important}
+  .part-divider{margin:0 -16px !important}
+
+  /* Headline scaling */
+  section.chapter > h2{font-size:24px !important; line-height:1.15 !important}
+  section.chapter > h2 .num{font-size:18px !important; margin-right:8px !important}
+  .part-divider > span{font-size:10px !important; letter-spacing:0.16em !important}
+
+  /* Inline 3-column grids (Fade dual-image strip, etc.) → stack */
+  .product-strip[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr !important; row-gap:18px !important}
+  .product-strip[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important; row-gap:18px !important}
+
+  /* Tables (pricing, comp tables) scroll horizontally rather than break */
+  table.pricing, table.stakeholder, .scroll-x{display:block !important; overflow-x:auto !important; -webkit-overflow-scrolling:touch}
+  table.pricing th, table.pricing td, table.stakeholder th, table.stakeholder td{white-space:nowrap}
+
+  /* Cards tighten */
+  .card{padding:20px 18px !important; margin:14px 0 !important}
+  .callout{padding:18px 16px !important}
+
+  /* Cover / opening */
+  .cover-band{padding:32px 6vw !important}
+  .lockup-large{font-size:14px !important}
+
+  /* Sub-text body */
+  .sub{font-size:14.5px !important; line-height:1.55 !important}
+  .body p, .card p{font-size:14.5px !important; line-height:1.6 !important}
+
+  /* Capsule gallery */
+  .capsule-gallery{padding:18px 14px !important}
+  .capsule-gallery .cg-item{aspect-ratio:4/3 !important}
+
+  /* Billboard */
+  .billboard-band{padding:18px 14px !important}
+  .billboard-mock{aspect-ratio:16/9 !important}
+
+  /* Skincare image block */
+  .skincare .image-block{padding:24px !important}
+  .skincare .image-block .prod-tag strong{font-size:16px !important}
+
+  /* Footer-ish elements */
+  .contact{grid-template-columns:1fr !important; gap:14px !important}
+
+  /* Pillars 4-up at root → 2-col on mid, already handled at 760 in .pillars */
+  /* Pricing table cells wrap */
+  table.pricing td{font-size:12px !important; padding:8px 6px !important}
+  table.pricing th{font-size:11px !important; padding:8px 6px !important}
+}
+
+@media (max-width:480px){
+  /* Smallest phones */
+  section.chapter{padding:5vh 5vw !important}
+  section.chapter > h2{font-size:21px !important}
+  .card h3{font-size:16px !important}
+  .pillars{grid-template-columns:1fr !important}
+  .targets{grid-template-columns:1fr !important}
+
+  /* Inline image strips → single column */
+  .product-strip{grid-template-columns:1fr !important; row-gap:14px !important}
+  .product-strip .pcard{aspect-ratio:16/10 !important}
+  .product-strip[style*="grid-template-columns:repeat(3"] .pcard{aspect-ratio:16/10 !important}
+
+  /* Reduce big inline serif headlines */
+  [style*="font-size:42px"]{font-size:22px !important}
+  [style*="font-size: 42px"]{font-size:22px !important}
+  [style*="font-size:36px"]{font-size:21px !important}
+  [style*="font-size: 36px"]{font-size:21px !important}
+  [style*="font-size:30px"]{font-size:19px !important}
+  [style*="font-size: 30px"]{font-size:19px !important}
+}
+
 </style>
 </head>
 <body>

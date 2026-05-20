@@ -1140,6 +1140,142 @@
     justify-content: space-between;
     border-top: 1px solid var(--line);
   }
+
+  /* ==================================================================
+     MOBILE RESPONSIVE OVERRIDES — 2026-05-26
+     Covers tablet (≤980px), portrait phone (≤640px), small phone (≤420px).
+     Uses [style*=…] attribute selectors to defeat inline-style specificity.
+     ================================================================== */
+
+  @media (max-width: 980px) {
+    /* Section padding tightening */
+    section.deck { padding: 8vh 6vw !important; }
+    section.cover { padding: 6vh 6vw !important; }
+
+    /* Hero typography scales down */
+    .cover h1 { font-size: 64px !important; }
+    .section-h { font-size: 36px !important; line-height: 1.1 !important; }
+    .label { font-size: 11px !important; }
+
+    /* Stack any inline 3-, 4-, 5-column grids */
+    [style*="grid-template-columns:repeat(3"],
+    [style*="grid-template-columns: repeat(3"],
+    [style*="grid-template-columns:repeat(4"],
+    [style*="grid-template-columns: repeat(4"],
+    [style*="grid-template-columns:repeat(5"],
+    [style*="grid-template-columns: repeat(5"] {
+      grid-template-columns: 1fr 1fr !important;
+      row-gap: 28px !important;
+    }
+
+    /* Asymmetric inline grids → stack */
+    [style*="grid-template-columns:1.55fr 1fr"],
+    [style*="grid-template-columns:1.4fr 1fr 1.4fr"],
+    [style*="grid-template-columns:1.5fr 1fr"],
+    [style*="grid-template-columns:240px 1fr"],
+    [style*="grid-template-columns:360px 1fr"],
+    [style*="grid-template-columns:200px 1fr"],
+    [style*="grid-template-columns: 240px 1fr"],
+    [style*="grid-template-columns: 360px 1fr"] {
+      grid-template-columns: 1fr !important;
+      row-gap: 28px !important;
+    }
+
+    /* Magazine hero grid: kill grid-row spans, kill fixed heights */
+    [style*="grid-row:span 2"],
+    [style*="grid-row: span 2"] { grid-row: auto !important; }
+    [style*="height:520px"],
+    [style*="height: 520px"] { height: auto !important; }
+    [style*="grid-template-rows:1fr 1fr"],
+    [style*="grid-template-rows: 1fr 1fr"] { grid-template-rows: auto !important; }
+
+    /* Card padding tightening on tablet */
+    [style*="padding:48px"] { padding: 32px 24px !important; }
+    [style*="padding: 48px"] { padding: 32px 24px !important; }
+
+    /* MMA timeline & walkthrough connector lines — hide on tablet/mobile */
+    [style*="position:absolute; top:148px"],
+    [style*="position:absolute; top:36px;"] { display: none !important; }
+  }
+
+  @media (max-width: 640px) {
+    /* All multi-column inline grids → single column */
+    [style*="grid-template-columns:repeat(3"],
+    [style*="grid-template-columns: repeat(3"],
+    [style*="grid-template-columns:repeat(4"],
+    [style*="grid-template-columns: repeat(4"],
+    [style*="grid-template-columns:repeat(5"],
+    [style*="grid-template-columns: repeat(5"],
+    [style*="grid-template-columns:1fr 1fr"],
+    [style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Phone-tight section padding */
+    section.deck { padding: 6vh 5vw !important; }
+    section.cover { padding: 5vh 5vw !important; min-height: 78vh !important; }
+    section.cover { grid-template-columns: 1fr !important; }
+
+    /* Headline scaling */
+    .cover h1 { font-size: 44px !important; line-height: 1.05 !important; }
+    .section-h { font-size: 26px !important; }
+    .body { font-size: 14.5px !important; line-height: 1.6 !important; }
+
+    /* Reduce monstrous inline headline sizes */
+    [style*="font-size:42px"] { font-size: 26px !important; }
+    [style*="font-size: 42px"] { font-size: 26px !important; }
+    [style*="font-size:36px"] { font-size: 24px !important; }
+    [style*="font-size: 36px"] { font-size: 24px !important; }
+    [style*="font-size:30px"] { font-size: 22px !important; }
+    [style*="font-size: 30px"] { font-size: 22px !important; }
+    [style*="font-size:28px"] { font-size: 22px !important; }
+    [style*="font-size: 28px"] { font-size: 22px !important; }
+
+    /* Card padding even tighter on phone */
+    [style*="padding:36px"] { padding: 22px 18px !important; }
+    [style*="padding: 36px"] { padding: 22px 18px !important; }
+    [style*="padding:48px 36px"] { padding: 24px 18px !important; }
+    [style*="padding:32px 36px"] { padding: 22px 18px !important; }
+    [style*="padding:24px 26px"],
+    [style*="padding:22px 24px"] { padding: 18px 16px !important; }
+
+    /* Image aspect-ratio: flatten tall portraits so they're not absurd */
+    [style*="aspect-ratio:3/4"] { aspect-ratio: 3/2 !important; }
+
+    /* Royal-spotlight nested portrait pair: stay 2-col but smaller */
+    [style*="width:150px; height:150px"] { width: 110px !important; height: 110px !important; }
+    [style*="width:180px; height:180px"] { width: 140px !important; height: 140px !important; }
+
+    /* Hide timeline connector bars on phone */
+    [style*="position:absolute"][style*="top:36px"],
+    [style*="position:absolute"][style*="top:148px"] { display: none !important; }
+
+    /* Stat-row 4-up → 2-col */
+    .stat-row { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* Pull quotes scale down */
+    .pull, [style*="font-family:'Fraunces'"][style*="font-size:24px"] {
+      font-size: 19px !important;
+      line-height: 1.4 !important;
+    }
+
+    /* Brand strip already has 560px rule — good */
+
+    /* Footer stacks */
+    footer.foot { flex-direction: column; gap: 12px; text-align: center; padding: 28px 6vw !important; }
+  }
+
+  @media (max-width: 420px) {
+    .cover h1 { font-size: 38px !important; }
+    .section-h { font-size: 22px !important; }
+    section.deck { padding: 5vh 4vw !important; }
+
+    [style*="font-size:42px"] { font-size: 22px !important; }
+    [style*="font-size: 42px"] { font-size: 22px !important; }
+
+    /* Royal portraits even smaller */
+    [style*="width:150px; height:150px"] { width: 96px !important; height: 96px !important; }
+  }
 </style>
 </head>
 <body>
