@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Akiyama × Dubai · §02 Hero Composite Prompt · SUNG1975</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F0EBE2;
+    --paper-2: #E6DFD2;
+    --ink: #1A1815;
+    --ink-soft: #3A352E;
+    --line: #C9C2B5;
+    --olive: #5C6440;
+    --olive-deep: #3F4528;
+    --tan: #B89A7A;
+    --muted: #7A7468;
+    --ok: #4A6B3A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 56px 32px 80px; }
+  .lockup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  h1 em { font-style: italic; color: var(--olive-deep); font-weight: 300; }
+  header.page { border-bottom: 1px solid var(--ink); padding-bottom: 28px; margin-bottom: 32px; }
+  header.page p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 76ch;
+    margin-top: 8px;
+  }
+
+  .section { margin-bottom: 48px; }
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    margin-bottom: 8px;
+    letter-spacing: -0.015em;
+  }
+  .section .lead {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    max-width: 76ch;
+  }
+
+  .how {
+    padding: 18px 22px;
+    background: rgba(184,154,122,0.10);
+    border-left: 2px solid var(--tan);
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+  .how strong { color: var(--ink); }
+  .how ol { padding-left: 22px; margin-top: 6px; }
+  .how li { margin: 4px 0; }
+
+  .tools-bar {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .tool-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .tool-link:hover { background: var(--ink); color: var(--paper); }
+
+  .copy-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .copy-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+  .copy-btn:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
+  .copy-btn.copied { background: var(--ok); border-color: var(--ok); }
+  .copy-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  pre.text {
+    background: #FAF6EE;
+    border: 1px solid var(--line);
+    padding: 24px 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 620px;
+    overflow-y: auto;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .hero-card {
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-card.recommended { box-shadow: 0 0 0 2px var(--olive); }
+  .hero-card .badge {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .hero-card.recommended .badge { background: var(--olive-deep); }
+  .hero-card .name {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 8px 10px;
+    background: rgba(26,24,21,0.85);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page">
+    <div class="lockup">SUNG —1975— · UAE PITCH · §02 HERO RENDER</div>
+    <h1>Akiyama × Dubai — <em>the §02 thesis image.</em></h1>
+    <p>One paste-ready Gemini prompt. Generates the deck's strongest single image: Akiyama in foreground, Dubai skyline behind him, golden hour, editorial composite. Replaces the §02 left-pane portrait once you save the output to <code>assets/akiyama-heroes/akiyama-dubai-composite.jpg</code> — I'll wire it into the deck the moment it lands.</p>
+
+    <div class="how">
+      <strong>How to use</strong>
+      <ol>
+        <li>Open <a href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini</a> (Imagen 4 or higher for best skin / city fidelity).</li>
+        <li>Attach <strong>one Akiyama portrait</strong> — see the picker below. <strong>260509_pc_main1.jpg</strong> is recommended (cleanest isolation, urban backdrop, grey SUNG1975 varsity tee already on-brand).</li>
+        <li>Click <em>Copy prompt</em>, paste into Gemini.</li>
+        <li>Generate. Run 3–5 variants — the prompt includes specific variations at the bottom.</li>
+        <li>Save the best to <code>/sung1975-uae-pitch/assets/akiyama-heroes/akiyama-dubai-composite.jpg</code></li>
+      </ol>
+    </div>
+
+    <div class="tools-bar">
+      <span class="copy-hint">Open a tool →</span>
+      <a class="tool-link" href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini</a>
+      <a class="tool-link" href="https://sora.chatgpt.com/" target="_blank" rel="noopener">Sora</a>
+      <a class="tool-link" href="https://labs.google/fx/tools/image-fx" target="_blank" rel="noopener">ImageFX</a>
+      <a class="tool-link" href="https://www.midjourney.com/" target="_blank" rel="noopener">Midjourney</a>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>Reference photo — <em>which Akiyama to attach.</em></h2>
+    <p class="lead">Recommended: <strong>main1</strong> (grey varsity tee, urban backdrop, clean editorial isolation). Files live in <code>/assets/akiyama-heroes/</code>.</p>
+    <div class="hero-grid">
+      <div class="hero-card recommended" style="background-image: url('assets/akiyama-heroes/260509_pc_main1.jpg');">
+        <span class="badge">Recommended</span>
+        <div class="name">260509_pc_main1.jpg</div>
+      </div>
+      <div class="hero-card" style="background-image: url('assets/akiyama-heroes/260509_pc_main2.jpg');"><div class="name">260509_pc_main2</div></div>
+      <div class="hero-card" style="background-image: url('assets/akiyama-heroes/260509_pc_main3_2.jpg');"><div class="name">260509_pc_main3_2</div></div>
+      <div class="hero-card" style="background-image: url('assets/akiyama-heroes/260509_pc_main4.jpg');"><div class="name">260509_pc_main4</div></div>
+      <div class="hero-card" style="background-image: url('assets/akiyama-heroes/260516_pc_main1.jpg');"><div class="name">260516_pc_main1</div></div>
+      <div class="hero-card" style="background-image: url('assets/akiyama-heroes/260516_pc_main2_2.jpg');"><div class="name">260516_pc_main2_2</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>The prompt — <em>paste into Gemini.</em></h2>
+    <div class="copy-row">
+      <button class="copy-btn" data-target="theprompt">Copy prompt</button>
+      <span class="copy-hint">Attach 260509_pc_main1.jpg first, then paste</span>
+    </div>
+    <pre class="text" id="theprompt">I am creating a hero portrait for a pitch deck. The brand is SUNG1975 — the Korean-Japanese athleisure label of MMA legend Choo Sung-hoon (秋山成勲 / Yoshihiro Akiyama), the silver-fox star of Netflix's *Physical: 100*. The attached image is him in his own SS 2026 campaign, wearing a grey SUNG1975 varsity tee against an urban backdrop.
+
+Generate a photorealistic editorial composite portrait of the SAME man, wearing the SAME (or visually identical) grey SUNG1975 varsity tee, standing in the foreground with the Dubai skyline behind him at golden hour.
+
+COMPOSITION
+- Akiyama: 3/4 portrait, chest-up, centred horizontally, occupying the lower 60% of the frame
+- His face and expression: keep the calm, intense look from the reference photo. Do not soften him into a smile.
+- Background: Dubai skyline at golden hour. Burj Khalifa clearly visible off-centre (left or right of his head, never directly behind it). Marina-area towers in middle distance, clean blue-to-gold sky gradient.
+- Negative space: deliberate, around him — the skyline should breathe, not crowd the subject
+- Aspect: generate both 4:5 portrait AND 16:9 landscape if the tool supports it; otherwise default to 4:5
+
+LIGHTING
+- Time of day: ~17:30 Dubai, golden hour
+- Direction: warm key light from camera-left, gentle fill from the sky
+- Slight atmospheric haze in the distant skyline (Dubai dust at sunset)
+- His face cleanly lit; skin tone natural, no over-tanning or AI smoothing
+
+STYLE
+- Editorial campaign photography quality — reference points: Vuori, Lululemon, Brunello Cucinelli sportswear campaign aesthetic
+- Brand colour palette feel: cream / olive / warm-charcoal · the grade should feel warm but restrained, never saturated
+- Photorealistic, no AI-art surrealism, no over-rendered skin
+- No on-screen text, no SUNG1975 wordmark added, no brand graphics inserted
+
+FACTUAL & CULTURAL
+- The skyline must be unambiguously Dubai — Burj Khalifa silhouette is the anchor
+- No religious imagery in frame (no mosques, no crescents)
+- No other people in frame
+- No vehicles, no distracting foreground objects
+- No watermark, no border
+
+OUTPUT
+- High resolution, suitable for use as a full-bleed deck hero image
+- Sharp focus on Akiyama; mild atmospheric depth-of-field on the skyline
+- Clean, deck-grade, no visible AI artefacts (no extra fingers, no warped buildings, no melted neon)
+
+VARIANTS TO RUN (do each as a separate generation, then I'll pick):
+1. Default — Akiyama facing camera, calm intense look (the hero shot)
+2. Quarter-turn — Akiyama looking out toward the skyline (3/4 back view, contemplative)
+3. Tighter crop, more atmospheric — Akiyama centre, slight dust haze, more cinematic mood
+4. Lifestyle energy — same composition but with a half-smile and slightly more open posture
+5. Late-evening grade — same shot, blue-hour instead of golden hour, cooler palette</pre>
+  </section>
+
+</div>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+  const TOAST = document.getElementById('toast');
+  function toast(msg) {
+    TOAST.textContent = msg;
+    TOAST.classList.add('show');
+    setTimeout(() => TOAST.classList.remove('show'), 1600);
+  }
+
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (!target) return;
+      const text = target.textContent;
+      const original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+      } catch (e) {
+        toast('Copy blocked — select and copy manually');
+      }
+    });
+  });
+</script>
+</body>
+</html>
