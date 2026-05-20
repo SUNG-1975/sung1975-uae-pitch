@@ -978,38 +978,210 @@
     .ws-box { min-width: 130px; padding: 9px 12px; }
   }
 
-  /* BRAND WORDMARKS — §02 thesis strip */
-  .bmark {
+  /* === §02 THESIS — cinematic split-screen === */
+  section.deck.thesis-v2 {
+    padding: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      "image content"
+      "strip strip";
+  }
+  @media (max-width: 980px) {
+    section.deck.thesis-v2 {
+      grid-template-columns: 1fr;
+      grid-template-areas: "image" "content" "strip";
+    }
+  }
+
+  .thesis-pane-image {
+    grid-area: image;
+    background-size: cover;
+    background-position: center 18%;
+    background-color: #1A1815;
+    min-height: 60vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .thesis-pane-image::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(26,24,21,0.45) 0%, rgba(26,24,21,0) 25%, rgba(26,24,21,0) 70%, rgba(26,24,21,0.55) 100%);
+    pointer-events: none;
+  }
+  .tpi-label {
+    position: absolute; top: 32px; left: 32px;
+    z-index: 2; color: rgba(240,235,226,0.85);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .tpi-label::before {
+    content: ''; width: 28px; height: 1px;
+    background: rgba(240,235,226,0.55);
+  }
+  .tpi-caption {
+    position: absolute; bottom: 28px; left: 32px; right: 32px;
+    z-index: 2;
+    color: #F0EBE2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .tpi-caption .muted { color: rgba(240,235,226,0.55); }
+
+  .thesis-pane-content {
+    grid-area: content;
+    padding: 9vh 5.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg);
+  }
+  .tpc-inner { max-width: 580px; }
+  .tpc-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 4.4vw, 72px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    font-variation-settings: 'opsz' 144;
+    margin: 0 0 36px;
+  }
+  .tpc-headline em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--olive-deep);
+  }
+  .tpc-body p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .tpc-body p strong { color: var(--ink); font-weight: 600; }
+  .tpc-pull {
+    margin-top: 28px;
+    padding-left: 24px;
+    border-left: 2px solid var(--olive);
+    font-family: 'Fraunces', serif;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .tpc-pull em { font-style: italic; font-weight: 300; color: var(--olive-deep); }
+
+  /* Compact growth chart */
+  .growth-mini {
+    margin-top: 28px;
+    padding: 16px 18px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  .gm-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .gm-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .gm-cagr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--olive-deep);
+    letter-spacing: 0.04em;
+  }
+  .gm-chart-wrap {
+    height: 96px;
+    position: relative;
+  }
+  .gm-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .gm-axis b { color: var(--ink); font-weight: 600; }
+
+  /* Brand strip band */
+  .brand-strip-band {
+    grid-area: strip;
+    padding: 26px 6vw 30px;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+  }
+  .bsb-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
     text-align: center;
-    padding: 16px 14px;
+    margin-bottom: 18px;
+  }
+  .bsb-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    align-items: stretch;
+    border: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .logo-slot {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 14px;
     border-right: 1px solid var(--line);
     color: var(--muted);
-    font-size: 17px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    transition: color 0.2s;
+    position: relative;
+    transition: background 0.2s, color 0.2s;
   }
-  .bmark:nth-child(1) { font-weight: 800; letter-spacing: -0.01em; }    /* alo */
-  .bmark:nth-child(2) { font-weight: 400; letter-spacing: 0.01em; }     /* lululemon */
-  .bmark:nth-child(3) { font-weight: 500; letter-spacing: 0.32em; }     /* VUORI */
-  .bmark:nth-child(5) { font-weight: 800; letter-spacing: 0.04em; }     /* GYMSHARK */
-  .bmark:nth-child(6) { font-weight: 300; font-size: 13.5px; line-height: 1.15; letter-spacing: 0.04em; }
-  .bmark:last-child { border-right: none; }
-  .bmark.sung {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 500;
-    color: var(--ink);
-    font-size: 13px;
-    letter-spacing: 0.22em;
+  .logo-slot:last-child { border-right: none; }
+  .logo-slot img {
+    max-height: 28px;
+    max-width: 100%;
+    object-fit: contain;
+    opacity: 0.78;
+    filter: grayscale(100%);
+  }
+  .logo-slot .logo-text {
+    text-align: center;
+    line-height: 1.15;
+  }
+  .logo-slot.sung {
     background: var(--ink);
     color: var(--paper);
-    padding: 22px 12px;
   }
-  @media (max-width: 760px) {
-    .bmark { font-size: 14px; padding: 12px 10px; }
-    .bmark.sung { font-size: 11px; padding: 16px 10px; }
+  .logo-slot.sung .logo-text { color: var(--paper); }
+  @media (max-width: 980px) {
+    .bsb-grid { grid-template-columns: repeat(3, 1fr); }
+    .logo-slot { height: 56px; }
+    .logo-slot:nth-child(3n) { border-right: none; }
+    .logo-slot { border-bottom: 1px solid var(--line); }
+    .logo-slot:nth-last-child(-n+3) { border-bottom: none; }
+  }
+  @media (max-width: 560px) {
+    .bsb-grid { grid-template-columns: repeat(2, 1fr); }
+    .logo-slot:nth-child(2n) { border-right: none; }
+    .logo-slot:not(:nth-last-child(-n+2)) { border-bottom: 1px solid var(--line); }
   }
 
   /* footer */
@@ -1054,54 +1226,79 @@
   <div class="img"></div>
 </section>
 
-<!-- 02 THESIS -->
-<section class="deck" data-n="02">
-  <div class="label reveal">02 — Thesis</div>
-  <div class="thesis-grid">
-    <div>
-      <h2 class="section-h reveal">The right brand. The right city. The <em>right window.</em></h2>
-      <div class="reveal" style="--d:300ms; margin-top:48px; aspect-ratio:5/6; background-image:url('../assets/akiyama-heroes/260516_pc_main1.jpg'); background-size:cover; background-position:center; border-radius:0; position:relative; overflow:hidden;">
-        <div style="position:absolute; bottom:0; left:0; right:0; padding:18px 22px; background:linear-gradient(180deg, rgba(26,24,21,0) 0%, rgba(26,24,21,0.82) 100%); color:#F0EBE2; font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:flex-end;">
-          <span>Akiyama · SUNG —1975—</span>
-          <span style="color:rgba(240,235,226,0.6)">SS 2026 campaign</span>
-        </div>
-      </div>
+<!-- 02 THESIS — cinematic split -->
+<section class="deck thesis-v2" data-n="02">
+  <div class="thesis-pane-image" style="background-image:url('../assets/akiyama-heroes/260516_pc_main1.jpg');">
+    <div class="tpi-label">02 — Thesis</div>
+    <div class="tpi-caption">
+      <span>Akiyama · SUNG —1975—</span>
+      <span class="muted">SS 2026 campaign</span>
     </div>
-    <div>
-      <p class="body reveal" style="--d:120ms">
-        Dubai is the second athleisure capital of the world. ALO, Lululemon, Vuori, Gymshark and Giving Movement have all opened flagships within 36 months — into a UAE market valued at <strong>$13.26B (2024)</strong>, compounding at <strong>9.71% a year</strong> toward 2033. What the city is short on: premium men's brands with a face you'd recognise.
-      </p>
-      <p class="body reveal" style="--d:240ms">
-        SUNG1975 fits that shelf. Same design language. Same price tier ($75–$156). And a founder whose personal channels reach <strong>2.86 million</strong> people across Instagram and YouTube. What it does not yet have is meaningful penetration outside Korea and Japan.
-      </p>
-      <p class="body reveal" style="--d:360ms">
-        We are proposing to close that gap — building the UAE &amp; GCC arm of SUNG1975 under exclusive licence, fully funded and operated by us. No cash investment from your side. Asymmetric risk by design: you grant brand permission, we carry everything else.
-      </p>
-      <div class="pull reveal" style="--d:520ms">
+  </div>
+
+  <div class="thesis-pane-content">
+    <div class="tpc-inner">
+      <h2 class="tpc-headline reveal">The right brand.<br/>The right city.<br/>The <em>right window.</em></h2>
+
+      <div class="tpc-body">
+        <p class="reveal" style="--d:120ms">
+          Dubai is the second athleisure capital of the world. ALO, Lululemon, Vuori, Gymshark and Giving Movement have all opened flagships within 36 months — into a UAE market valued at <strong>$13.26B (2024)</strong>, compounding at <strong>9.71% a year</strong>. What the city is short on: premium men's brands with a face you'd recognise.
+        </p>
+        <p class="reveal" style="--d:240ms">
+          SUNG1975 fits that shelf. Same design language. Same price tier ($75–$156). A founder whose personal channels reach <strong>2.86 million</strong> people across Instagram and YouTube. What it lacks is meaningful penetration outside Korea and Japan.
+        </p>
+        <p class="reveal" style="--d:360ms">
+          We are proposing to close that gap — building the UAE &amp; GCC arm of SUNG1975 under exclusive licence, fully funded and operated by us. No cash investment from your side. Asymmetric risk by design.
+        </p>
+      </div>
+
+      <div class="tpc-pull reveal" style="--d:480ms">
         Dubai is the launchpad — <em>not the destination.</em>
       </div>
 
-      <div class="reveal" style="--d:640ms; margin-top:32px; background:var(--paper-2); border:1px solid var(--line); padding:22px 26px;">
-        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; color:var(--muted); text-transform:uppercase; margin-bottom:14px;">UAE athleisure market · USD billions</div>
-        <canvas id="chartGrowth" height="120"></canvas>
-        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:14px; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em;">
-          <span><strong style="color:var(--ink); font-weight:600;">2024</strong> · $13.26B</span>
-          <span style="color:var(--olive-deep); font-weight:600; font-size:13px;">+9.71% CAGR</span>
-          <span><strong style="color:var(--ink); font-weight:600;">2033</strong> · ~$30.5B</span>
+      <div class="growth-mini reveal" style="--d:580ms">
+        <div class="gm-head">
+          <span class="gm-label">UAE athleisure · USD billions</span>
+          <span class="gm-cagr">+9.71% CAGR</span>
+        </div>
+        <div class="gm-chart-wrap">
+          <canvas id="chartGrowth"></canvas>
+        </div>
+        <div class="gm-axis">
+          <span><b>2024</b> · $13.26B</span>
+          <span><b>2030</b> · $23.12B</span>
+          <span><b>2033</b> · ~$30.5B</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="reveal" style="--d:800ms; margin-top:72px; padding-top:32px; border-top:1px solid var(--line);">
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; color:var(--muted); text-transform:uppercase; margin-bottom:24px; text-align:center;">Brands SUNG1975 sits next to in Dubai</div>
-    <div style="display:grid; grid-template-columns:repeat(6, 1fr); gap:0; align-items:center;">
-      <div class="bmark">alo</div>
-      <div class="bmark">lululemon</div>
-      <div class="bmark">VUORI</div>
-      <div class="bmark sung">SUNG &mdash;1975&mdash;</div>
-      <div class="bmark">GYMSHARK</div>
-      <div class="bmark gm">giving<br/>movement</div>
+  <div class="brand-strip-band reveal" style="--d:680ms">
+    <div class="bsb-label">Brands SUNG1975 sits next to in Dubai · same shelf, premium tier</div>
+    <div class="bsb-grid">
+      <div class="logo-slot" data-brand="alo">
+        <img src="assets/logos/alo.svg" alt="ALO" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="font-family:'Inter'; font-weight:800; letter-spacing:-0.02em; font-size:22px;">alo</span>
+      </div>
+      <div class="logo-slot" data-brand="lululemon">
+        <img src="assets/logos/lululemon.svg" alt="lululemon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="font-family:'Inter'; font-weight:400; letter-spacing:0.01em; font-size:18px;">lululemon</span>
+      </div>
+      <div class="logo-slot" data-brand="vuori">
+        <img src="assets/logos/vuori.svg" alt="VUORI" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="font-family:'Inter'; font-weight:500; letter-spacing:0.32em; font-size:16px;">VUORI</span>
+      </div>
+      <div class="logo-slot sung">
+        <span class="logo-text" style="font-family:'JetBrains Mono'; font-weight:500; letter-spacing:0.22em; font-size:14px; color:var(--paper);">SUNG &mdash;1975&mdash;</span>
+      </div>
+      <div class="logo-slot" data-brand="gymshark">
+        <img src="assets/logos/gymshark.svg" alt="GYMSHARK" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="font-family:'Inter'; font-weight:800; letter-spacing:0.04em; font-size:17px;">GYMSHARK</span>
+      </div>
+      <div class="logo-slot" data-brand="giving-movement">
+        <img src="assets/logos/giving-movement.svg" alt="giving movement" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="font-family:'Inter'; font-weight:300; letter-spacing:0.04em; font-size:13px; line-height:1.15;">giving<br/>movement</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1689,29 +1886,57 @@
       datasets: [{
         data: [13.26, 14.55, 15.96, 17.51, 19.21, 21.07, 23.12, 25.36, 27.82, 30.52],
         borderColor: '#5C6440',
-        backgroundColor: 'rgba(92,100,64,0.14)',
+        backgroundColor: 'rgba(92,100,64,0.15)',
         fill: true,
-        tension: 0.36,
-        pointRadius: 0,
-        pointHoverRadius: 5,
+        tension: 0.35,
+        pointRadius: 2.5,
+        pointHoverRadius: 6,
         pointBackgroundColor: '#3F4528',
-        borderWidth: 2,
+        pointBorderColor: '#FAF6EE',
+        pointBorderWidth: 1,
+        borderWidth: 1.8,
       }]
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
         tooltip: {
           callbacks: {
             title: ctx => ctx[0].label,
             label: ctx => '$' + ctx.parsed.y.toFixed(2) + 'B'
-          }
+          },
+          backgroundColor: '#1A1815',
+          titleFont: { size: 10, family: 'JetBrains Mono', weight: '600' },
+          titleColor: '#B89A7A',
+          bodyFont: { size: 13, family: 'JetBrains Mono', weight: '600' },
+          bodyColor: '#F0EBE2',
+          padding: 10,
+          displayColors: false,
         }
       },
       scales: {
-        x: { display: false },
-        y: { display: false, beginAtZero: false }
+        x: {
+          display: true,
+          ticks: {
+            font: { size: 9, family: 'JetBrains Mono' },
+            color: '#7A7468',
+            maxTicksLimit: 10,
+            autoSkip: false,
+            callback: function(v, i) {
+              const label = this.getLabelForValue(v);
+              return (i === 0 || i === 4 || i === 9) ? label : '';
+            }
+          },
+          grid: { display: false },
+          border: { color: 'var(--line)' }
+        },
+        y: {
+          display: false,
+          beginAtZero: false,
+          suggestedMin: 10,
+        }
       }
     }
   });
