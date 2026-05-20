@@ -183,18 +183,28 @@
     display: flex; flex-direction: column; justify-content: space-between;
   }
   .cover .img {
-    background-image: url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1400&q=80&auto=format&fit=crop');
+    background-image: url('../assets/akiyama-heroes/260509_pc_main1.jpg');
     background-size: cover;
-    background-position: center;
-    background-color: #2a2722;
-    filter: grayscale(0.4) contrast(1.05);
+    background-position: center 28%;
+    background-color: #1a1815;
     min-height: 60vh;
     position: relative;
   }
   .cover .img::after {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(120deg, rgba(26,24,21,0.35), rgba(26,24,21,0) 40%);
+    background: linear-gradient(90deg, rgba(26,24,21,0.55), rgba(26,24,21,0.05) 35%, rgba(26,24,21,0) 70%);
+  }
+  .cover .img::before {
+    content: 'SS 2026 · SUNG —1975—';
+    position: absolute;
+    bottom: 32px; right: 36px;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: rgba(240,235,226,0.6);
+    text-transform: uppercase;
   }
   .lockup {
     font-family: 'JetBrains Mono', monospace;
@@ -1218,8 +1228,8 @@
     </div>
     <div class="meta">
       <div>Prepared for<strong>Choo Sung-hoon · 秋山成勲</strong></div>
-      <div>Prepared by<strong>[Your Name] + Akito</strong></div>
-      <div>Date<strong>May 2026</strong></div>
+      <div>Prepared by<strong>Balraj Singh Kalra<br/>Yamada Akito (Portgate)</strong></div>
+      <div>Meeting<strong>60-minute video call · May 2026</strong></div>
       <div>Status<strong>Confidential · v1</strong></div>
     </div>
   </div>
