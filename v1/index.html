@@ -978,6 +978,40 @@
     .ws-box { min-width: 130px; padding: 9px 12px; }
   }
 
+  /* BRAND WORDMARKS — §02 thesis strip */
+  .bmark {
+    text-align: center;
+    padding: 16px 14px;
+    border-right: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .bmark:nth-child(1) { font-weight: 800; letter-spacing: -0.01em; }    /* alo */
+  .bmark:nth-child(2) { font-weight: 400; letter-spacing: 0.01em; }     /* lululemon */
+  .bmark:nth-child(3) { font-weight: 500; letter-spacing: 0.32em; }     /* VUORI */
+  .bmark:nth-child(5) { font-weight: 800; letter-spacing: 0.04em; }     /* GYMSHARK */
+  .bmark:nth-child(6) { font-weight: 300; font-size: 13.5px; line-height: 1.15; letter-spacing: 0.04em; }
+  .bmark:last-child { border-right: none; }
+  .bmark.sung {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 22px 12px;
+  }
+  @media (max-width: 760px) {
+    .bmark { font-size: 14px; padding: 12px 10px; }
+    .bmark.sung { font-size: 11px; padding: 16px 10px; }
+  }
+
   /* footer */
   footer.foot {
     background: var(--paper-2);
@@ -1026,6 +1060,12 @@
   <div class="thesis-grid">
     <div>
       <h2 class="section-h reveal">The right brand. The right city. The <em>right window.</em></h2>
+      <div class="reveal" style="--d:300ms; margin-top:48px; aspect-ratio:5/6; background-image:url('../assets/akiyama-heroes/260516_pc_main1.jpg'); background-size:cover; background-position:center; border-radius:0; position:relative; overflow:hidden;">
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:18px 22px; background:linear-gradient(180deg, rgba(26,24,21,0) 0%, rgba(26,24,21,0.82) 100%); color:#F0EBE2; font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:flex-end;">
+          <span>Akiyama · SUNG —1975—</span>
+          <span style="color:rgba(240,235,226,0.6)">SS 2026 campaign</span>
+        </div>
+      </div>
     </div>
     <div>
       <p class="body reveal" style="--d:120ms">
@@ -1040,6 +1080,28 @@
       <div class="pull reveal" style="--d:520ms">
         Dubai is the launchpad — <em>not the destination.</em>
       </div>
+
+      <div class="reveal" style="--d:640ms; margin-top:32px; background:var(--paper-2); border:1px solid var(--line); padding:22px 26px;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; color:var(--muted); text-transform:uppercase; margin-bottom:14px;">UAE athleisure market · USD billions</div>
+        <canvas id="chartGrowth" height="120"></canvas>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:14px; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em;">
+          <span><strong style="color:var(--ink); font-weight:600;">2024</strong> · $13.26B</span>
+          <span style="color:var(--olive-deep); font-weight:600; font-size:13px;">+9.71% CAGR</span>
+          <span><strong style="color:var(--ink); font-weight:600;">2033</strong> · ~$30.5B</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="--d:800ms; margin-top:72px; padding-top:32px; border-top:1px solid var(--line);">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; color:var(--muted); text-transform:uppercase; margin-bottom:24px; text-align:center;">Brands SUNG1975 sits next to in Dubai</div>
+    <div style="display:grid; grid-template-columns:repeat(6, 1fr); gap:0; align-items:center;">
+      <div class="bmark">alo</div>
+      <div class="bmark">lululemon</div>
+      <div class="bmark">VUORI</div>
+      <div class="bmark sung">SUNG &mdash;1975&mdash;</div>
+      <div class="bmark">GYMSHARK</div>
+      <div class="bmark gm">giving<br/>movement</div>
     </div>
   </div>
 </section>
@@ -1618,6 +1680,41 @@
 
   // Dubai store footprint chart
   // chartDubai removed — replaced with verified partner-pattern table
+
+  // §02 — UAE athleisure market growth, 2024 → 2033 at 9.71% CAGR
+  new Chart(document.getElementById('chartGrowth'), {
+    type: 'line',
+    data: {
+      labels: ['2024','2025','2026','2027','2028','2029','2030','2031','2032','2033'],
+      datasets: [{
+        data: [13.26, 14.55, 15.96, 17.51, 19.21, 21.07, 23.12, 25.36, 27.82, 30.52],
+        borderColor: '#5C6440',
+        backgroundColor: 'rgba(92,100,64,0.14)',
+        fill: true,
+        tension: 0.36,
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        pointBackgroundColor: '#3F4528',
+        borderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: ctx => ctx[0].label,
+            label: ctx => '$' + ctx.parsed.y.toFixed(2) + 'B'
+          }
+        }
+      },
+      scales: {
+        x: { display: false },
+        y: { display: false, beginAtZero: false }
+      }
+    }
+  });
 
   // Founder reach vs brand reach — the 38× gap
   new Chart(document.getElementById('chartGeo'), {
