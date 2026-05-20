@@ -1889,8 +1889,9 @@
   </div>
   <div class="chart-wrap">
     <div class="chart-card reveal" style="--d:160ms">
-      <div class="ttl">Hoodie retail comparison — Dubai shelf</div>
-      <canvas id="chartHoodie" height="180"></canvas>
+      <div class="ttl">Tee retail comparison — Dubai shelf</div>
+      <canvas id="chartTee" height="180"></canvas>
+      <div class="src" style="margin-top:14px;">Tees are Dubai's year-round category. Hoodies sell Dec–Feb only — kept in the SKU mix as a winter add-on, not the headline number.</div>
     </div>
   </div>
 </section>
@@ -2482,14 +2483,14 @@
 
   // chartGeo removed — replaced with numbers display in §04
 
-  // Hoodie comparison chart
-  new Chart(document.getElementById('chartHoodie'), {
+  // Tee comparison chart — Dubai's year-round category (hoodies are Dec–Feb only)
+  new Chart(document.getElementById('chartTee'), {
     type: 'bar',
     data: {
-      labels: ['Gymshark', 'Vuori', 'Lululemon', 'ALO', 'SUNG1975', 'Giving Movement'],
+      labels: ['Gymshark', 'Lululemon', 'Giving Movement', 'Vuori', 'SUNG1975', 'ALO'],
       datasets: [{
-        label: 'Hoodie retail · USD',
-        data: [70, 98, 128, 138, 156, 145],
+        label: 'Tee retail · USD',
+        data: [53, 73, 74, 75, 75, 80],
         backgroundColor: ['#C9C2B5','#C9C2B5','#C9C2B5','#C9C2B5','#1A1815','#C9C2B5'],
       }]
     },
