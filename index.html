@@ -717,6 +717,35 @@ html[lang="jp"] .lang-review-badge, html[lang="kr"] .lang-review-badge{ display:
   [style*="font-size: 36px"]{font-size:21px !important}
   [style*="font-size:30px"]{font-size:19px !important}
   [style*="font-size: 30px"]{font-size:19px !important}
+  [style*="font-size:50px"]{font-size:32px !important}
+  [style*="font-size:58px"]{font-size:34px !important}
+  [style*="font-size:38px"]{font-size:24px !important}
+
+  /* §5.0 + §5.5 new grids — stack on phones */
+  [style*="grid-template-columns:repeat(4, 1fr); gap:14px"],
+  [style*="grid-template-columns:repeat(4, 1fr); gap:18px"]{
+    grid-template-columns: 1fr 1fr !important;
+  }
+  [style*="grid-template-columns:1fr 1fr; gap:16px"],
+  [style*="grid-template-columns:1fr 1fr; gap:20px"]{
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:1fr 1fr 1fr; gap:14px"],
+  [style*="grid-template-columns:1fr 1fr 1fr; gap:18px"]{
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:repeat(3,1fr); gap:14px; height:200px"]{
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+  [style*="grid-template-columns:repeat(3,1fr); gap:14px; height:200px"] > div{
+    height: 180px !important;
+  }
+  /* MMA hero shorter */
+  [style*="height:380px"]{ height: 260px !important; }
+  /* Dream card heights */
+  [style*="height:340px"]{ height: 280px !important; }
+  [style*="height:320px"]{ height: 270px !important; }
 }
 
 </style>
@@ -813,8 +842,12 @@ html[lang="jp"] .lang-review-badge, html[lang="kr"] .lang-review-badge{ display:
         <span class="toc-label">MMA × Dubai</span>
       </button>
       <div class="toc-subs">
+        <a href="#sec-5-0"><span class="sub-num">5.0</span>The category UAE built</a>
         <a href="#sec-5-1"><span class="sub-num">5.1</span>UAE fight-calendar density</a>
         <a href="#sec-5-2"><span class="sub-num">5.2</span>Our event access</a>
+        <a href="#sec-5-3"><span class="sub-num">5.3</span>Launch · Akiyama × Kris Fade</a>
+        <a href="#sec-5-4"><span class="sub-num">5.4</span>Warehouse Gym · pop-up</a>
+        <a href="#sec-5-5"><span class="sub-num">5.5</span>If we capture 5%</a>
       </div>
     </div>
     <div class="toc-group">
@@ -1513,9 +1546,77 @@ html[lang="jp"] .lang-review-badge, html[lang="kr"] .lang-review-badge{ display:
 <div class="part-divider"><span data-i18n="part.5">Part 5 · MMA × Dubai</span></div>
 <div class="part-band p5">
 
-<section class="chapter" id="sec-5-1">
+<section class="chapter" id="sec-5-0">
   <div class="part-label">Part 5 — MMA × Dubai</div>
-  <h2 data-i18n="sec.5-1.h2">The fight calendar is relentless and growing.</h2>
+  <h2><span class="num">5.0</span>The category the UAE built — top-down, on purpose.</h2>
+  <p class="sub">Every UAE schoolchild is trained in jiu-jitsu. By federal mandate. Every year. For eighteen years and counting. This isn't a market we hope will emerge — it's a market the state already built.</p>
+
+  <!-- HERO IMAGE — UAE kids in gis on tatami -->
+  <div style="position:relative; height:380px; border-radius:10px; overflow:hidden; box-shadow:var(--shadow); margin:18px 0 22px;">
+    <div style="position:absolute; inset:0; background-image:url('assets/mma-timeline/photo-2015-bjj-schools.jpg'); background-size:cover; background-position:center;"></div>
+    <div style="position:absolute; top:18px; left:20px; background:rgba(26,24,21,0.82); color:var(--paper); font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; padding:6px 12px; border-radius:2px; text-transform:uppercase;">UAE Cabinet · 2015 · Jiu-Jitsu in public schools</div>
+    <div style="position:absolute; bottom:0; left:0; right:0; padding:36px 40px 30px; background:linear-gradient(transparent, rgba(26,24,21,0.94)); color:var(--paper);">
+      <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:30px; line-height:1.15; font-weight:300; letter-spacing:-0.015em; max-width:48ch;">100,000+ Emirati children on tatami mats. Every year. From age five.</div>
+      <div style="margin-top:8px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.06em; opacity:0.78; max-width:64ch;">Abu Dhabi launched the programme in 2008. The federal cabinet went nationwide in 2015. Every UAE public-school student grapples through their entire education.</div>
+    </div>
+  </div>
+
+  <!-- STAT CARDS · 4 across -->
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin:22px 0;">
+    <div style="background:var(--bg-2); border:1px solid var(--line); padding:22px 20px; border-radius:8px;">
+      <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:50px; line-height:1; color:var(--accent); font-weight:300; letter-spacing:-0.02em;">100K<span style="font-size:24px; color:var(--ink);">+</span></div>
+      <div style="margin-top:10px; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);">students / yr · BJJ in schools</div>
+      <div style="margin-top:8px; font-size:12px; line-height:1.5; color:var(--ink-soft);">Every Emirati child grappling from primary through high school.</div>
+    </div>
+    <div style="background:var(--bg-2); border:1px solid var(--line); padding:22px 20px; border-radius:8px;">
+      <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:50px; line-height:1; color:var(--accent); font-weight:300; letter-spacing:-0.02em;">1.6<span style="font-size:24px; color:var(--ink);">M+</span></div>
+      <div style="margin-top:10px; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);">cumulative · since 2008</div>
+      <div style="margin-top:8px; font-size:12px; line-height:1.5; color:var(--ink-soft);">A generation raised inside grappling culture — now adults, parents, buyers.</div>
+    </div>
+    <div style="background:var(--bg-2); border:1px solid var(--line); padding:22px 20px; border-radius:8px;">
+      <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:50px; line-height:1; color:var(--accent); font-weight:300; letter-spacing:-0.02em;">250<span style="font-size:24px; color:var(--ink);">+</span></div>
+      <div style="margin-top:10px; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);">UAEJJF clubs · 70K+ adults</div>
+      <div style="margin-top:8px; font-size:12px; line-height:1.5; color:var(--ink-soft);">Federation-licensed adult academies across all seven emirates.</div>
+    </div>
+    <div style="background:var(--bg-2); border:1px solid var(--line); padding:22px 20px; border-radius:8px;">
+      <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:50px; line-height:1; color:var(--accent); font-weight:300; letter-spacing:-0.02em;">+13<span style="font-size:24px; color:var(--ink);">%</span></div>
+      <div style="margin-top:10px; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);">CAGR · UAE combat-sports</div>
+      <div style="margin-top:8px; font-size:12px; line-height:1.5; color:var(--ink-soft);">Participation and viewership both compounding double-digit YoY.</div>
+    </div>
+  </div>
+
+  <!-- ECOSYSTEM IMAGE STRIP -->
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; height:200px; margin:22px 0;">
+    <div style="position:relative; border-radius:8px; overflow:hidden; background-image:url('assets/mma-timeline/photo-2009-ajp.jpg'); background-size:cover; background-position:center; box-shadow:var(--shadow);">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:14px 18px 12px; background:linear-gradient(transparent, rgba(26,24,21,0.90)); color:var(--paper);">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; opacity:0.78; text-transform:uppercase;">AJP World Pro</div>
+        <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:16px; line-height:1.15; margin-top:3px;">Abu Dhabi · since 2009</div>
+      </div>
+    </div>
+    <div style="position:relative; border-radius:8px; overflow:hidden; background-image:url('assets/mma-timeline/photo-2025-uaew.jpg'); background-size:cover; background-position:center top; box-shadow:var(--shadow);">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:14px 18px 12px; background:linear-gradient(transparent, rgba(26,24,21,0.90)); color:var(--paper);">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; opacity:0.78; text-transform:uppercase;">UAE Warriors</div>
+        <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:16px; line-height:1.15; margin-top:3px;">9 cards / yr · global</div>
+      </div>
+    </div>
+    <div style="position:relative; border-radius:8px; overflow:hidden; background-image:url('assets/mma-timeline/photo-2020-ufc-island.jpg'); background-size:cover; background-position:center; box-shadow:var(--shadow);">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:14px 18px 12px; background:linear-gradient(transparent, rgba(26,24,21,0.90)); color:var(--paper);">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; opacity:0.78; text-transform:uppercase;">UFC permanent base</div>
+        <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:16px; line-height:1.15; margin-top:3px;">Yas Island · since 2020</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <h3>Why this matters for SUNG1975.</h3>
+    <p>Every customer SUNG1975 needs in the UAE has already been trained, at state expense, to care about what Akiyama-san does. The school cohort is now 18 years deep — early participants are adults, gym-goers, athleisure shoppers. <strong>The category isn't growing — it has been compounding for nearly two decades, with the next decade already programmed in.</strong></p>
+  </div>
+
+  <p class="src">UAE Cabinet 2015 BJJ-in-Schools decree · UAEJJF federation reports · UAE Ministry of Education school census · Khaleej Times / The National coverage · industry estimates. Final figures from active deep-research commission.</p>
+</section>
+
+<section class="chapter" id="sec-5-1">
+  <h2 data-i18n="sec.5-1.h2"><span class="num">5.1</span>The fight calendar is relentless and growing.</h2>
   <p class="sub" data-i18n="sec.5-1.sub">UAE is now the combat-sports capital of the Eastern Hemisphere. UFC, UAE Warriors, Brave CF — year-round professional events at Etihad Arena and ADNEC. For an MMA-heritage brand, this is the single most valuable marketing channel in the market.</p>
 
   <table class="stakeholder">
@@ -1681,6 +1782,95 @@ html[lang="jp"] .lang-review-badge, html[lang="kr"] .lang-review-badge{ display:
     <h3 data-i18n="sec.5-4.callout.h3">Honesty marker — what is real today, what is yet to be confirmed.</h3>
     <p data-i18n="sec.5-4.callout.p"><strong>Confirmed:</strong> warm working connection with Warehouse Gym leadership; first meeting is ours to schedule. <strong>To be agreed in that meeting:</strong> flagship branch selection, activation calendar, capsule-drop revenue split, exclusivity period. We are bringing the idea — they are open to listening. The deck commitment is that this conversation happens in the first 30 days, not that the contract is signed.</p>
   </div>
+</section>
+
+<section class="chapter" id="sec-5-5">
+  <h2><span class="num">5.5</span>If we capture only five percent.</h2>
+  <p class="sub">Four cohorts. Four scenarios. Each card asks the same question — what does <strong>five percent</strong> of this audience look like in annual revenue. Conservative ARPU. Year-two baseline.</p>
+
+  <!-- 4 DREAM CARDS · 2x2 grid · capsule mockups as backgrounds -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:22px 0;">
+    <div style="position:relative; height:320px; border-radius:10px; overflow:hidden; background-color:#1A1815; box-shadow:var(--shadow);">
+      <div style="position:absolute; inset:0; background-image:url('assets/uae-capsule/capsule-tee-back-street.png'); background-size:cover; background-position:center; opacity:0.30;"></div>
+      <div style="position:absolute; inset:0; padding:26px 30px; display:flex; flex-direction:column; justify-content:space-between; color:var(--paper);">
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.78;">Cohort A · UAE BJJ school graduates + families</div>
+          <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:17px; line-height:1.3; font-weight:300; margin-top:8px; max-width:36ch; opacity:0.92;">600,000 addressable — adults who grew up grappling, plus their parents.</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; opacity:0.65; margin-bottom:4px;">5% × 600K × AED 400 ARPU</div>
+          <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:58px; line-height:1; font-weight:300; letter-spacing:-0.02em; color:var(--gold);">AED 12M</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; opacity:0.65; margin-top:6px;">≈ $3.3M USD · annual</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:relative; height:320px; border-radius:10px; overflow:hidden; background-color:#1A1815; box-shadow:var(--shadow);">
+      <div style="position:absolute; inset:0; background-image:url('assets/uae-capsule/capsule-tank-colorways.png'); background-size:cover; background-position:center; opacity:0.30;"></div>
+      <div style="position:absolute; inset:0; padding:26px 30px; display:flex; flex-direction:column; justify-content:space-between; color:var(--paper);">
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.78;">Cohort B · UAE MMA + premium-fitness adults</div>
+          <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:17px; line-height:1.3; font-weight:300; margin-top:8px; max-width:36ch; opacity:0.92;">1,000,000 addressable — UFC fans, BJJ adults, premium-gym members.</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; opacity:0.65; margin-bottom:4px;">5% × 1M × AED 500 ARPU</div>
+          <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:58px; line-height:1; font-weight:300; letter-spacing:-0.02em; color:var(--gold);">AED 25M</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; opacity:0.65; margin-top:6px;">≈ $6.8M USD · annual</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:relative; height:320px; border-radius:10px; overflow:hidden; background-color:#1A1815; box-shadow:var(--shadow);">
+      <div style="position:absolute; inset:0; background-image:url('assets/uae-capsule/capsule-shorts-side.png'); background-size:cover; background-position:center; opacity:0.30;"></div>
+      <div style="position:absolute; inset:0; padding:26px 30px; display:flex; flex-direction:column; justify-content:space-between; color:var(--paper);">
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.78;">Cohort C · GCC MMA-engaged audience</div>
+          <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:17px; line-height:1.3; font-weight:300; margin-top:8px; max-width:36ch; opacity:0.92;">5,000,000 addressable — Saudi, Kuwait, Qatar, Bahrain, Oman.</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; opacity:0.65; margin-bottom:4px;">5% × 5M × AED 400 ARPU</div>
+          <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:58px; line-height:1; font-weight:300; letter-spacing:-0.02em; color:var(--gold);">AED 100M</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; opacity:0.65; margin-top:6px;">≈ $27.2M USD · annual</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:relative; height:320px; border-radius:10px; overflow:hidden; background-color:#1A1815; box-shadow:var(--shadow);">
+      <div style="position:absolute; inset:0; background-image:url('assets/uae-capsule/gemini-01-akiyama-black-tee-back.png'); background-size:cover; background-position:center; opacity:0.30;"></div>
+      <div style="position:absolute; inset:0; padding:26px 30px; display:flex; flex-direction:column; justify-content:space-between; color:var(--paper);">
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.78;">Cohort D · Dubai sports-tourist + global fans</div>
+          <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:17px; line-height:1.3; font-weight:300; margin-top:8px; max-width:36ch; opacity:0.92;">2,000,000 addressable — MMA-curious visitors + Akiyama's worldwide audience.</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; opacity:0.65; margin-bottom:4px;">5% × 2M × AED 300 ARPU</div>
+          <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:58px; line-height:1; font-weight:300; letter-spacing:-0.02em; color:var(--gold);">AED 30M</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; opacity:0.65; margin-top:6px;">≈ $8.2M USD · annual</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLENDED SCENARIO STRIP -->
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:22px 0 12px;">
+    <div style="background:var(--bg-2); border:1px solid var(--line); padding:20px 24px; border-radius:8px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);">Conservative · 1% blended capture</div>
+      <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:38px; line-height:1; color:var(--ink); font-weight:300; letter-spacing:-0.02em; margin-top:10px;">AED 33M</div>
+      <div style="margin-top:6px; font-size:11px; color:var(--muted); font-family:'JetBrains Mono', monospace;">≈ $9M USD · plausible Year 2</div>
+    </div>
+    <div style="background:linear-gradient(135deg, var(--gold) 0%, #C9B27A 100%); border:1px solid var(--gold); padding:20px 24px; border-radius:8px; box-shadow:var(--shadow);">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink);">Target · 5% blended capture</div>
+      <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:38px; line-height:1; color:var(--ink); font-weight:400; letter-spacing:-0.02em; margin-top:10px;">AED 167M</div>
+      <div style="margin-top:6px; font-size:11px; color:var(--ink); font-family:'JetBrains Mono', monospace; opacity:0.70;">≈ $45M USD · Year 3–4 ceiling</div>
+    </div>
+    <div style="background:var(--bg-2); border:1px solid var(--line); padding:20px 24px; border-radius:8px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);">Stretch · 10% blended capture</div>
+      <div style="font-family:'Fraunces', 'Cormorant Garamond', Georgia, serif; font-size:38px; line-height:1; color:var(--ink); font-weight:300; letter-spacing:-0.02em; margin-top:10px;">AED 334M</div>
+      <div style="margin-top:6px; font-size:11px; color:var(--muted); font-family:'JetBrains Mono', monospace;">≈ $91M USD · category-leader case</div>
+    </div>
+  </div>
+
+  <p class="src">Directional simulation. Cohort sizes from UAE Cabinet · UAEJJF · Dubai DET 2024 · industry estimates. ARPU benchmarked against ALO / Lululemon / Vuori / TGM UAE retail. Final figures and sensitivity bands from active deep-research commission (Perplexity / Gemini / ChatGPT) — see /research/wellness-mma-tam-prompt.html.</p>
 </section>
 
 </div><!-- end part-band p5 -->
