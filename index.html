@@ -2715,8 +2715,9 @@ window.SUNG_I18N = {
   buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
   try {
     const saved = localStorage.getItem('sung-lang');
-    if (saved && ['en','jp','kr'].includes(saved) && saved !== 'en') setLang(saved);
-  } catch(e) {}
+    const defaultLang = 'jp';
+    setLang(saved && ['en','jp','kr'].includes(saved) ? saved : defaultLang);
+  } catch(e) { setLang('jp'); }
 })();
 </script>
 
