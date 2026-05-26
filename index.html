@@ -2713,10 +2713,17 @@ window.SUNG_I18N = {
 
   snapshot();
   buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  // Bump _LANG_RESET_VERSION to force every visitor back to JP default once.
+  const _LANG_RESET_VERSION = '2026-05-26-jp-default';
   try {
-    const saved = localStorage.getItem('sung-lang');
-    const defaultLang = 'jp';
-    setLang(saved && ['en','jp','kr'].includes(saved) ? saved : defaultLang);
+    if (localStorage.getItem('sung-lang-reset') !== _LANG_RESET_VERSION) {
+      localStorage.setItem('sung-lang-reset', _LANG_RESET_VERSION);
+      localStorage.removeItem('sung-lang');
+      setLang('jp');
+    } else {
+      const saved = localStorage.getItem('sung-lang');
+      setLang(saved && ['en','jp','kr'].includes(saved) ? saved : 'jp');
+    }
   } catch(e) { setLang('jp'); }
 })();
 </script>

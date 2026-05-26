@@ -3289,8 +3289,18 @@
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.dataset.lang));
   });
+  // Bump _LANG_RESET_VERSION whenever you want to force every visitor back to
+  // the JP default (e.g. after a bug window where localStorage saved 'en').
+  const _LANG_RESET_VERSION = '2026-05-26-jp-default';
   const _initialLang = (() => {
-    try { return localStorage.getItem('sungLang') || 'jp'; } catch (e) { return 'jp'; }
+    try {
+      if (localStorage.getItem('sungLangReset') !== _LANG_RESET_VERSION) {
+        localStorage.setItem('sungLangReset', _LANG_RESET_VERSION);
+        localStorage.removeItem('sungLang');
+        return 'jp';
+      }
+      return localStorage.getItem('sungLang') || 'jp';
+    } catch (e) { return 'jp'; }
   })();
   setLang(_initialLang);
 </script>
