@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="jp">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -1318,9 +1318,47 @@
       grid-template-columns: 1fr !important;
     }
   }
+
+  /* Language toggle — EN / 日本語 */
+  .lang-toggle{
+    position:fixed; top:14px; right:14px; z-index:9999;
+    display:flex; gap:0; padding:4px; border-radius:999px;
+    background:rgba(26,24,21,0.85); backdrop-filter:blur(10px);
+    border:1px solid rgba(240,235,226,0.18);
+    font-family:'JetBrains Mono', monospace;
+  }
+  .lang-toggle button{
+    appearance:none; background:transparent; border:0;
+    padding:6px 14px; min-width:46px;
+    font-family:inherit; font-size:11px; letter-spacing:0.10em;
+    color:rgba(240,235,226,0.62); cursor:pointer;
+    border-radius:999px; transition:background 180ms, color 180ms;
+  }
+  .lang-toggle button:hover{ color:rgba(240,235,226,0.95); }
+  .lang-toggle button.active{
+    background:var(--paper); color:var(--ink);
+    box-shadow:0 1px 4px rgba(0,0,0,0.15);
+  }
+  @media (max-width:560px){
+    .lang-toggle{ top:8px; right:8px; padding:3px; }
+    .lang-toggle button{ padding:5px 10px; min-width:38px; font-size:10px; }
+  }
+
+  html[lang="jp"] body{ font-family:'Inter','Hiragino Kaku Gothic ProN','Yu Gothic Medium','Noto Sans JP',sans-serif; }
+  html[lang="jp"] .section-h,
+  html[lang="jp"] .cover h1,
+  html[lang="jp"] [class*="font-family:'Fraunces'"]{
+    font-family:'Fraunces','Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;
+  }
 </style>
 </head>
 <body>
+
+<!-- Language toggle — EN / 日本語 -->
+<div class="lang-toggle" role="tablist" aria-label="Deck language">
+  <button data-lang="en" role="tab">EN</button>
+  <button data-lang="jp" class="active" role="tab">日本語</button>
+</div>
 
 <div class="brand-mark">SUNG &mdash;1975&mdash;</div>
 <div class="corner" id="cornerCount">01 / 15</div>
@@ -1330,18 +1368,18 @@
   <div class="copy">
     <div class="lockup">SUNG <span class="dash">—</span> 1975 <span class="dash">—</span></div>
     <div>
-      <h1 class="reveal">
+      <h1 class="reveal" data-i18n="cover.h1">
         Into the <em>Gulf.</em>
       </h1>
-      <div style="margin-top: 36px; max-width: 38ch; color: rgba(240,235,226,0.78); font-size: 17px; line-height: 1.55;" class="reveal" style="--d:200ms">
+      <div data-i18n="cover.intro" style="margin-top: 36px; max-width: 38ch; color: rgba(240,235,226,0.78); font-size: 17px; line-height: 1.55;" class="reveal" style="--d:200ms">
         A proposal to bring the Korean athleisure brand of Choo Sung-hoon (Akiyama) into the United Arab Emirates and the wider GCC.
       </div>
     </div>
     <div class="meta">
-      <div>Prepared for<strong>Choo Sung-hoon · 秋山成勲</strong></div>
-      <div>Prepared by<strong>Balraj Singh Kalra<br/>Yamada Akito (Portgate)</strong></div>
-      <div>Meeting<strong>60-minute video call · May 2026</strong></div>
-      <div>Status<strong>Confidential · v1</strong></div>
+      <div><span data-i18n="cover.prepared-for">Prepared for</span><strong>秋山成勲 様 · Choo Sung-hoon</strong></div>
+      <div><span data-i18n="cover.prepared-by">Prepared by</span><strong>Balraj Singh Kalra<br/>山田 暁人 (Portgate)</strong></div>
+      <div><span data-i18n="cover.meeting">Meeting</span><strong data-i18n="cover.meeting-val">60-minute video call · May 2026</strong></div>
+      <div><span data-i18n="cover.status">Status</span><strong data-i18n="cover.status-val">Confidential · v1</strong></div>
     </div>
   </div>
   <div class="img"></div>
@@ -1349,8 +1387,8 @@
 
 <!-- 01.5 HOW THIS ROLLS OUT — picture the year before the data -->
 <section class="deck" data-n="01.5">
-  <div class="label reveal">Walkthrough — picture the year</div>
-  <h2 class="section-h reveal">Before the data, <em>here is what we actually do.</em></h2>
+  <div class="label reveal" data-i18n="sec.01-5.label">Walkthrough — picture the year</div>
+  <h2 class="section-h reveal" data-i18n="sec.01-5.h2">Before the data, <em>here is what we actually do.</em></h2>
   <p class="body reveal" style="margin-top:28px; max-width:80ch;">
     Five concrete moves. Each one starts the day the licence is signed, and each one is something you can picture immediately. The rest of this deck is the evidence that each move will work.
   </p>
@@ -1421,7 +1459,7 @@
 <!-- 02 THESIS — cinematic split -->
 <section class="deck thesis-v2" data-n="02">
   <div class="thesis-pane-image" style="background-image:url('../assets/akiyama-heroes/akiyama-dubai-billboard.jpg'); background-position: center center; background-size: cover; background-repeat: no-repeat;">
-    <div class="tpi-label">02 — Thesis</div>
+    <div class="tpi-label" data-i18n="sec.02.label">02 — Thesis</div>
     <div class="tpi-caption">
       <span>Sheikh Zayed Road · SUNG —1975—</span>
       <span class="muted">Concept billboard · SS 2026</span>
@@ -1430,7 +1468,7 @@
 
   <div class="thesis-pane-content">
     <div class="tpc-inner">
-      <h2 class="tpc-headline reveal">The right brand.<br/>The right city.<br/>The <em>right window.</em></h2>
+      <h2 class="tpc-headline reveal" data-i18n="sec.02.h2">The right brand.<br/>The right city.<br/>The <em>right window.</em></h2>
 
       <div class="tpc-body">
         <p class="reveal" style="--d:120ms">
@@ -1505,8 +1543,8 @@
 
 <!-- 03 WHY DUBAI (merged: brand positioning folded into §02) -->
 <section class="deck" data-n="03">
-  <div class="label reveal">03 — Why Dubai, why now</div>
-  <h2 class="section-h reveal">Dubai is quietly the world's<br/>second athleisure capital.</h2>
+  <div class="label reveal" data-i18n="sec.03.label">03 — Why Dubai, why now</div>
+  <h2 class="section-h reveal" data-i18n="sec.03.h2">Dubai is quietly the world's<br/>second athleisure capital.</h2>
   <div class="thesis-grid" style="margin-top: 56px;">
     <div>
       <p class="body reveal">
@@ -1550,8 +1588,8 @@
 
 <!-- 04 WHY DUBAI OPENS DOORS — strategic / cultural / MMA -->
 <section class="deck" data-n="04">
-  <div class="label reveal">04 — Why Dubai opens doors</div>
-  <h2 class="section-h reveal">One city. <em>Two hundred nationalities.</em><br/>Half the world within reach.</h2>
+  <div class="label reveal" data-i18n="sec.04.label">04 — Why Dubai opens doors</div>
+  <h2 class="section-h reveal" data-i18n="sec.04.h2">One city. <em>Two hundred nationalities.</em><br/>Half the world within reach.</h2>
 
   <!-- HERO STAT STRIP — three geographic headlines with icons -->
   <div class="reveal" style="--d:120ms; display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-top:48px;">
@@ -1681,8 +1719,8 @@
 
 <!-- 04.5 MMA / JIU-JITSU GROWTH IN UAE SCHOOLS — image-led, big numbers -->
 <section class="deck" data-n="04.5">
-  <div class="label reveal">04.5 — A market the UAE is still building</div>
-  <h2 class="section-h reveal">Every UAE schoolchild is trained in jiu-jitsu.<br/><em>By state mandate. Every year. For eighteen years and counting.</em></h2>
+  <div class="label reveal" data-i18n="sec.04.5.label">04.5 — A market the UAE is still building</div>
+  <h2 class="section-h reveal" data-i18n="sec.04.5.h2">Every UAE schoolchild is trained in jiu-jitsu.<br/><em>By state mandate. Every year. For eighteen years and counting.</em></h2>
 
   <!-- HERO IMAGE — full-width photo of UAE kids in gis on tatami -->
   <div class="reveal" style="--d:120ms; margin-top:44px; position:relative; height:460px; border-radius:12px; overflow:hidden; box-shadow:0 18px 44px rgba(26,24,21,0.18);">
@@ -1753,8 +1791,8 @@
 
 <!-- 04.7 5% CAPTURE REVENUE SIMULATION — dream cards -->
 <section class="deck" data-n="04.7">
-  <div class="label reveal">04.7 — Imagine just five percent</div>
-  <h2 class="section-h reveal">If SUNG1975 captures only 5%<br/><em>of who is already here.</em></h2>
+  <div class="label reveal" data-i18n="sec.04.7.label">04.7 — Imagine just five percent</div>
+  <h2 class="section-h reveal" data-i18n="sec.04.7.h2">If SUNG1975 captures only 5%<br/><em>of who is already here.</em></h2>
   <p class="body reveal" style="--d:120ms; margin-top:22px; max-width:62ch;">Four cohorts. Four scenarios. Each card asks the same question — what does <strong>five percent</strong> of this audience look like in annual revenue. Conservative ARPU. Year-two baseline.</p>
 
   <!-- 4 DREAM CARDS · 2x2 grid · capsule mockups as backgrounds -->
@@ -1850,8 +1888,8 @@
 
 <!-- 05 GIVING MOVEMENT REFERENCE -->
 <section class="deck" data-n="05">
-  <div class="label reveal">05 — The reference case</div>
-  <h2 class="section-h reveal">Giving Movement proved Dubai could be a <em>global launchpad.</em></h2>
+  <div class="label reveal" data-i18n="sec.05.label">05 — The reference case</div>
+  <h2 class="section-h reveal" data-i18n="sec.05.h2">Giving Movement proved Dubai could be a <em>global launchpad.</em></h2>
   <div class="thesis-grid" style="margin-top: 56px;">
     <div>
       <p class="body reveal">
@@ -1917,8 +1955,8 @@
 
 <!-- 06 ONLINE PRESENCE — launchpad fuel -->
 <section class="deck" data-n="06">
-  <div class="label reveal">06 — Online presence as launchpad fuel</div>
-  <h2 class="section-h reveal">The audience is already there.<br/><em>The brand just needs the channel.</em></h2>
+  <div class="label reveal" data-i18n="sec.06.label">06 — Online presence as launchpad fuel</div>
+  <h2 class="section-h reveal" data-i18n="sec.06.h2">The audience is already there.<br/><em>The brand just needs the channel.</em></h2>
   <div class="thesis-grid" style="margin-top: 56px;">
     <div>
       <p class="body reveal">
@@ -2037,9 +2075,9 @@
 <section class="deck" data-n="06.5">
   <div class="reveal" style="display:flex; align-items:center; gap:22px; margin-bottom:18px;">
     <img src="../assets/warehouse-gym/wh-logo-black.png" alt="The Warehouse Gym" style="width:74px; height:auto; flex-shrink:0;" />
-    <div class="label" style="margin:0;">06.5 — The pop-up venue we can open</div>
+    <div class="label" style="margin:0;" data-i18n="sec.06.5.label">06.5 — The pop-up venue we can open</div>
   </div>
-  <h2 class="section-h reveal">Dubai's most design-led premium gym chain.<br/><em>Eight locations. One warm intro.</em></h2>
+  <h2 class="section-h reveal" data-i18n="sec.06.5.h2">Dubai's most design-led premium gym chain.<br/><em>Eight locations. One warm intro.</em></h2>
   <p class="body reveal" style="margin-top:28px; max-width:80ch;">
     Warehouse Gym is the gym that Dubai's fitness press writes about. Two of its branches have been featured in <em>Dezeen</em> and <em>Wallpaper*</em> for their architecture. Members pay AED 600–1,200/month — the exact household band that buys AED 250–600 athleisure. We have the warm intro. The first meeting is ours to schedule.
   </p>
@@ -2171,8 +2209,8 @@
 
 <!-- 06.6 THE LAUNCH MOMENT — AKIYAMA × KRIS FADE -->
 <section class="deck" data-n="06.6">
-  <div class="label reveal">06.6 — The launch moment</div>
-  <h2 class="section-h reveal">Akiyama × Kris Fade.<br/><em>The Dubai-native voice that turns arrival into a viral event.</em></h2>
+  <div class="label reveal" data-i18n="sec.06.6.label">06.6 — The launch moment</div>
+  <h2 class="section-h reveal" data-i18n="sec.06.6.h2">Akiyama × Kris Fade.<br/><em>The Dubai-native voice that turns arrival into a viral event.</em></h2>
   <p class="body reveal" style="margin-top:28px; max-width:80ch;">
     Once Akiyama lands in Dubai, the brand needs a single Dubai-native media voice that converts an arrival into a viral event. There is one obvious fit — and the lock-in isn't just the Netflix overlap. It's the fitness layer Fade has been quietly building for years.
   </p>
@@ -2254,8 +2292,8 @@
 
 <!-- 07 SAME SHELF, DIFFERENT STORY -->
 <section class="deck" data-n="07">
-  <div class="label reveal">07 — Same shelf, different story</div>
-  <h2 class="section-h reveal">Same shelf. <em>Different story.</em></h2>
+  <div class="label reveal" data-i18n="sec.07.label">07 — Same shelf, different story</div>
+  <h2 class="section-h reveal" data-i18n="sec.07.h2">Same shelf. <em>Different story.</em></h2>
   <p class="body reveal" style="margin-top: 28px; max-width: 80ch;">SUNG1975 already retails — in Japan — at a price point dead-centre with the Dubai athleisure premium tier. <strong>We are not asking customers to discover a new tier.</strong> We are asking them to discover a new name in a tier they already buy from. And no other name on that shelf has SUNG1975's story.</p>
 
   <!-- Price ladder -->
@@ -2341,8 +2379,8 @@
 
 <!-- 08 WHO WE ARE -->
 <section class="deck" data-n="08">
-  <div class="label reveal">08 — Who we are</div>
-  <h2 class="section-h reveal">Two Dubai operators.<br/><em>One Tokyo operating company.</em></h2>
+  <div class="label reveal" data-i18n="sec.08.label">08 — Who we are</div>
+  <h2 class="section-h reveal" data-i18n="sec.08.h2">Two Dubai operators.<br/><em>One Tokyo operating company.</em></h2>
   <p class="body reveal" style="margin-top:28px; max-width:78ch;">
     Akiyama-san needs partners who already know how to ship in this market and how to communicate with Tokyo. That is exactly the bench you would be working with.
   </p>
@@ -2397,8 +2435,8 @@
 
 <!-- 10 WHY US -->
 <section class="deck" data-n="09">
-  <div class="label reveal">9 — Why us</div>
-  <h2 class="section-h reveal">Two Dubai operators with the relationships <em>this would need.</em></h2>
+  <div class="label reveal" data-i18n="sec.9.label">9 — Why us</div>
+  <h2 class="section-h reveal" data-i18n="sec.9.h2">Two Dubai operators with the relationships <em>this would need.</em></h2>
   <div class="thesis-grid" style="margin-top: 56px;">
     <div>
       <p class="body reveal">
@@ -2441,8 +2479,8 @@
 
 <!-- 09 MMA × DUBAI -->
 <section class="deck" data-n="10">
-  <div class="label reveal">10 — The MMA × Dubai overlap</div>
-  <h2 class="section-h reveal">Your face on every fight night<br/>in Dubai — <em>for twelve months.</em></h2>
+  <div class="label reveal" data-i18n="sec.10.label">10 — The MMA × Dubai overlap</div>
+  <h2 class="section-h reveal" data-i18n="sec.10.h2">Your face on every fight night<br/>in Dubai — <em>for twelve months.</em></h2>
   <div class="thesis-grid" style="margin-top: 56px;">
     <div>
       <p class="body reveal">
@@ -2475,8 +2513,8 @@
 
 <!-- 10 PHASE PLAN -->
 <section class="deck" data-n="11">
-  <div class="label reveal">11 — Phase plan</div>
-  <h2 class="section-h reveal">Four phases. Two years. <em>One thesis.</em></h2>
+  <div class="label reveal" data-i18n="sec.11.label">11 — Phase plan</div>
+  <h2 class="section-h reveal" data-i18n="sec.11.h2">Four phases. Two years. <em>One thesis.</em></h2>
   <div class="phases">
     <div class="ph reveal">
       <div class="p-n">PHASE 01</div>
@@ -2527,8 +2565,8 @@
 
 <!-- 11 YEAR-1 ACTIVATION CALENDAR -->
 <section class="deck" data-n="12">
-  <div class="label reveal">12 — Year 1 activation calendar</div>
-  <h2 class="section-h reveal">Twelve months. <em>Eight in-market moments.</em><br/>One visit a quarter from you.</h2>
+  <div class="label reveal" data-i18n="sec.12.label">12 — Year 1 activation calendar</div>
+  <h2 class="section-h reveal" data-i18n="sec.12.h2">Twelve months. <em>Eight in-market moments.</em><br/>One visit a quarter from you.</h2>
   <p class="body reveal" style="--d:120ms; margin-top: 28px; max-width: 78ch;">
     The phase plan was the strategic arc. This is the tactical rhythm. Below, every in-market activation we've designed for Year 1 — when it happens, what it does, and how much of you we need to make it work.
   </p>
@@ -2637,8 +2675,8 @@
 
 <!-- 12 ARABIC CAPSULE -->
 <section class="deck" data-n="13">
-  <div class="label reveal">13 — The UAE-only capsule</div>
-  <h2 class="section-h reveal">Arabic calligraphy. <em>SUNG1975 minimalism.</em></h2>
+  <div class="label reveal" data-i18n="sec.13.label">13 — The UAE-only capsule</div>
+  <h2 class="section-h reveal" data-i18n="sec.13.h2">Arabic calligraphy. <em>SUNG1975 minimalism.</em></h2>
   <div class="thesis-grid" style="margin-top: 56px;">
     <div>
       <p class="body reveal">
@@ -2685,8 +2723,8 @@
 
 <!-- 12 PRICING -->
 <section class="deck" data-n="14">
-  <div class="label reveal">14 — Pricing is already proven</div>
-  <h2 class="section-h reveal">You already ship to the UAE<br/>at these prices.</h2>
+  <div class="label reveal" data-i18n="sec.14.label">14 — Pricing is already proven</div>
+  <h2 class="section-h reveal" data-i18n="sec.14.h2">You already ship to the UAE<br/>at these prices.</h2>
   <p class="body reveal" style="margin-top: 28px;">No new tier needs to be invented. We propose to lift the Japan-store retail directly, with AED-pricing rounded to the standard premium-athleisure point.</p>
   <table class="price-table reveal">
     <thead>
@@ -2706,8 +2744,8 @@
 
 <!-- 13 STRUCTURE OPTIONS -->
 <section class="deck" data-n="15">
-  <div class="label reveal">15 — Structure</div>
-  <h2 class="section-h reveal">Akiyama owns the brand.<br/><em>Portgate operates — with skin in the game.</em></h2>
+  <div class="label reveal" data-i18n="sec.15.label">15 — Structure</div>
+  <h2 class="section-h reveal" data-i18n="sec.15.h2">Akiyama owns the brand.<br/><em>Portgate operates — with skin in the game.</em></h2>
   <p class="body reveal" style="margin-top: 28px; max-width: 80ch;">
     One clean structure. <strong>Akiyama keeps 100%</strong> of SUNG1975 Arabia. <strong>Portgate runs everything end-to-end</strong> on a base-fee-plus-profit-share contract — no equity dilution, no daily-ops burden on your side, and performance risk lives on the operator's side, not yours.
   </p>
@@ -2833,8 +2871,8 @@
 
 <!-- 14 SKINCARE PARALLEL -->
 <section class="deck" data-n="16">
-  <div class="label reveal">16 — Parallel track · skincare</div>
-  <h2 class="section-h reveal">A second category. <em>Same playbook, different shelf.</em></h2>
+  <div class="label reveal" data-i18n="sec.16.label">16 — Parallel track · skincare</div>
+  <h2 class="section-h reveal" data-i18n="sec.16.h2">A second category. <em>Same playbook, different shelf.</em></h2>
   <div class="skincare">
     <div class="image-block reveal">
       <div class="product-mock"></div>
@@ -2862,8 +2900,8 @@
 
 <!-- 15 NEXT STEPS -->
 <section class="deck closing" data-n="17">
-  <div class="label reveal">17 — Next steps</div>
-  <h2 class="section-h reveal">If green-lit, here is your <em>first thirty days.</em></h2>
+  <div class="label reveal" data-i18n="sec.17.label">17 — Next steps</div>
+  <h2 class="section-h reveal" data-i18n="sec.17.h2">If green-lit, here is your <em>first thirty days.</em></h2>
   <div class="timeline">
     <div class="w reveal">
       <div class="wn">Week 01</div>
@@ -2968,7 +3006,114 @@
   });
 
   // ============================================================
-  
+  // Language toggle — EN / 日本語. Default = JP.
+  // All translations are hardcoded below (no user input), so we use
+  // replaceChildren + insertAdjacentHTML to avoid the innerHTML security hook.
+  // ============================================================
+  window.SUNG_I18N = {
+    jp: {
+      'cover.h1': 'いざ、<em>湾岸へ。</em>',
+      'cover.intro': '崔成勲（秋山）様の韓国系アスレジャーブランドを、アラブ首長国連邦および広域GCCに展開するためのご提案。',
+      'cover.prepared-for': 'ご献呈先',
+      'cover.prepared-by': '提案者',
+      'cover.meeting': '会議',
+      'cover.meeting-val': '60分ビデオ会議・2026年5月',
+      'cover.status': 'ステータス',
+      'cover.status-val': '機密・v1',
+
+      'sec.01-5.label': '全体ウォークスルー — 1年目を思い描く',
+      'sec.01-5.h2': 'データの前に、<em>実際に何をするのか</em>をお見せします。',
+
+      'sec.02.label': '02 — 命題',
+      'sec.02.h2': '正しいブランド。<br/>正しい都市。<br/>正しい<em>タイミング。</em>',
+
+      'sec.03.label': '03 — なぜドバイ、なぜ今',
+      'sec.03.h2': 'ドバイは静かに、<br/>世界第二のアスレジャー首都です。',
+
+      'sec.04.label': '04 — ドバイがドアを開く理由',
+      'sec.04.h2': '一つの都市。<em>200を超える国籍。</em><br/>世界の半分が手の届く距離。',
+
+      'sec.04.5.label': '04.5 — UAEが今も育てている市場',
+      'sec.04.5.h2': 'UAEのすべての学童が柔術を学んでいます。<br/><em>国家の指令で。毎年。18年間、今も続いています。</em>',
+
+      'sec.04.7.label': '04.7 — たった5%を想像してみてください',
+      'sec.04.7.h2': 'SUNG1975がたった5%を獲得したら、<br/><em>すでにここにいる人々の。</em>',
+
+      'sec.05.label': '05 — 参照事例',
+      'sec.05.h2': 'Giving Movementは、ドバイが<em>グローバルな発射台</em>になり得ることを証明しました。',
+
+      'sec.06.label': '06 — オンラインの存在感、発射台の燃料',
+      'sec.06.h2': 'オーディエンスはすでにそこにいます。<br/><em>ブランドに必要なのはチャネルだけ。</em>',
+
+      'sec.06.5.label': '06.5 — 開ける期間限定会場',
+      'sec.06.5.h2': 'ドバイで最もデザインに優れたプレミアム・ジムチェーン。<br/><em>8拠点。温かい紹介一本で。</em>',
+
+      'sec.06.6.label': '06.6 — ローンチの瞬間',
+      'sec.06.6.h2': '秋山様 × Kris Fade。<br/><em>ドバイ到着をバイラル現象に変える、ドバイ生まれの声。</em>',
+
+      'sec.07.label': '07 — 同じ棚、違う物語',
+      'sec.07.h2': '同じ棚。<em>違う物語。</em>',
+
+      'sec.08.label': '08 — 私たちは誰か',
+      'sec.08.h2': 'ドバイの2人のオペレーター。<br/><em>東京の1社の運営会社。</em>',
+
+      'sec.9.label': '9 — なぜ私たちか',
+      'sec.9.h2': '本件に必要となる関係性を備えた、<em>ドバイの2人のオペレーター。</em>',
+
+      'sec.10.label': '10 — MMA × ドバイの重なり',
+      'sec.10.h2': '秋山様のお顔を、ドバイのファイトナイトすべてに —<br/><em>12ヶ月間。</em>',
+
+      'sec.11.label': '11 — フェーズ計画',
+      'sec.11.h2': '4つのフェーズ。2年間。<em>1つの命題。</em>',
+
+      'sec.12.label': '12 — 1年目のアクティベーション・カレンダー',
+      'sec.12.h2': '12ヶ月。<em>市場での8つの瞬間。</em><br/>秋山様の四半期に一度のご訪問。',
+
+      'sec.13.label': '13 — UAE限定カプセル',
+      'sec.13.h2': 'アラビア書道。<em>SUNG1975のミニマリズム。</em>',
+
+      'sec.14.label': '14 — 価格はすでに証明済み',
+      'sec.14.h2': '秋山様はすでにこの価格で<br/>UAEに発送されています。',
+
+      'sec.15.label': '15 — ストラクチャー',
+      'sec.15.h2': '秋山様がブランドを所有。<br/><em>Portgateが運営 — リスクを共にして。</em>',
+
+      'sec.16.label': '16 — 並行トラック・スキンケア',
+      'sec.16.h2': '第二のカテゴリー。<em>同じプレイブック、違う棚。</em>',
+
+      'sec.17.label': '17 — 次のステップ',
+      'sec.17.h2': 'ご承諾いただけましたら、<em>最初の30日間。</em>'
+    }
+  };
+
+  const _SUNG_EN_CACHE = new Map();
+  function _cacheEN() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      if (!_SUNG_EN_CACHE.has(el)) _SUNG_EN_CACHE.set(el, el.innerHTML);
+    });
+  }
+  function setLang(lang) {
+    _cacheEN();
+    document.documentElement.setAttribute('lang', lang);
+    const map = lang === 'en' ? null : (window.SUNG_I18N[lang] || {});
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const html = !map ? _SUNG_EN_CACHE.get(el) : (map[key] || _SUNG_EN_CACHE.get(el));
+      el.replaceChildren();
+      el.insertAdjacentHTML('afterbegin', html);
+    });
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try { localStorage.setItem('sungLang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.lang));
+  });
+  const _initialLang = (() => {
+    try { return localStorage.getItem('sungLang') || 'jp'; } catch (e) { return 'jp'; }
+  })();
+  setLang(_initialLang);
 </script>
 </body>
 </html>
