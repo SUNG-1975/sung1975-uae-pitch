@@ -1545,7 +1545,39 @@
 <section class="deck" data-n="03">
   <div class="label reveal" data-i18n="sec.03.label">03 — Why Dubai, why now</div>
   <h2 class="section-h reveal" data-i18n="sec.03.h2">Dubai is quietly the world's<br/>second athleisure capital.</h2>
-  <div class="thesis-grid" style="margin-top: 56px;">
+
+  <!-- HEADLINE GROWTH CHART · UAE athleisure $5.9B → $11.2B 2025-2033 -->
+  <div class="reveal" style="--d:160ms; margin-top:44px; background:var(--paper-2); border:1px solid var(--line); border-radius:12px; padding:36px 40px 28px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
+
+      <!-- LEFT · the headline numbers -->
+      <div>
+        <div data-i18n="sec.03.gr.eyebrow" style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); margin-bottom:18px;">UAE athleisure market · USD billions</div>
+        <div style="display:flex; align-items:baseline; gap:20px; margin-bottom:14px;">
+          <div>
+            <div style="font-family:'Fraunces', serif; font-size:64px; line-height:1; color:var(--ink); font-weight:300; letter-spacing:-0.025em;">$5.9<span style="font-size:32px;">B</span></div>
+            <div data-i18n="sec.03.gr.now" style="margin-top:6px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted);">2025 today</div>
+          </div>
+          <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--olive-deep); font-style:italic;">→</div>
+          <div>
+            <div style="font-family:'Fraunces', serif; font-size:64px; line-height:1; color:var(--olive-deep); font-weight:400; letter-spacing:-0.025em;">$11.2<span style="font-size:32px;">B</span></div>
+            <div data-i18n="sec.03.gr.then" style="margin-top:6px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--olive-deep);">2033 forecast</div>
+          </div>
+        </div>
+        <div data-i18n="sec.03.gr.cagr" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.06em; color:var(--ink-soft); line-height:1.6; padding-top:14px; border-top:1px dashed var(--line);">
+          <strong style="color:var(--olive-deep);">+9.3% CAGR.</strong> Nearly doubling in 8 years. The UAE category is growing 3× faster than the global athleisure average (~3.5%) and faster than every individual major brand's home-market performance.
+        </div>
+      </div>
+
+      <!-- RIGHT · the growth curve -->
+      <div style="position:relative; height:240px;">
+        <canvas id="chartAthleisure"></canvas>
+      </div>
+    </div>
+  </div>
+  <div data-i18n="sec.03.gr.src" style="margin-top:14px; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.04em; color:var(--muted);">◦ Sources: Grand View Research · UAE Athleisure Market Outlook 2026-2033 · Deep Market Insights 2026 · Statista. <span style="color:var(--olive-deep);">Snapshot · 2026-05-28.</span></div>
+
+  <div class="thesis-grid" style="margin-top: 44px;">
     <div>
       <p class="body reveal">
         <span data-i18n="sec.03.body.p1">Within 36 months every major premium athleisure brand has opened or committed to UAE retail — and the partner pattern has shifted. Digitally-native brands now bypass Alshaya (mass-market franchise) for Al Tayer or MAF (luxury-curated). <strong>Gymshark and Vuori both went Al Tayer.</strong> This is the new playbook for an athleisure brand entering Dubai.</span>
@@ -1980,6 +2012,42 @@
       <div data-i18n="sec.04-7.details.src" style="margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.04em; color:var(--muted); line-height:1.6;">◦  Directional simulation. Cohort sizes: UAE Cabinet · UAEJJF · Dubai DET 2024 · industry estimates. ARPU benchmarked vs ALO / Lululemon / Vuori / TGM UAE retail. <span style="color:var(--olive-deep);">Snapshot · 2026-05-18.</span> Final figures via active Perplexity / Gemini / ChatGPT deep-research.</div>
     </div>
   </details>
+</section>
+
+<!-- 04.8 — FIVE-YEAR TRAJECTORY · cumulative revenue curve across 4 capture scenarios -->
+<section class="deck" data-n="04.8">
+  <div class="label reveal" data-i18n="sec.04-8.label">04.8 — The five-year trajectory</div>
+  <h2 class="section-h reveal" data-i18n="sec.04-8.h2">From AED 36M in Year 1<br/>to <em>AED 500M cumulative</em> by Year 5.</h2>
+  <p class="body reveal" data-i18n="sec.04-8.body" style="--d:140ms; margin-top:22px; max-width:62ch;">The target case (5% blended capture) is not a Year-1 number. It is a ceiling reached around <strong>Year 3–4</strong> after channels are live and the brand has compounded one capsule cycle, one Athlete Edition wave, and three fight-night seasons. Here is what each capture scenario looks like as a cumulative-revenue curve.</p>
+
+  <div class="reveal" style="--d:280ms; margin-top:36px; background:var(--paper-2); border:1px solid var(--line); border-radius:12px; padding:36px 40px 28px;">
+    <div style="position:relative; height:340px;">
+      <canvas id="chartTrajectory"></canvas>
+    </div>
+    <div style="margin-top:18px; display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;">
+      <div style="border-left:3px solid #BFAE91; padding-left:10px;">
+        <div data-i18n="sec.04-8.s1.lbl" style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted);">Conservative · 1%</div>
+        <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--ink); font-weight:300; line-height:1.1; margin-top:4px;">~ AED 100M</div>
+        <div data-i18n="sec.04-8.s1.sub" style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--muted); margin-top:2px;">cumulative · 5 yrs · ~$27M USD</div>
+      </div>
+      <div style="border-left:3px solid #8A916F; padding-left:10px;">
+        <div data-i18n="sec.04-8.s2.lbl" style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted);">Plausible · 3%</div>
+        <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--ink); font-weight:300; line-height:1.1; margin-top:4px;">~ AED 290M</div>
+        <div data-i18n="sec.04-8.s2.sub" style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--muted); margin-top:2px;">cumulative · 5 yrs · ~$79M USD</div>
+      </div>
+      <div style="border-left:3px solid var(--accent); padding-left:10px;">
+        <div data-i18n="sec.04-8.s3.lbl" style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--olive-deep);">Target · 5%</div>
+        <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--olive-deep); font-weight:400; line-height:1.1; margin-top:4px;">~ AED 500M</div>
+        <div data-i18n="sec.04-8.s3.sub" style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--olive-deep); margin-top:2px;">cumulative · 5 yrs · ~$136M USD</div>
+      </div>
+      <div style="border-left:3px solid #5C6440; padding-left:10px;">
+        <div data-i18n="sec.04-8.s4.lbl" style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted);">Stretch · 8%</div>
+        <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--ink); font-weight:300; line-height:1.1; margin-top:4px;">~ AED 800M</div>
+        <div data-i18n="sec.04-8.s4.sub" style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--muted); margin-top:2px;">cumulative · 5 yrs · ~$218M USD</div>
+      </div>
+    </div>
+  </div>
+  <div data-i18n="sec.04-8.src" style="margin-top:16px; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.04em; color:var(--muted); line-height:1.6;">◦ Curve assumptions: Year 1 = ~25% of steady-state target (channel ramp), Year 2 = 65%, Year 3 = 95%, Year 4 = 100%, Year 5 = 105%. ARPU constant at category midpoint (AED 350–500). <span style="color:var(--olive-deep);">Snapshot · 2026-05-28.</span></div>
 </section>
 
 <!-- 05 GIVING MOVEMENT REFERENCE -->
@@ -2701,6 +2769,72 @@
   </div>
 </section>
 
+<!-- 11.5 — CHANNEL MIX · how money comes in the door -->
+<section class="deck" data-n="11.5">
+  <div class="label reveal" data-i18n="sec.11-5.label">11.5 — How money comes in the door</div>
+  <h2 class="section-h reveal" data-i18n="sec.11-5.h2">Six revenue channels.<br/><em>One steady-state mix.</em></h2>
+  <p class="body reveal" data-i18n="sec.11-5.body" style="--d:140ms; margin-top:22px; max-width:64ch;">Steady-state revenue (Year 3+) splits across six channels — each with different unit economics, marketing cost, and inventory velocity. We invest behind whichever channel is converting fastest, but the mix below is what we plan against.</p>
+
+  <div class="reveal" style="--d:280ms; margin-top:36px; display:grid; grid-template-columns:1.4fr 1fr; gap:28px;">
+
+    <!-- LEFT · horizontal bar chart -->
+    <div style="background:var(--paper-2); border:1px solid var(--line); border-radius:12px; padding:32px 36px;">
+      <div data-i18n="sec.11-5.chart.eyebrow" style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); margin-bottom:18px;">Steady-state channel mix · % of revenue</div>
+      <div style="position:relative; height:300px;">
+        <canvas id="chartChannels"></canvas>
+      </div>
+    </div>
+
+    <!-- RIGHT · channel reasoning cards -->
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="background:var(--paper-2); border:1px solid var(--line); border-radius:8px; padding:16px 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+          <div data-i18n="sec.11-5.c1.lbl" style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--olive-deep); font-weight:600;">DTC · .ae e-commerce</div>
+          <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--ink); font-weight:400;">42<span style="font-size:14px;">%</span></div>
+        </div>
+        <div data-i18n="sec.11-5.c1.body" style="font-size:11px; color:var(--ink-soft); line-height:1.45;">Highest margin · always-on · the brand's owned audience. Launches alongside the entity in Month 1.</div>
+      </div>
+      <div style="background:var(--paper-2); border:1px solid var(--line); border-radius:8px; padding:16px 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+          <div data-i18n="sec.11-5.c2.lbl" style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--olive-deep); font-weight:600;">Airport retail · DXB Duty Free</div>
+          <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--ink); font-weight:400;">20<span style="font-size:14px;">%</span></div>
+        </div>
+        <div data-i18n="sec.11-5.c2.body" style="font-size:11px; color:var(--ink-soft); line-height:1.45;">95.2M passengers in 2025. Premium-impulse buyer. Limited-SKU travel-gift assortment — Year 2+.</div>
+      </div>
+      <div style="background:var(--paper-2); border:1px solid var(--line); border-radius:8px; padding:16px 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+          <div data-i18n="sec.11-5.c3.lbl" style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--olive-deep); font-weight:600;">Gym pop-ups · Warehouse Gym</div>
+          <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--ink); font-weight:400;">18<span style="font-size:14px;">%</span></div>
+        </div>
+        <div data-i18n="sec.11-5.c3.body" style="font-size:11px; color:var(--ink-soft); line-height:1.45;">High-intent fitness audience. Eight Warehouse Gym locations in rotation. Premium-membership crossover.</div>
+      </div>
+      <div style="background:var(--paper-2); border:1px solid var(--line); border-radius:8px; padding:16px 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+          <div data-i18n="sec.11-5.c4.lbl" style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--olive-deep); font-weight:600;">MMA / fight-night booths</div>
+          <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--ink); font-weight:400;">12<span style="font-size:14px;">%</span></div>
+        </div>
+        <div data-i18n="sec.11-5.c4.body" style="font-size:11px; color:var(--ink-soft); line-height:1.45;">AJP World Pro · Dubai Muscle Show · UAE Warriors. Concentrated premium footfall. Brand-defining.</div>
+      </div>
+      <div style="background:var(--ink); border:1px solid var(--accent); border-radius:8px; padding:16px 18px; color:var(--paper);">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+          <div data-i18n="sec.11-5.c5.lbl" style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); font-weight:600;">Athlete Edition · invitation-only</div>
+          <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--paper); font-weight:400;">5<span style="font-size:14px;">%</span></div>
+        </div>
+        <div data-i18n="sec.11-5.c5.body" style="font-size:11px; color:#E8E0D2; line-height:1.45;">Low-volume by design. The signal-generator for the other 95%. See §13.5.</div>
+      </div>
+      <div style="background:var(--paper-2); border:1px solid var(--line); border-radius:8px; padding:16px 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+          <div data-i18n="sec.11-5.c6.lbl" style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:600;">Wholesale · selective</div>
+          <div style="font-family:'Fraunces', serif; font-size:24px; color:var(--ink); font-weight:400;">3<span style="font-size:14px;">%</span></div>
+        </div>
+        <div data-i18n="sec.11-5.c6.body" style="font-size:11px; color:var(--ink-soft); line-height:1.45;">Hand-picked retail only — Areej, Bloomingdale's, THAT Concept Store. Brand protection over volume.</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-i18n="sec.11-5.src" style="margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.04em; color:var(--muted); line-height:1.6;">◦ Steady-state mix benchmarked vs ALO / Lululemon / Gymshark / Giving Movement UAE channel structures + ChatGPT deep-research recommendation. Year 1 will skew heavily DTC (~70%) before other channels are live. <span style="color:var(--olive-deep);">Snapshot · 2026-05-28.</span></div>
+</section>
+
 <!-- 11 YEAR-1 ACTIVATION CALENDAR -->
 <section class="deck" data-n="12">
   <div class="label reveal" data-i18n="sec.12.label">12 — Year 1 activation calendar</div>
@@ -3302,6 +3436,117 @@
       }
     }
   });
+
+  // ============================================================
+  // §04.8 — 5-Year Trajectory · cumulative revenue across 4 scenarios
+  // Year 1 = 25% of steady-state, Y2=65%, Y3=95%, Y4=100%, Y5=105%
+  // Steady-state annual revenue: 1%=AED 33M, 3%=AED 100M, 5%=AED 167M, 8%=AED 267M
+  // ============================================================
+  (function () {
+    const ctx = document.getElementById('chartTrajectory');
+    if (!ctx) return;
+    const ramp = [0.25, 0.65, 0.95, 1.00, 1.05]; // Year 1..5 multipliers
+    const ssTarget = { c1: 33, c3: 100, c5: 167, c8: 267 }; // steady-state AED M
+    const cumulative = (ss) => {
+      let total = 0; return ramp.map(r => { total += ss * r; return total; });
+    };
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+        datasets: [
+          { label: 'Conservative · 1%', data: cumulative(ssTarget.c1), borderColor: '#BFAE91', backgroundColor: 'rgba(191,174,145,0.10)', borderWidth: 2, tension: 0.32, pointRadius: 4, pointBackgroundColor: '#BFAE91', fill: false },
+          { label: 'Plausible · 3%', data: cumulative(ssTarget.c3), borderColor: '#8A916F', backgroundColor: 'rgba(138,145,111,0.10)', borderWidth: 2, tension: 0.32, pointRadius: 4, pointBackgroundColor: '#8A916F', fill: false },
+          { label: 'Target · 5%', data: cumulative(ssTarget.c5), borderColor: '#D4AF6B', backgroundColor: 'rgba(212,175,107,0.18)', borderWidth: 3, tension: 0.32, pointRadius: 5, pointBackgroundColor: '#D4AF6B', fill: true },
+          { label: 'Stretch · 8%', data: cumulative(ssTarget.c8), borderColor: '#5C6440', backgroundColor: 'rgba(92,100,64,0.10)', borderWidth: 2, tension: 0.32, pointRadius: 4, pointBackgroundColor: '#5C6440', fill: false },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: 'top', labels: { font: { family: "'JetBrains Mono', monospace", size: 10 }, color: '#3A352E', boxWidth: 10, padding: 14 } },
+          tooltip: { callbacks: { label: c => c.dataset.label + ': AED ' + Math.round(c.parsed.y) + 'M (cumulative)' } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#7A7468', font: { family: "'JetBrains Mono', monospace", size: 11 } } },
+          y: { beginAtZero: true, grid: { color: 'rgba(201,194,181,0.4)' }, ticks: { color: '#7A7468', font: { family: "'JetBrains Mono', monospace", size: 10 }, callback: v => 'AED ' + v + 'M' } }
+        }
+      }
+    });
+  })();
+
+  // ============================================================
+  // §03 — UAE Athleisure Growth · 2018–2033 line chart
+  // 9.3% CAGR · interpolated from Grand View / Deep Market Insights
+  // ============================================================
+  (function () {
+    const ctx = document.getElementById('chartAthleisure');
+    if (!ctx) return;
+    // Approximate market sizes USD billions, calibrated to 2025=$5.9B and 2033=$11.2B with 9.3% CAGR
+    const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033];
+    const sizes = [2.9, 3.2, 2.8, 3.6, 4.2, 4.8, 5.4, 5.9, 6.5, 7.1, 7.7, 8.5, 9.2, 9.9, 10.5, 11.2];
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: years,
+        datasets: [{
+          label: 'UAE athleisure · $B',
+          data: sizes,
+          borderColor: '#5C6440',
+          backgroundColor: 'rgba(92,100,64,0.18)',
+          borderWidth: 2.5,
+          tension: 0.32,
+          pointRadius: years.map(y => (y === 2025 || y === 2033) ? 6 : 0),
+          pointBackgroundColor: years.map(y => y === 2025 ? '#1A1815' : (y === 2033 ? '#D4AF6B' : 'transparent')),
+          pointBorderColor: years.map(y => y === 2025 ? '#1A1815' : (y === 2033 ? '#D4AF6B' : 'transparent')),
+          fill: true,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => '$' + c.parsed.y.toFixed(1) + 'B' } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#7A7468', font: { family: "'JetBrains Mono', monospace", size: 9 }, maxTicksLimit: 8 } },
+          y: { beginAtZero: true, max: 13, grid: { color: 'rgba(201,194,181,0.4)' }, ticks: { color: '#7A7468', font: { family: "'JetBrains Mono', monospace", size: 9 }, callback: v => '$' + v + 'B' } }
+        }
+      }
+    });
+  })();
+
+  // ============================================================
+  // §11.5 — Channel Mix · horizontal bar chart
+  // ============================================================
+  (function () {
+    const ctx = document.getElementById('chartChannels');
+    if (!ctx) return;
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['DTC · .ae e-commerce', 'Airport · DXB Duty Free', 'Gym pop-ups · Warehouse', 'MMA / fight-night booths', 'Athlete Edition · invite-only', 'Wholesale · selective'],
+        datasets: [{
+          label: '% of revenue',
+          data: [42, 20, 18, 12, 5, 3],
+          backgroundColor: ['#5C6440', '#8A916F', '#8A916F', '#8A916F', '#D4AF6B', '#C9C2B5'],
+          borderRadius: 4,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => c.parsed.x + '% of revenue' } }
+        },
+        scales: {
+          x: { beginAtZero: true, max: 50, grid: { color: 'rgba(201,194,181,0.4)' }, ticks: { color: '#7A7468', font: { family: "'JetBrains Mono', monospace", size: 10 }, callback: v => v + '%' } },
+          y: { grid: { display: false }, ticks: { color: '#3A352E', font: { family: "'JetBrains Mono', monospace", size: 10 } } }
+        }
+      }
+    });
+  })();
 
   // ============================================================
   // Language toggle — EN / 日本語. Default = JP.
